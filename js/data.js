@@ -31,7 +31,7 @@ window.SITE = {
   profile: {
     name: "Harrison Stewart",
     initials: "HS",
-    photo: "", // e.g. "assets/headshot.jpg". Leave empty to show initials.
+    photo: "assets/headshot.jpg", // Leave empty to show initials.
     title: "Civil engineering student · BYU",
     roles: [
       { icon: "chalkboard-teacher", label: "TA · CCE 114 Geomatics", href: "#students" },

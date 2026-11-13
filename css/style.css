@@ -183,37 +183,25 @@ a {
 
 .avatar {
   position: relative;
-  width: 104px;
-  height: 104px;
+  width: 92px;
+  height: 92px;
   margin: 0 auto 22px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: var(--mono);
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text);
-  background: radial-gradient(circle at 30% 25%, #1b2531, #0b0f14 70%);
+  background: #10141a;
   border: 1px solid var(--border-strong);
-  box-shadow:
-    0 0 0 6px rgba(var(--accent-rgb), 0.04),
-    0 20px 60px -20px rgba(var(--accent-rgb), 0.45);
 }
 .avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-}
-.avatar::after {
-  /* rotating contour ring */
-  content: "";
-  position: absolute;
-  inset: -7px;
-  border-radius: 50%;
-  border: 1px dashed rgba(var(--accent-rgb), 0.35);
-  animation: spin 40s linear infinite;
 }
 
 .status-pill {
@@ -920,7 +908,7 @@ a.card:hover .card-cta i {
   body { font-size: 14.5px; }
   .wrap { padding: 0 16px; }
   .hero { padding: 36px 0 28px; }
-  .avatar { width: 88px; height: 88px; font-size: 26px; }
+  .avatar { width: 80px; height: 80px; font-size: 24px; }
   .section { margin-top: 44px; }
 
   .grid { grid-template-columns: 1fr; }
