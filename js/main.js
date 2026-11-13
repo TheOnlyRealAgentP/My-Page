@@ -162,7 +162,30 @@
     $("#footer").innerHTML = `
       <span>© ${new Date().getFullYear()} ${esc(S.profile.name)}</span>
       <span>${esc(f.note)}</span>
+      <span id="visits" hidden></span>
       ${f.callsign ? `<span>73 de ${esc(f.callsign)}</span>` : ""}`;
+    if (f.goatcounter) visitCounter(f.goatcounter);
+  }
+
+  /* ---------- Visit counter (GoatCounter: no cookies) ---------- */
+  function visitCounter(code) {
+    if (!/^[a-z0-9-]+$/i.test(code)) return;
+    const base = `https://${code}.goatcounter.com`;
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://gc.zgo.at/count.js";
+    s.dataset.goatcounter = `${base}/count`;
+    document.head.appendChild(s);
+    // Site-wide total; needs "Allow adding visitor counts on your website" in GoatCounter's settings
+    fetch(`${base}/counter/TOTAL.json`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d || !d.count) return;
+        const el = document.getElementById("visits");
+        el.textContent = `${String(d.count).trim()} visits`;
+        el.hidden = false;
+      })
+      .catch(() => {});
   }
 
   /* ---------- Popup (pending links, copied links) ---------- */

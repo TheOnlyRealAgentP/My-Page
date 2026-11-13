@@ -40,7 +40,6 @@ window.SITE = {
     bio: "I TA CCE 114, work in the BYU Hydroinformatics Lab, and write FIM (flood inundation map) generation software. When I'm not doing that I'm usually messing with ham radio, Meshtastic or the 3D printer.",
     links: [
       { icon: "github-logo", label: "GitHub", href: "https://github.com/TheOnlyRealAgentP" },
-      { icon: "linkedin-logo", label: "LinkedIn", href: "#" },
       { icon: "envelope-simple", label: "Email", href: "#" },
       { icon: "file-text", label: "Résumé", href: "#" },
     ],
@@ -405,5 +404,8 @@ window.SITE = {
   footer: {
     note: "Hosted on GitHub Pages",
     callsign: "KJ5JTS",
+    // Visit counter: your GoatCounter code (the "name" in name.goatcounter.com).
+    // Leave "" to turn the counter off.
+    goatcounter: "",
   },
 };
