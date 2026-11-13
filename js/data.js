@@ -32,12 +32,12 @@ window.SITE = {
     name: "Harrison Stewart",
     initials: "HS",
     photo: "", // e.g. "assets/headshot.jpg". Leave empty to show initials.
-    title: "Civil Engineer & Hydroinformatics Developer",
+    title: "Civil engineering student · BYU",
     roles: [
       { icon: "chalkboard-teacher", label: "TA · CCE 114 Geomatics", href: "#students" },
       { icon: "drop", label: "Research Assistant · BYU Hydroinformatics Lab", href: "https://hydroinformatics.byu.edu" },
     ],
-    bio: "Civil engineering student at BYU. I write FIM (flood inundation map) generation software, help students learn GIS, and spend the rest of my time on ham radio, mesh networks and 3D printing.",
+    bio: "I TA CCE 114, work in the BYU Hydroinformatics Lab, and write FIM (flood inundation map) generation software. When I'm not doing that I'm usually messing with ham radio, Meshtastic or the 3D printer.",
     links: [
       { icon: "github-logo", label: "GitHub", href: "https://github.com/TheOnlyRealAgentP" },
       { icon: "linkedin-logo", label: "LinkedIn", href: "#" },
@@ -49,23 +49,23 @@ window.SITE = {
   paths: [
     {
       icon: "student",
-      kicker: "For CCE 114 & 414 students",
+      kicker: "CCE 114 & 414",
       title: "GIS & QGIS",
-      desc: "Study guides, flashcards and randomized practice tests that follow Bolstad's GIS Fundamentals.",
+      desc: "Study guides, flashcards and practice tests for Bolstad's GIS Fundamentals.",
       href: "#students",
     },
     {
       icon: "compass-tool",
-      kicker: "For the field",
-      title: "Surveying & Civil Skills",
-      desc: "Twenty calculators with worked steps and practice problems, from COGO to Manning's equation.",
+      kicker: "Surveying & civil",
+      title: "Calculators",
+      desc: "Curves, leveling, COGO, Manning's and a graphing calculator. They show the work, not just the answer.",
       href: "#surveying",
     },
     {
       icon: "flask",
-      kicker: "For everyone",
-      title: "Research, Explained",
-      desc: "Hydroinformatics projects written up so classmates, collaborators and the public can follow them.",
+      kicker: "Research",
+      title: "What I'm working on",
+      desc: "Flood mapping and river forecasting stuff from the lab and on my own. Write-ups are coming.",
       href: "#research",
     },
   ],
@@ -77,7 +77,7 @@ window.SITE = {
       label: "CCE 114 & 414: GIS & QGIS",
       navLabel: "GIS 114/414",
       icon: "student",
-      blurb: "Bolstad's GIS Fundamentals, chapter by chapter, for CCE 114 and 414. The QGIS material is for 114; 414 uses ArcGIS Pro.",
+      blurb: "Both classes use Bolstad's GIS Fundamentals. The QGIS stuff is just for 114, since 414 uses ArcGIS Pro.",
       groups: [
         {
           title: "Study the book",
@@ -87,7 +87,7 @@ window.SITE = {
               icon: "book-open-text",
               kicker: "15 chapters + QGIS",
               title: "Study guides",
-              desc: "Plain-language guides for every chapter, with worked examples, key terms, QGIS how-tos and a quick check at the end.",
+              desc: "Every chapter of the book broken down, with worked examples, the key terms and a quick quiz at the end. You can print them too.",
               tags: ["Bolstad", "Key terms", "Printable"],
               href: "teach/gis/",
               cta: "Open study hub",
@@ -97,9 +97,9 @@ window.SITE = {
             },
             {
               icon: "cards",
-              kicker: "Spaced practice",
+              kicker: "467 cards",
               title: "Flashcards",
-              desc: "Flip through the key terms for one chapter or all of them. The deck remembers which cards you already know.",
+              desc: "Key terms by chapter, or all of them at once. It remembers which ones you already know.",
               tags: ["Shuffle", "Keyboard", "Progress saved"],
               href: "teach/gis/#/cards/ch01,ch02,ch03,ch04,ch05,ch06,ch07,ch08,ch09,ch10,ch11,ch12,ch13,ch14,ch15",
               cta: "Study cards",
@@ -108,9 +108,9 @@ window.SITE = {
             },
             {
               icon: "exam",
-              kicker: "Never the same twice",
-              title: "Randomized practice tests",
-              desc: "Pick chapters and a length. Questions and answer order shuffle, and calculation problems get new numbers every time.",
+              kicker: "460+ questions",
+              title: "Practice tests",
+              desc: "Pick the chapters and you get a random test. The math questions get new numbers every time, so memorizing answers won't help.",
               tags: ["Auto-graded", "Share a test", "Answer key"],
               href: "teach/gis/#/test?ch=ch01,ch02,ch03,ch04,ch05,ch06,ch07,ch08,ch09,ch10,ch11,ch12,ch13,ch14,ch15&n=20&calc=1",
               cta: "Take a 20-question test",
@@ -125,9 +125,9 @@ window.SITE = {
           items: [
             {
               icon: "map-trifold",
-              kicker: "Hands-on chapter",
+              kicker: "114 only",
               title: "QGIS in Practice",
-              desc: "The interface, CRS settings, the Field Calculator, joins, common Processing tools, the Georeferencer and Print Layout.",
+              desc: "The QGIS side of the class, with screenshots from QGIS 3.44 so it matches the lab computers.",
               tags: ["QGIS", "Processing", "Print Layout"],
               href: "teach/gis/#/guide/qgis",
               cta: "Open the QGIS guide",
@@ -137,7 +137,7 @@ window.SITE = {
               icon: "polygon",
               kicker: "Course web map",
               title: "HUC8 Watershed Explorer",
-              desc: "All 2,456 HUC8 subbasins with NOAA's 2026 flood events on top. Hover a basin for its details or click a flood for the full report.",
+              desc: "The class web map. Every HUC8 watershed in the US with this year's NOAA flood events on top. Click a flood for the full report.",
               tags: ["MapLibre", "USGS WBD", "NOAA Storm Events"],
               href: "https://theonlyrealagentp.github.io/CCE114-WebMap/",
               cta: "Open map",
@@ -146,9 +146,9 @@ window.SITE = {
             },
             {
               icon: "download-simple",
-              kicker: "Free and open source",
+              kicker: "Free",
               title: "Get QGIS",
-              desc: "Download QGIS for Windows, macOS or Linux. The lab machines run QGIS 3.44 LTR, so install that release to match.",
+              desc: "Get 3.44 LTR so it matches the lab computers. Works on Windows, Mac and Linux.",
               tags: ["qgis.org", "LTR"],
               href: "https://qgis.org/download/",
               cta: "Download",
@@ -163,18 +163,18 @@ window.SITE = {
             {
               icon: "terminal-window",
               title: "VS Code for AI-assisted projects",
-              sub: "Setup, the AI offers BYU students can get, and how the coding tools compare",
+              sub: "How I set up VS Code for coding with AI, and the free AI plans BYU students can get",
               href: "teach/vscode-ai/",
             },
-            { icon: "function", title: "Engineering Calculator", sub: "Graphing, statistics, matrices, a solver and unit conversion", href: "teach/calc/" },
+            { icon: "function", title: "Engineering Calculator", sub: "A graphing calculator that also does units, matrices and stats", href: "teach/calc/" },
           ],
         },
         {
           title: "Course help",
           type: "list",
           items: [
-            { icon: "books", title: "CCE 114 course site", sub: "Schedule, labs, slides and course policies", href: "https://byu-hydroinformatics.github.io/cce114-geomatics/" },
-            { icon: "chat-circle-dots", title: "Questions and TA office hours", sub: "Message the TAs and find office hours on Learning Suite (BYU login)", href: "https://learningsuite.byu.edu/view/uPQQjqw9-UIA.html" },
+            { icon: "books", title: "CCE 114 course site", sub: "Schedule, labs and slides", href: "https://byu-hydroinformatics.github.io/cce114-geomatics/" },
+            { icon: "chat-circle-dots", title: "Questions and TA office hours", sub: "On Learning Suite (BYU login)", href: "https://learningsuite.byu.edu/view/uPQQjqw9-UIA.html" },
           ],
         },
       ],
@@ -183,10 +183,10 @@ window.SITE = {
     /* ------------------------------------------------------------------ */
     {
       id: "surveying",
-      label: "Surveying & Civil Engineering Skills",
+      label: "Surveying & Civil Tools",
       navLabel: "Surveying",
       icon: "compass-tool",
-      blurb: "The math you use on site, with every step shown.",
+      blurb: "The math that keeps coming up in surveying and civil classes, with the steps shown.",
       groups: [
         {
           type: "cards",
@@ -195,7 +195,7 @@ window.SITE = {
               icon: "function",
               kicker: "Graphing calculator",
               title: "Engineering Calculator",
-              desc: "Variables, functions and DMS angles; graphs that find zeros, extrema and intersections; statistics and regression; matrices; an equation solver with hydraulics and structures formulas; and unit conversion.",
+              desc: "A graphing calculator in the browser that also does units, matrices and stats, and can solve Manning's for depth.",
               tags: ["Graphing", "Solver", "Units"],
               href: "teach/calc/",
               cta: "Open the calculator",
@@ -205,9 +205,9 @@ window.SITE = {
             },
             {
               icon: "calculator",
-              kicker: "20 tools · practice mode",
+              kicker: "20 calculators",
               title: "Field Math",
-              desc: "COGO, leveling, horizontal and vertical curves, earthwork, grid-to-ground, Manning's equation, the rational method and measurement error, each with worked steps and practice problems.",
+              desc: "Curves, leveling, COGO, earthwork, grid to ground, Manning's and more. Each one shows every step and can make practice problems.",
               tags: ["Feet or meters", "Worked steps", "Practice"],
               href: "teach/field/",
               cta: "Open Field Math",
@@ -216,9 +216,9 @@ window.SITE = {
             },
             {
               icon: "compass-tool",
-              kicker: "Interactive module",
+              kicker: "Interactive",
               title: "Traverse Closure & the Compass Rule",
-              desc: "Drag the stations, add measurement error, and step through angle balancing, latitudes and departures, and the compass rule.",
+              desc: "Drag the stations around, add some error, and watch the compass rule clean it up.",
               tags: ["Traverse", "Azimuths", "Compass rule"],
               href: "teach/traverse/",
               cta: "Start module",
@@ -232,11 +232,11 @@ window.SITE = {
           title: "Jump to a calculator",
           type: "list",
           items: [
-            { icon: "bezier-curve", title: "Horizontal curves", sub: "Curve elements, PC/PT stations and a staking table", href: "teach/field/#/hcurve" },
-            { icon: "wave-sine", title: "Vertical curves", sub: "BVC/EVC, high and low points, station elevations", href: "teach/field/#/vcurve" },
-            { icon: "ruler", title: "Differential leveling", sub: "Reduce notes, check the arithmetic, adjust a loop", href: "teach/field/#/leveling" },
-            { icon: "globe-hemisphere-west", title: "Grid and ground distances", sub: "Combined scale factor for State Plane work", href: "teach/field/#/grid-ground" },
-            { icon: "waves", title: "Open channel flow", sub: "Manning's equation for ditches and channels", href: "teach/field/#/manning" },
+            { icon: "bezier-curve", title: "Horizontal curves", sub: "PC, PT and a staking table", href: "teach/field/#/hcurve" },
+            { icon: "wave-sine", title: "Vertical curves", sub: "BVC, EVC and the high or low point", href: "teach/field/#/vcurve" },
+            { icon: "ruler", title: "Differential leveling", sub: "Reduce your notes and check the math", href: "teach/field/#/leveling" },
+            { icon: "globe-hemisphere-west", title: "Grid and ground distances", sub: "Combined scale factor for State Plane", href: "teach/field/#/grid-ground" },
+            { icon: "waves", title: "Open channel flow", sub: "Manning's for ditches and channels", href: "teach/field/#/manning" },
           ],
         },
       ],
@@ -245,19 +245,19 @@ window.SITE = {
     /* ------------------------------------------------------------------ */
     {
       id: "research",
-      label: "Research, Explained",
+      label: "Research",
       navLabel: "Research",
       icon: "flask",
-      blurb: "Each project starts with the question it answers.",
+      blurb: "What I'm working on. Write-ups for each one are coming.",
       groups: [
         {
           type: "cards",
           items: [
             {
               icon: "waves",
-              kicker: "How does a flood wave travel down a river?",
+              kicker: "Rust + WebAssembly",
               title: "1D/2D Hydraulic Routing Engine",
-              desc: "A finite-volume fluid simulation written in Rust and compiled to WebAssembly, so it runs in the browser.",
+              desc: "A finite-volume flow model written in Rust and compiled to WebAssembly so it runs in the browser.",
               tags: ["Rust", "WebAssembly", "Finite volume"],
               status: "In progress",
               featured: true,
@@ -270,9 +270,9 @@ window.SITE = {
             },
             {
               icon: "map-trifold",
-              kicker: "What will the river near me do next?",
+              kicker: "Flutter app",
               title: "Fludd (RIVR)",
-              desc: "A cross-platform Flutter and Mapbox app that shows live NOAA NWPS forecasts on top of USGS hydrography data.",
+              desc: "Puts the National Water Model on a Mapbox map. Tap a river and you get its forecast, with the FIM layer on top. Linux support is rough because Mapbox barely works there yet.",
               tags: ["Flutter", "Mapbox", "NOAA NWPS", "USGS"],
               status: "Active",
               span: 2,
@@ -284,9 +284,9 @@ window.SITE = {
             },
             {
               icon: "flow-arrow",
-              kicker: "How do we route water through a river network quickly?",
+              kicker: "Rust",
               title: "Rust Routing Algorithms",
-              desc: "Custom hydraulic routing algorithms and spatial data arrays written in Rust.",
+              desc: "Routing algorithms and spatial data arrays I've been writing in Rust.",
               tags: ["Rust", "Hydraulic routing", "Spatial data"],
               span: 2,
               actions: [
@@ -298,19 +298,19 @@ window.SITE = {
           ],
         },
         {
-          title: "Teach & share research",
+          title: "More",
           type: "list",
           items: [
             {
               icon: "layout",
               title: "Research explainer template",
-              sub: "A page layout for turning a project into a short explainer, with share, cite, print and projector modes",
+              sub: "The page layout I use to write up a project, with share, cite, print and present buttons",
               href: "research/template/",
             },
             {
               icon: "article",
               title: "BYU Hydroinformatics Lab",
-              sub: "Lab projects and publications",
+              sub: "The lab I work in, plus their projects and publications",
               href: "https://hydroinformatics.byu.edu",
             },
           ],
@@ -324,34 +324,34 @@ window.SITE = {
       label: "Builds & Hardware",
       navLabel: "Builds",
       icon: "cpu",
-      blurb: "Physical engineering outside the code.",
+      blurb: "Stuff I build when I'm not writing code.",
       groups: [
         {
           type: "cards",
           items: [
             {
               icon: "broadcast",
-              kicker: "LoRa mesh",
-              title: "Off-grid Meshtastic Networks",
-              desc: "Off-grid LoRa mesh communication nodes on Heltec and WisBlock hardware.",
+              kicker: "LoRa",
+              title: "Meshtastic Mesh",
+              desc: "LoRa mesh radios on Heltec and WisBlock boards, for texting when there's no cell service.",
               tags: ["Meshtastic", "LoRa", "Heltec", "WisBlock"],
               href: "#",
               span: 2,
             },
             {
               icon: "briefcase",
-              kicker: "Rugged computing",
+              kicker: "PC build",
               title: "Pelican 1490 Briefcase PC",
-              desc: "A custom PC built into a rugged Pelican 1490 case.",
+              desc: "A full PC built into a Pelican 1490 case.",
               tags: ["PC build", "Pelican 1490"],
               href: "#",
               span: 2,
             },
             {
               icon: "cube",
-              kicker: "Rapid prototyping",
-              title: "Advanced 3D Printing",
-              desc: "FDM printing and rapid prototyping with multi-color PETG and PCTG.",
+              kicker: "FDM",
+              title: "3D Printing",
+              desc: "Mostly PETG and PCTG.",
               tags: ["FDM", "PETG", "PCTG"],
               href: "#",
               span: 2,
@@ -369,7 +369,7 @@ window.SITE = {
       icon: "identification-badge",
       groups: [
         {
-          title: "Experience & leadership",
+          title: "Experience",
           type: "list",
           items: [
             {
@@ -384,7 +384,7 @@ window.SITE = {
           ],
         },
         {
-          title: "Tech stack",
+          title: "What I use",
           type: "badges",
           items: [
             { name: "Rust", icon: "gear-six" },
@@ -403,7 +403,7 @@ window.SITE = {
   ],
 
   footer: {
-    note: "Static site · hosted on GitHub Pages",
+    note: "Hosted on GitHub Pages",
     callsign: "KJ5JTS",
   },
 };

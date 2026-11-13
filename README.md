@@ -9,7 +9,7 @@ index.html                  main page shell
 css/style.css               theme tokens (top of file), layout, components
 js/data.js                  ALL main-page content: header, sections, cards, links
 js/main.js                  renders data.js, popups, share buttons, scroll effects
-js/background.js            animated topographic contour background (CONFIG at top)
+js/background.js            U.S. contour map background (CONFIG at top)
 
 teach/gis/                  CCE 114 & 414 study hub: guides, flashcards, tests
   data/chNN.js, qgis.js     one content file per chapter (see below)
@@ -28,7 +28,7 @@ teach/vscode-ai/            guide: VS Code for AI-assisted projects
 research/template/          research explainer template (copy this per project)
 research/explainer.css|js   shared styles and behavior for explainers
 
-assets/                     favicon, and a place for a headshot / résumé PDF
+assets/                     favicon, us-contours.svg (the background map), and a place for a headshot / résumé PDF
 ```
 
 ## Editing the main page
