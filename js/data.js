@@ -37,7 +37,7 @@ window.SITE = {
       { icon: "chalkboard-teacher", label: "TA · CCE 114 Geomatics", href: "#students" },
       { icon: "drop", label: "Research Assistant · BYU Hydroinformatics Lab", href: "https://hydroinformatics.byu.edu" },
     ],
-    bio: "Bridging physical infrastructure and high-performance code through a first-principles engineering methodology.",
+    bio: "Civil engineering student at BYU. I write FIM (flood inundation map) generation software, help students learn GIS, and spend the rest of my time on ham radio, mesh networks and 3D printing.",
     links: [
       { icon: "github-logo", label: "GitHub", href: "https://github.com/TheOnlyRealAgentP" },
       { icon: "linkedin-logo", label: "LinkedIn", href: "#" },
