@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Engineering Calculator · Surveying &amp; Civil Engineering</title>
+    <meta
+      name="description"
+      content="A graphing calculator for engineering classes: expressions with variables and functions, DMS angles, graphs with zeros and intersections, statistics and regression, matrices, an equation solver with engineering presets, and unit conversion."
+    />
+    <meta name="theme-color" content="#06080b" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="calc.css" />
+
+    <script src="calc-core.js" defer></script>
+    <script src="calc-app.js" defer></script>
+  </head>
+  <body>
+    <div class="tool-bg" aria-hidden="true"></div>
+    <div class="topbar wrap">
+      <a class="back" href="../../#surveying"><i class="ph ph-arrow-left" aria-hidden="true"></i>Surveying &amp; Civil Engineering</a>
+    </div>
+    <main id="app" class="wrap"></main>
+    <div class="toast-c" id="toast" role="status" aria-live="polite"></div>
+    <footer class="footer wrap">
+      <span>Harrison Stewart · Engineering Calculator</span>
+      <span>Your history, variables, lists and graphs are saved in this browser only.</span>
+    </footer>
+  </body>
+</html>

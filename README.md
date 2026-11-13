@@ -19,6 +19,9 @@ teach/gis/                  CCE 114 & 414 study hub: guides, flashcards, tests
 teach/field/                Field Math: 20 surveying and civil calculators
   field-core.js             parsing/formatting (angles, bearings, stations)
   tools/*.js                one F.tool({...}) per calculator
+teach/calc/                 Engineering Calculator: graphing, stats, matrices, solver, units
+  calc-core.js              parser, evaluator and math (no eval); runs in Node for tests
+  calc-app.js               the seven tabs
 teach/traverse/             interactive traverse closure & compass rule module
 teach/vscode-ai/            guide: VS Code for AI-assisted projects
 
@@ -50,6 +53,17 @@ Each chapter is one file in `teach/gis/data/` that calls `GIS.chapter({...})` wi
 ## Field Math calculators
 
 Each calculator in `teach/field/tools/` defines its inputs, a `compute()` that returns results plus the worked steps, an explanation, and a `practice()` that makes random problems. Add a new tool by copying an existing `F.tool({...})` block.
+
+## Engineering Calculator
+
+`teach/calc/` is a graphing calculator for engineering classes, written from scratch (no `eval`, no libraries):
+
+- **Calculate**: implied multiplication, `ans`, variables (`Q = 2.5`), functions (`f(x) = x^2 + 1`), DMS input (`12°30'15"`), lists, matrices, `nDeriv`, `fnInt`, `solve`, and equations typed directly (`2x + 3 = 7`). Each result can be shown as a fraction, in scientific or engineering notation, or in DMS.
+- **Graph**: eight functions, pan and zoom, trace, zeros/extrema/intersections found automatically, shaded integrals, and a table.
+- **Stats**: lists L1–L6 (paste from a spreadsheet), one-variable statistics, and seven regression models that can be graphed with the data.
+- **Matrix**, **Solve** (equation solver with Manning, Hazen–Williams, Darcy–Weisbach, orifice, weir, rational method and beam presets; polynomial roots; linear systems), **Units** and **Constants**.
+
+Everything a student enters is saved in their own browser only. Add a solver preset in the `PRESETS` list in `calc-app.js`, a unit in `UNITS` in `calc-core.js`, or a constant in `CONSTANTS`.
 
 ## Writing a research explainer
 
