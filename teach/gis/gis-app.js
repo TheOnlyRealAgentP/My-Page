@@ -124,13 +124,16 @@
           <span class="pill">${icon("book-open-text")}<span>Follows Bolstad &amp; Manson, <em>GIS Fundamentals</em>, 7th ed.</span></span>
           <span class="pill">${icon("pencil-line")}<span>Original study material, not text from the book</span></span>
         </div>
+        <p class="class-note">${icon("info")}<span>Both classes use this book, so every chapter guide, flashcard and test fits
+          <b>CCE 114</b> and <b>CCE 414</b>. The QGIS chapter and the “In QGIS” notes are for CCE 114; CCE 414 works in ArcGIS Pro.</span></p>
       </header>
 
       <section class="panel builder" aria-labelledby="b-h">
         <div class="builder-top">
           <h2 id="b-h">${icon("exam")}Build a practice test</h2>
           <div class="sel-links">
-            <button type="button" class="linkish" data-sel="all">Select all</button>
+            <button type="button" class="linkish" data-sel="book">Book chapters</button>
+            <button type="button" class="linkish" data-sel="all">Book + QGIS (114)</button>
             <button type="button" class="linkish" data-sel="none">Clear</button>
           </div>
         </div>
@@ -168,7 +171,7 @@
             return `
             <article class="panel ch">
               <div class="ch-num">${c.id === "qgis" ? icon("map-trifold") : String(c.num).padStart(2, "0")}</div>
-              <h3>${esc(c.title)}</h3>
+              <h3>${esc(c.title)}${c.id === "qgis" ? ` <span class="for-tag">CCE 114</span>` : ""}</h3>
               <p>${md(c.blurb)}</p>
               <div class="ch-stats">
                 <span>${c.cards.length} cards</span>
@@ -203,7 +206,9 @@
     const selected = () => chipInputs.filter((i) => i.checked).map((i) => i.value);
 
     app.querySelectorAll("[data-sel]").forEach((b) =>
-      b.addEventListener("click", () => chipInputs.forEach((i) => (i.checked = b.dataset.sel === "all")))
+      b.addEventListener("click", () =>
+        chipInputs.forEach((i) => (i.checked = b.dataset.sel === "all" || (b.dataset.sel === "book" && i.value !== "qgis")))
+      )
     );
     app.querySelector("#b-start").addEventListener("click", () => {
       const ch = selected();
@@ -236,7 +241,7 @@
     app.innerHTML = `
       <nav class="crumbs"><a href="#/">${icon("arrow-left")}All chapters</a></nav>
       <header class="g-head">
-        <div class="eyebrow">${c.id === "qgis" ? "Hands-on chapter" : `Chapter ${c.num}`} · Study guide</div>
+        <div class="eyebrow">${c.id === "qgis" ? "Hands-on chapter · CCE 114" : `Chapter ${c.num}`} · Study guide</div>
         <h1>${esc(c.title)}</h1>
         <p class="lede">${md(c.blurb)}</p>
         <div class="toolbar">

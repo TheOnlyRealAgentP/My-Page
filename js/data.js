@@ -77,7 +77,7 @@ window.SITE = {
       label: "CCE 114 & 414: GIS & QGIS",
       navLabel: "GIS 114/414",
       icon: "student",
-      blurb: "Follows Bolstad's GIS Fundamentals, the book for both CCE 114 and CCE 414, chapter by chapter.",
+      blurb: "Bolstad's GIS Fundamentals, chapter by chapter, for CCE 114 and 414. The QGIS material is for 114; 414 uses ArcGIS Pro.",
       groups: [
         {
           title: "Study the book",
@@ -101,7 +101,7 @@ window.SITE = {
               title: "Flashcards",
               desc: "Flip through the key terms for one chapter or all of them. The deck remembers which cards you already know.",
               tags: ["Shuffle", "Keyboard", "Progress saved"],
-              href: "teach/gis/#/cards/all",
+              href: "teach/gis/#/cards/ch01,ch02,ch03,ch04,ch05,ch06,ch07,ch08,ch09,ch10,ch11,ch12,ch13,ch14,ch15",
               cta: "Study cards",
               span: 2,
               featured: true,
@@ -112,7 +112,7 @@ window.SITE = {
               title: "Randomized practice tests",
               desc: "Pick chapters and a length. Questions and answer order shuffle, and calculation problems get new numbers every time.",
               tags: ["Auto-graded", "Share a test", "Answer key"],
-              href: "teach/gis/#/test?ch=ch01,ch02,ch03,ch04,ch05,ch06,ch07,ch08,ch09,ch10,ch11,ch12,ch13,ch14,ch15,qgis&n=20&calc=1",
+              href: "teach/gis/#/test?ch=ch01,ch02,ch03,ch04,ch05,ch06,ch07,ch08,ch09,ch10,ch11,ch12,ch13,ch14,ch15&n=20&calc=1",
               cta: "Take a 20-question test",
               span: 2,
               featured: true,
@@ -120,7 +120,7 @@ window.SITE = {
           ],
         },
         {
-          title: "QGIS",
+          title: "QGIS (CCE 114)",
           type: "cards",
           items: [
             {
@@ -148,7 +148,7 @@ window.SITE = {
               icon: "download-simple",
               kicker: "Free and open source",
               title: "Get QGIS",
-              desc: "Download QGIS for Windows, macOS or Linux. The long-term release (LTR) is the safest choice for class.",
+              desc: "Download QGIS for Windows, macOS or Linux. The lab machines run QGIS 3.44 LTR, so install that release to match.",
               tags: ["qgis.org", "LTR"],
               href: "https://qgis.org/download/",
               cta: "Download",
@@ -173,8 +173,7 @@ window.SITE = {
           type: "list",
           items: [
             { icon: "books", title: "CCE 114 course site", sub: "Schedule, labs, slides and course policies", href: "https://byu-hydroinformatics.github.io/cce114-geomatics/" },
-            { icon: "clock", title: "TA office hours", sub: "Hours and contact details are on Learning Suite (BYU login)", href: "https://learningsuite.byu.edu/view/uPQQjqw9-UIA.html" },
-            { icon: "chat-circle-dots", title: "Ask a question", sub: "Send a question about a lab or a chapter", href: "#" },
+            { icon: "chat-circle-dots", title: "Questions and TA office hours", sub: "Message the TAs and find office hours on Learning Suite (BYU login)", href: "https://learningsuite.byu.edu/view/uPQQjqw9-UIA.html" },
           ],
         },
       ],
