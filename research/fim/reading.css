@@ -1,0 +1,44 @@
+/* FIM & HAND reading list. Builds on ../../css/style.css. */
+.r-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url("../../assets/us-contours.svg") 32% 45% / cover no-repeat;
+  opacity: 0.1;
+}
+.r-top { padding-top: 26px; max-width: 860px; }
+.back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-dim); transition: color 0.2s; }
+.back:hover { color: var(--accent); }
+.r-main { max-width: 860px; }
+.r-head { padding: 26px 0 6px; }
+.r-head h1 { margin: 0; font-size: clamp(28px, 4.6vw, 42px); letter-spacing: -0.03em; line-height: 1.1; }
+.lede { margin: 12px 0 0; color: var(--text-dim); font-size: 16.5px; line-height: 1.65; }
+.lede a, .sec-note a, .cite a { color: var(--text); text-decoration: underline; text-decoration-color: rgba(var(--accent-rgb), 0.45); text-underline-offset: 3px; }
+.lede a:hover, .sec-note a:hover, .cite a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.r-toc { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.r-toc a {
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: rgba(10, 13, 18, 0.6);
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+.r-toc a:hover { color: var(--text); border-color: rgba(var(--accent-rgb), 0.45); }
+.small { margin: 12px 0 0; font-family: var(--mono); font-size: 12px; color: var(--text-faint); }
+
+section { padding-top: 34px; }
+section h2 { margin: 0 0 4px; font-size: 20px; letter-spacing: -0.01em; }
+.sec-note { margin: 4px 0 0; font-size: 14px; color: var(--text-dim); }
+.refs { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid var(--border); }
+.refs li { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.cite { margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-dim); }
+.cite a { font-weight: 600; }
+.venue { color: var(--text-faint); }
+.venue i { font-style: italic; }
+.note { margin: 6px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--text); }
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+}
