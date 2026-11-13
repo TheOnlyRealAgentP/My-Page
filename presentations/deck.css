@@ -1,0 +1,104 @@
+/* Shared look for web decks (reveal.js). Used by every talk folder and the template. */
+
+:root {
+  --deck-bg: #0b0d10;
+  --deck-text: #e8edf3;
+  --deck-dim: #9aa6b4;
+  --deck-accent: #4cc9f0;
+  --deck-accent-2: #2ee6a6;
+}
+.reveal-viewport {
+  background: var(--deck-bg);
+}
+.reveal {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 34px;
+  color: var(--deck-text);
+}
+.reveal .slides section {
+  text-align: left;
+}
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  margin: 0 0 0.5em;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #eef2f6;
+}
+.reveal h1 { font-size: 2.3em; }
+.reveal h2 { font-size: 1.55em; }
+.reveal h3 { font-size: 1.1em; }
+.reveal p,
+.reveal li { line-height: 1.45; color: var(--deck-dim); }
+.reveal strong { color: var(--deck-text); }
+.reveal a { color: var(--deck-accent); }
+.reveal ul { margin-left: 1em; }
+.reveal li { margin: 0.35em 0; }
+.reveal code,
+.reveal pre {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.reveal pre {
+  width: 100%;
+  font-size: 0.6em;
+  box-shadow: none;
+}
+.reveal pre code {
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  background: #12161b;
+  color: var(--deck-text);
+}
+.reveal .eyebrow {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.5em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--deck-accent);
+}
+.reveal .byline {
+  font-size: 0.6em;
+  color: var(--deck-dim);
+}
+.reveal .controls { color: var(--deck-accent); }
+.reveal .progress { color: var(--deck-accent); }
+.reveal .slide-number {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  background: rgba(6, 8, 11, 0.55);
+  color: var(--deck-dim);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* "Back to presentations" link: shows when the mouse moves, hides while presenting */
+.deck-back {
+  position: fixed;
+  top: 12px;
+  left: 14px;
+  z-index: 40;
+  padding: 6px 11px;
+  border-radius: 8px;
+  background: rgba(6, 8, 11, 0.65);
+  color: rgba(232, 237, 243, 0.75);
+  font: 500 13px "Inter", system-ui, sans-serif;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.deck-back:hover,
+.deck-back:focus-visible {
+  color: #fff;
+}
+body.show-ui .deck-back,
+.deck-back:focus-visible {
+  opacity: 1;
+}

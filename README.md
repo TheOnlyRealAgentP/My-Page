@@ -25,6 +25,12 @@ teach/calc/                 Engineering Calculator: graphing, stats, matrices, s
 teach/traverse/             interactive traverse closure & compass rule module
 teach/vscode-ai/            guide: VS Code for AI-assisted projects
 
+presentations/              talks and class slides (harrisonpstewart.com/presentations/)
+  talks.js                  the list of talks; how to add one is at the top of the file
+  <slug>/                   one folder per talk
+  view.html, viewer.*       full-screen presenter for PDF talks
+  deck.css, deck.js         shared look and keys for web decks (reveal.js)
+  _web-template/            copy this to start a web deck with speaker notes
 research/template/          research explainer template (copy this per project)
 research/explainer.css|js   shared styles and behavior for explainers
 

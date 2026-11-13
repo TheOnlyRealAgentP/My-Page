@@ -158,9 +158,9 @@
   function render() {
     renderHero(S.profile);
     $("#sections").innerHTML = renderPaths(S.paths) + S.sections.map((s, i) => renderSection(s, i + 1)).join("");
-    $("#nav").innerHTML = S.sections
-      .map((s) => `<a href="#${esc(s.id)}">${esc(s.navLabel || s.label.split(/[ &]/)[0])}</a>`)
-      .join("");
+    const navs = S.sections.map((s) => `<a href="#${esc(s.id)}">${esc(s.navLabel || s.label.split(/[ &]/)[0])}</a>`);
+    navs.splice(1, 0, ...(S.navLinks || []).map((l) => `<a href="${esc(l.href)}">${esc(l.label)}</a>`));
+    $("#nav").innerHTML = navs.join("");
 
     const f = S.footer;
     $("#footer").innerHTML = `

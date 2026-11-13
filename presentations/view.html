@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Slides · Presentations</title>
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="viewer.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+    <script src="talks.js" defer></script>
+    <script src="viewer.js" defer></script>
+  </head>
+  <body>
+    <main class="stage" id="stage" aria-live="polite">
+      <canvas id="slide" role="img" aria-label="Slide"></canvas>
+      <p class="msg" id="msg">Loading slides…</p>
+    </main>
+    <div class="bar" id="bar">
+      <a class="b" href="./" aria-label="Back to presentations" title="Back to presentations"><i class="ph ph-arrow-left"></i></a>
+      <span class="title" id="title"></span>
+      <span class="grow"></span>
+      <button class="b" id="prev" aria-label="Previous slide" title="Previous (←)"><i class="ph ph-caret-left"></i></button>
+      <span class="count" id="count">– / –</span>
+      <button class="b" id="next" aria-label="Next slide" title="Next (→)"><i class="ph ph-caret-right"></i></button>
+      <button class="b" id="grid" aria-label="All slides" title="All slides (O)"><i class="ph ph-squares-four"></i></button>
+      <a class="b" id="dl" aria-label="Download PDF" title="Download PDF" download><i class="ph ph-download-simple"></i></a>
+      <button class="b" id="fs" aria-label="Full screen" title="Full screen (F)"><i class="ph ph-corners-out"></i></button>
+    </div>
+    <div class="progress"><i id="prog"></i></div>
+    <section class="overview" id="overview" hidden aria-label="All slides"></section>
+  </body>
+</html>

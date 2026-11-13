@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web Mapping with AI · Presentations</title>
+    <meta name="description" content="CCE 114 slides: build a web map from a QGIS layer with an AI assistant, then publish it on GitHub Pages." />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css" />
+    <link rel="stylesheet" href="../deck.css" />
+  </head>
+  <body>
+    <a class="deck-back" href="../">← Presentations</a>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background-image="slides/01.webp" data-background-size="contain" data-background-color="#000">
+          <h2 class="sr-only">Web Mapping with AI</h2>
+          <p class="sr-only">Web Mapping with AI. CCE 114, Practice Your Skills, 15 points plus 5 bonus. Where the points are: 6 for a page that loads with your GeoJSON in the right place, 3 for popups, title and credits, 4 for the AI note, 2 for the screenshot and URL, plus 5 bonus for a live GitHub Pages site. A page that does not load scores at most 6. What the page must do: an interactive map, a basemap, your own GeoJSON layer from QGIS, popups with two or more attributes, a title and credits, and a public URL.</p>
+        </section>
+        <section data-background-image="slides/02.webp" data-background-size="contain" data-background-color="#000">
+          <h2 class="sr-only">Step 1: Get a layer out of QGIS</h2>
+          <p class="sr-only">Step 1, get a layer out of QGIS. Pick something you actually want to look at. Export as GeoJSON in EPSG:4326, under a few megabytes. Ideas: trails you have hiked, Utah ski resorts, Wasatch Front earthquakes, everywhere you have lived, campus buildings, Provo River gauges. Cheap upgrades: a second layer, styling by attribute, a legend, readable popups.</p>
+        </section>
+        <section data-background-image="slides/03.webp" data-background-size="contain" data-background-color="#000">
+          <h2 class="sr-only">Steps 2 and 3: Ask, then check</h2>
+          <p class="sr-only">Steps 2 and 3, ask, then check. The assistant writes it, you verify it. A prompt that works first try asks for a single index.html using Leaflet with an OpenStreetMap basemap centered on Provo, loading data.geojson with popups, a title and a footer. When the map comes up blank: serve the folder with python3 -m http.server 8000, re-export as EPSG:4326 if the layer is off the coast of Africa, and read the console with F12.</p>
+        </section>
+        <section data-background-image="slides/04.webp" data-background-size="contain" data-background-color="#000">
+          <h2 class="sr-only">Step 4: Publish and hand in</h2>
+          <p class="sr-only">Step 4, publish and hand in. A URL that works for a stranger. Fork the starter repo or start an empty public repo, then turn on GitHub Pages and pick the folder that holds index.html. Hand in one PDF on Learning Suite with the public URL, a screenshot and a 150 to 300 word AI note. The bonus is for a live GitHub Pages site that stays up through finals.</p>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+    <script src="../deck.js"></script>
+  </body>
+</html>

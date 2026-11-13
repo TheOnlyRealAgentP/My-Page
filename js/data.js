@@ -45,6 +45,9 @@ window.SITE = {
     ],
   },
 
+  // Extra top-menu links, shown after the first section's link
+  navLinks: [{ label: "Slides", href: "presentations/" }],
+
   paths: [
     {
       icon: "student",
@@ -52,6 +55,13 @@ window.SITE = {
       title: "GIS & QGIS",
       desc: "Study guides, flashcards and practice tests for Bolstad's GIS Fundamentals.",
       href: "#students",
+    },
+    {
+      icon: "presentation",
+      kicker: "Teaching",
+      title: "Presentations",
+      desc: "Slides from class and talks. You can present them right from the page.",
+      href: "presentations/",
     },
     {
       icon: "compass-tool",
@@ -74,7 +84,7 @@ window.SITE = {
     {
       id: "students",
       label: "CCE 114 & 414: GIS & QGIS",
-      navLabel: "GIS 114/414",
+      navLabel: "GIS 114",
       icon: "student",
       blurb: "Both classes use Bolstad's GIS Fundamentals. The QGIS stuff is just for 114, since 414 uses ArcGIS Pro.",
       groups: [
@@ -172,6 +182,7 @@ window.SITE = {
           title: "Course help",
           type: "list",
           items: [
+            { icon: "presentation", title: "Class slides", sub: "Present them here or download the PDF", href: "presentations/" },
             { icon: "books", title: "CCE 114 course site", sub: "Schedule, labs and slides", href: "https://byu-hydroinformatics.github.io/cce114-geomatics/" },
             { icon: "chat-circle-dots", title: "Questions and TA office hours", sub: "On Learning Suite (BYU login)", href: "https://learningsuite.byu.edu/view/uPQQjqw9-UIA.html" },
           ],

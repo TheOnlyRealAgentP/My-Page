@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 1. Copy this folder to presentations/<slug>/ and change the title -->
+    <title>Talk title · Presentations</title>
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css" />
+    <link rel="stylesheet" href="../deck.css" />
+  </head>
+  <body>
+    <a class="deck-back" href="../">← Presentations</a>
+    <div class="reveal">
+      <div class="slides">
+        <!-- 2. One <section> per slide. Speaker notes go in <aside class="notes"> and show in presenter view (P). -->
+        <section>
+          <p class="eyebrow">Event name · Month Year</p>
+          <h1>Talk title</h1>
+          <p class="byline">Harrison Stewart · BYU Hydroinformatics Lab</p>
+          <aside class="notes">What to say on the title slide.</aside>
+        </section>
+
+        <section>
+          <h2>A slide with points</h2>
+          <ul>
+            <li>One idea per line</li>
+            <li class="fragment">Add class="fragment" to reveal a line on the next click</li>
+            <li class="fragment"><strong>Bold</strong> for the part people should remember</li>
+          </ul>
+          <aside class="notes">Notes for this slide.</aside>
+        </section>
+
+        <!-- A slide that is just an image (a figure, a map, or a slide exported from PowerPoint) -->
+        <section data-background-image="images/example.png" data-background-size="contain" data-background-color="#000">
+          <aside class="notes">Notes for the image slide.</aside>
+        </section>
+
+        <section>
+          <h2>Code</h2>
+          <pre><code>python3 -m http.server 8000</code></pre>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+    <script src="../deck.js"></script>
+  </body>
+</html>
