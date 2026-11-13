@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VS Code for AI-Assisted Projects · Harrison Stewart</title>
+    <meta
+      name="description"
+      content="Set up VS Code for Python projects with AI assistants, find the AI offers available to BYU students, and compare the coding tools on published benchmarks."
+    />
+    <meta name="theme-color" content="#06080b" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="guide.css" />
+    <script src="guide.js" defer></script>
+  </head>
+  <body>
+    <div class="tool-bg" aria-hidden="true"></div>
+
+    <header class="g-header wrap wide">
+      <a class="back" href="../../#students"><i class="ph ph-arrow-left" aria-hidden="true"></i>CCE 114 Student Hub</a>
+      <div class="eyebrow">Developer tools · Setup guide</div>
+      <h1>VS Code for AI-Assisted Projects</h1>
+      <p class="lede">
+        Set up a clean Python workspace, add an AI assistant that knows your project, and keep your keys and your
+        grade safe. Then find the AI offers you can get as a BYU student and see how the tools compare on independent tests.
+      </p>
+      <div class="meta-row">
+        <span class="pill"><i class="ph ph-calendar-check" aria-hidden="true"></i>Checked 13 Nov 2026</span>
+        <span class="pill"><i class="ph ph-clock" aria-hidden="true"></i>About 45 minutes</span>
+        <span class="pill"><i class="ph ph-desktop" aria-hidden="true"></i>Windows · macOS · Linux</span>
+      </div>
+    </header>
+
+    <div class="wrap wide g-layout">
+      <nav class="toc" aria-label="On this page">
+        <div class="toc-title">On this page</div>
+        <!-- TOC:START -->
+        <a href="#start"><span>01</span>Before you start</a>
+        <a href="#foundation"><span>02</span>Build the foundation</a>
+        <a href="#assistant"><span>03</span>Add an AI assistant</a>
+        <a href="#context"><span>04</span>Tell the AI about your project</a>
+        <a href="#mcp"><span>05</span>Connect tools with MCP</a>
+        <a href="#settings"><span>06</span>Settings that matter</a>
+        <a href="#safety"><span>07</span>Stay safe</a>
+        <a href="#offers"><span>08</span>Student AI offers</a>
+        <a href="#compare"><span>09</span>How the tools compare</a>
+        <!-- TOC:END -->
+        <div class="progress">
+          <span class="count">0 of 0 steps done</span>
+          <div class="bar"><i></i></div>
+        </div>
+      </nav>
+
+      <main>
+        <!-- SETUP:START -->
+        <div class="callout warn">
+          <i class="ph ph-warning" aria-hidden="true"></i>
+          <p>
+            <strong>Most tutorials online are out of date.</strong> VS Code's AI features changed a lot in 2026. Copilot Chat
+            is now built in, agents run on a choice of "harness," and the old <code>.vscode/mcp.json</code> and prompt-file
+            setups are deprecated. This guide matches VS Code 1.146 (November 2026).
+          </p>
+        </div>
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="start">
+          <h2><span class="idx">01</span>Before you start</h2>
+          <p class="sub">Ten minutes of setup that saves you from the two expensive mistakes: a leaked key and an academic integrity case.</p>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-policy" aria-label="Done: check your course AI policy" />
+            <div>
+              <h3>Read your course's AI policy</h3>
+              <p>
+                Every course sets its own rules for AI help, and they differ. Know what's allowed before you install
+                anything. If the syllabus doesn't say, ask. Step 06 shows how to switch AI off for a graded folder.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-accounts" aria-label="Done: set up accounts" />
+            <div>
+              <h3>Set up your accounts</h3>
+              <p>
+                Make a GitHub account with your personal email, then apply for
+                <a class="inline" href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer">GitHub Education</a>
+                with your BYU email. Approval unlocks Copilot Student for free. You already have Microsoft Copilot Chat
+                through your NetID. See <a class="inline" href="#offers">Student AI offers</a> for the rest.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-install" aria-label="Done: install VS Code, Git and uv" />
+            <div>
+              <h3>Install VS Code, Git and uv</h3>
+              <p>
+                Get <a class="inline" href="https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer">VS Code</a>
+                and <a class="inline" href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git</a>.
+                Then install <a class="inline" href="https://docs.astral.sh/uv/" target="_blank" rel="noopener noreferrer">uv</a>,
+                which installs Python and manages each project's packages, so you never fight over which Python is active.
+              </p>
+              <div class="code">
+                <div class="code-head">macOS / Linux terminal</div>
+                <pre>curl -LsSf https://astral.sh/uv/install.sh | sh
+uv python install</pre>
+              </div>
+              <div class="code">
+                <div class="code-head">Windows PowerShell</div>
+                <pre>powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+uv python install</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="foundation">
+          <h2><span class="idx">02</span>Build the foundation</h2>
+          <p class="sub">AI works best on a project that is already tidy: one environment, one formatter, and Git tracking every change.</p>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-profile" aria-label="Done: create a profile" />
+            <div>
+              <h3>Make a Python profile</h3>
+              <p>
+                Profiles keep each kind of work's extensions and settings separate. Open the gear menu →
+                <strong>Profiles</strong> → <strong>New Profile</strong> and start from the <strong>Python</strong> or
+                <strong>Data Science</strong> template. Those templates already include Ruff and the Python tools.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-ext" aria-label="Done: install extensions" />
+            <div>
+              <h3>Install the core extensions</h3>
+              <p>Click an ID to copy its install command, or run the whole block in a terminal.</p>
+              <div class="ext-grid">
+                <div class="ext"><div class="ico"><i class="ph ph-file-py"></i></div><div><h4>Python</h4><p>Also installs Pylance, the debugger and Python Environments.</p><button type="button" class="id" data-id="ms-python.python"><i class="ph ph-copy"></i>ms-python.python</button></div></div>
+                <div class="ext"><div class="ico"><i class="ph ph-broom"></i></div><div><h4>Ruff</h4><p>Formats and lints Python, including code the AI writes.</p><button type="button" class="id" data-id="charliermarsh.ruff"><i class="ph ph-copy"></i>charliermarsh.ruff</button></div></div>
+                <div class="ext"><div class="ico"><i class="ph ph-notebook"></i></div><div><h4>Jupyter</h4><p>Notebooks inside VS Code.</p><button type="button" class="id" data-id="ms-toolsai.jupyter"><i class="ph ph-copy"></i>ms-toolsai.jupyter</button></div></div>
+                <div class="ext"><div class="ico"><i class="ph ph-table"></i></div><div><h4>Data Wrangler</h4><p>Look at and clean DataFrames without writing plotting code.</p><button type="button" class="id" data-id="ms-toolsai.datawrangler"><i class="ph ph-copy"></i>ms-toolsai.datawrangler</button></div></div>
+                <div class="ext"><div class="ico"><i class="ph ph-warning-circle"></i></div><div><h4>Error Lens</h4><p>Shows errors on the line where they happen.</p><button type="button" class="id" data-id="usernamehw.errorlens"><i class="ph ph-copy"></i>usernamehw.errorlens</button></div></div>
+                <div class="ext"><div class="ico"><i class="ph ph-linux-logo"></i></div><div><h4>WSL <span class="sm">(Windows)</span></h4><p>Run your project in Linux. Needed for the agent sandbox on Windows.</p><button type="button" class="id" data-id="ms-vscode-remote.remote-wsl"><i class="ph ph-copy"></i>ms-vscode-remote.remote-wsl</button></div></div>
+              </div>
+              <div class="code">
+                <div class="code-head">Terminal</div>
+                <pre>code --install-extension ms-python.python
+code --install-extension charliermarsh.ruff
+code --install-extension ms-toolsai.jupyter
+code --install-extension ms-toolsai.datawrangler
+code --install-extension usernamehw.errorlens</pre>
+              </div>
+              <p>
+                Working in Rust or Flutter too? Add <code>rust-lang.rust-analyzer</code> or <code>Dart-Code.flutter</code>.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-project" aria-label="Done: start a project" />
+            <div>
+              <h3>Start every project the same way</h3>
+              <p>
+                <code>uv init</code> makes the folder, a Git repository and a <code>.gitignore</code>. <code>uv add</code>
+                creates <code>.venv</code>, which VS Code finds on its own. Add <code>.env</code> to <code>.gitignore</code>
+                right away so API keys never reach GitHub.
+              </p>
+              <div class="code">
+                <div class="code-head">Terminal</div>
+                <pre>uv init streamflow-lab
+cd streamflow-lab
+uv add numpy pandas matplotlib
+echo ".env" &gt;&gt; .gitignore
+git add -A &amp;&amp; git commit -m "Start project"
+code .</pre>
+              </div>
+              <p>
+                Commit before every AI session. If an agent makes a mess, <code>git restore .</code> puts everything back.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="assistant">
+          <h2><span class="idx">03</span>Add an AI assistant</h2>
+          <p class="sub">Copilot Chat is built into VS Code now. You only need to sign in.</p>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-signin" aria-label="Done: sign in to Copilot" />
+            <div>
+              <h3>Sign in</h3>
+              <p>
+                Hover the Copilot icon in the Status Bar, choose <strong>Use AI Features</strong>, and sign in with GitHub.
+                Once GitHub Education approves you, you're on Copilot Student. Until then you're on Copilot Free.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-agents" aria-label="Done: learn the agents" />
+            <div>
+              <h3>Pick the right agent for the job</h3>
+              <p>Chat has three built-in agents. When you're learning, start in Ask or Plan, not Agent.</p>
+              <ul>
+                <li><strong>Ask</strong> answers questions about your code and changes nothing.</li>
+                <li><strong>Plan</strong> (<code>/plan</code>) writes a step-by-step plan for you to check first.</li>
+                <li><strong>Agent</strong> edits files and runs terminal commands to finish a task.</li>
+              </ul>
+              <p>
+                Agent sessions run on a <strong>harness</strong>, chosen under <strong>Session Target</strong> before your
+                first message: <strong>Copilot</strong> (the default), <strong>Claude</strong> or <strong>Codex</strong>.
+                The harness decides which instruction files and tools are used. Picking a Claude or GPT model inside the
+                Copilot harness doesn't change the harness. The old <strong>Local</strong> harness is deprecated and will be
+                removed by February 2027.
+              </p>
+            </div>
+          </div>
+
+          <h3>Other assistants that run in VS Code</h3>
+          <div class="ext-grid">
+            <div class="ext"><div class="ico"><i class="ph ph-sparkle"></i></div><div><h4>Claude Code</h4><p>Anthropic's agent. Needs a paid Claude plan or API billing.</p><button type="button" class="id" data-id="anthropic.claude-code"><i class="ph ph-copy"></i>anthropic.claude-code</button></div></div>
+            <div class="ext"><div class="ico"><i class="ph ph-code"></i></div><div><h4>Codex</h4><p>OpenAI's agent. ChatGPT Plus or higher, or an API key. Student credits extend it.</p><button type="button" class="id" data-id="openai.chatgpt"><i class="ph ph-copy"></i>openai.chatgpt</button></div></div>
+            <div class="ext"><div class="ico"><i class="ph ph-cpu"></i></div><div><h4>Ollama</h4><p>Runs open models on your own computer. Free and private, but less capable.</p><button type="button" class="id" data-id="Ollama.ollama"><i class="ph ph-copy"></i>Ollama.ollama</button></div></div>
+            <div class="ext"><div class="ico"><i class="ph ph-robot"></i></div><div><h4>Cline</h4><p>Open-source agent that works with many providers, including local models.</p><button type="button" class="id" data-id="saoudrizwan.claude-dev"><i class="ph ph-copy"></i>saoudrizwan.claude-dev</button></div></div>
+          </div>
+          <div class="callout warn">
+            <i class="ph ph-prohibit" aria-hidden="true"></i>
+            <p>
+              <strong>Skip these:</strong> Gemini Code Assist (individual plans stopped working in June 2026), Roo Code
+              (shut down in May 2026) and Amazon Q (support ends April 2027).
+            </p>
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="context">
+          <h2><span class="idx">04</span>Tell the AI about your project</h2>
+          <p class="sub">
+            A short instruction file at the top of your project tells the agent how to run, test and format your code
+            without being asked every time. It's the biggest quality gain for the least effort.
+          </p>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-agentsmd" aria-label="Done: write AGENTS.md" />
+            <div>
+              <h3>Write an AGENTS.md</h3>
+              <p>
+                The Copilot and Codex harnesses read <code>AGENTS.md</code>. Claude reads <code>CLAUDE.md</code> instead, so
+                if you use Claude too, make a <code>CLAUDE.md</code> containing just <code>@AGENTS.md</code> and keep one
+                source of truth. Keep it short and specific.
+              </p>
+              <div class="code">
+                <div class="code-head">AGENTS.md</div>
+                <pre># Streamflow lab
+
+## Setup
+- Python managed with uv. Install with `uv sync`.
+- Run with `uv run python src/main.py`.
+
+## Conventions
+- Format and lint with Ruff. Add type hints to public functions.
+- Units are SI (m, m³/s) unless a column name says otherwise.
+- Files in data/raw are read-only. Write outputs to data/processed.
+
+## Rules
+- Never open, print or edit .env.
+- Ask before adding a new dependency.
+- Explain each change in a sentence I can check.
+
+## Check your work
+- `uv run ruff check .` and `uv run pytest` must pass.</pre>
+              </div>
+              <p>
+                Instruction files guide chat and agents, not the gray inline suggestions you see while typing. For rules
+                that only apply to some files, add <code>.github/instructions/*.instructions.md</code> with an
+                <code>applyTo</code> glob.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="mcp">
+          <h2><span class="idx">05</span>Connect tools with MCP</h2>
+          <p class="sub">
+            The Model Context Protocol (MCP) lets an agent use outside tools, such as a database, a docs search or the
+            Flutter toolchain. Each server you add is code that runs on your computer, so add few and read each one.
+          </p>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-mcp" aria-label="Done: understand MCP config" />
+            <div>
+              <h3>Use the current config format</h3>
+              <p>
+                For the Copilot harness, project servers go in <code>.mcp.json</code> at the project root, and personal ones
+                in <code>~/.copilot/mcp-config.json</code>. Both use an <code>mcpServers</code> key. Tutorials that use
+                <code>.vscode/mcp.json</code> with a <code>servers</code> key describe the deprecated Local harness.
+                Example for Flutter projects:
+              </p>
+              <div class="code">
+                <div class="code-head">.mcp.json</div>
+                <pre>{
+  "mcpServers": {
+    "dart": {
+      "type": "stdio",
+      "command": "dart",
+      "args": ["mcp-server"]
+    }
+  }
+}</pre>
+              </div>
+              <ul>
+                <li>Add servers with <strong>MCP: Add Server</strong> in the Command Palette. <strong>MCP: List Servers</strong> shows what's running.</li>
+                <li>Put tokens in environment variables and reference them as <code>${NAME}</code>. Never commit a token.</li>
+                <li>
+                  Once you trust a folder, its <code>.mcp.json</code> servers start <strong>without asking again</strong>,
+                  even if the file changes. Read it before you trust someone else's repository.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="settings">
+          <h2><span class="idx">06</span>Settings that matter</h2>
+          <p class="sub">
+            Paste these into your user settings (<strong>Preferences: Open User Settings (JSON)</strong>). Each line has a
+            comment saying what it does.
+          </p>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-settings" aria-label="Done: add settings" />
+            <div>
+              <h3>User settings</h3>
+              <div class="code">
+                <div class="code-head">settings.json</div>
+                <pre>{
+  <span class="c">// Format and fix Python with Ruff every time you save</span>
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "notebook.formatOnSave.enabled": true,
+
+  <span class="c">// Always ask before an agent edits a secrets file</span>
+  "chat.tools.edits.autoApprove": {
+    "**/.env": false,
+    "**/.env.*": false
+  },
+
+  <span class="c">// Keep large datasets out of the agent's searches</span>
+  "search.exclude": { "**/data/raw/**": true },
+
+  <span class="c">// Load .env into terminals so scripts can read your keys</span>
+  "python.terminal.useEnvFile": true
+}</pre>
+              </div>
+              <p>
+                On macOS, Linux or WSL, also add <code>"chat.agent.sandbox.enabled": "on"</code>. It keeps agent commands
+                inside your project. It's still a preview feature and is experimental on plain Windows.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-graded" aria-label="Done: know how to disable AI for graded work" />
+            <div>
+              <h3>Turn AI off for graded work</h3>
+              <p>
+                When a course doesn't allow AI, put this file in that assignment's folder. It hides and disables the
+                built-in AI features for that folder only.
+              </p>
+              <div class="code">
+                <div class="code-head">.vscode/settings.json</div>
+                <pre>{
+  "chat.disableAIFeatures": true
+}</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="safety">
+          <h2><span class="idx">07</span>Stay safe</h2>
+          <p class="sub">Agents act with your permissions. These habits keep that from going wrong.</p>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-secrets" aria-label="Done: protect secrets" />
+            <div>
+              <h3>Keep secrets out of reach</h3>
+              <ul>
+                <li>API keys go in <code>.env</code>, and <code>.env</code> goes in <code>.gitignore</code>.</li>
+                <li>
+                  <code>.gitignore</code> and <code>files.exclude</code> only hide files from searches. An agent can still
+                  open a file directly. The <code>autoApprove</code> rule in step 06 and the "Never open .env" line in
+                  <code>AGENTS.md</code> both help.
+                </li>
+                <li>GitHub's push protection blocks known secret formats from public repositories. It's on by default; leave it on.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-training" aria-label="Done: check training settings" />
+            <div>
+              <h3>Decide whether your data trains models</h3>
+              <ul>
+                <li>
+                  <strong>GitHub:</strong> github.com → your profile → <strong>Copilot settings</strong> → "Allow GitHub to use
+                  my data for AI model training." Set it the way you want.
+                </li>
+                <li><strong>ChatGPT and Codex:</strong> the "Improve the model for everyone" setting covers both.</li>
+                <li><strong>Claude:</strong> consumer plans follow the training setting in your privacy settings.</li>
+                <li>Never paste data from a lab, client or employer without permission, whatever these settings say.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel step">
+            <input type="checkbox" class="check" id="s-review" aria-label="Done: review habits" />
+            <div>
+              <h3>Review before you keep</h3>
+              <ul>
+                <li>Read every diff before you accept it. If you can't explain a change, don't keep it.</li>
+                <li>
+                  Leave approvals on the default (<strong>Manual</strong>). Avoid <strong>Allow all</strong>,
+                  <strong>Autopilot</strong> and <code>/yolo</code>. VS Code itself calls command auto-approval "a
+                  best-effort convenience, not a security boundary."
+                </li>
+                <li>Open repositories you didn't write in Restricted Mode first, which keeps agents off until you've looked around.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Further reading from the BYU Hydroinformatics Lab</h3>
+          <ul class="sources">
+            <li>
+              Ames, D. P. (2026). Mapping water: A brief history of GIS in hydrology and a path toward AI-native modeling.
+              <em>Water</em>, 18(7), 796. <a class="inline" href="https://doi.org/10.3390/w18070796" target="_blank" rel="noopener noreferrer">doi.org/10.3390/w18070796</a>
+            </li>
+            <li>
+              Patel, A., et al. (2025). NextGen In A Box (NGIAB): Open-source containerization of the NextGen framework to
+              enable community-driven hydrology modeling. <em>Environmental Modelling &amp; Software</em>, 193, 106666.
+              <a class="inline" href="https://doi.org/10.1016/j.envsoft.2025.106666" target="_blank" rel="noopener noreferrer">doi.org/10.1016/j.envsoft.2025.106666</a>
+            </li>
+            <li>More at <a class="inline" href="https://hydroinformatics.byu.edu" target="_blank" rel="noopener noreferrer">hydroinformatics.byu.edu</a></li>
+          </ul>
+        </section>
+        <!-- SETUP:END -->
+
+        <!-- ================================================================ -->
+        <section class="g-sec" id="offers">
+          <h2><span class="idx">08</span>Student AI offers</h2>
+          <p class="sub">
+            Everything below was checked on the provider's own page on 13 Nov 2026. These offers change often, so read
+            the terms before you sign up, and watch for free trials that turn into paid plans.
+          </p>
+
+          <h3>Already yours through BYU</h3>
+          <div class="offer-grid">
+            <a class="offer" href="https://genai.byu.edu/copilot-enterprise" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">Microsoft · via BYU</div><h4>Copilot Chat</h4></div>
+                <span class="badge-s inst">BYU</span>
+              </div>
+              <p>
+                Copilot Chat with enterprise data protection. Free for every BYU student. Sign in with your NetID at
+                copilot.microsoft.com and look for the green shield.
+              </p>
+              <dl><dt>Cost</dt><dd>Free while enrolled</dd><dt>Note</dt><dd>Copilot inside Office apps isn't included</dd></dl>
+              <span class="go">BYU instructions<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://ai.byu.edu/obtaining-a-chatgpt-edu-license" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">OpenAI · via CES</div><h4>ChatGPT Edu</h4></div>
+                <span class="badge-s inst">Apply</span>
+              </div>
+              <p>
+                ChatGPT Edu through the Church Educational System agreement. Apply with your CES email and say how you'll
+                use it. Licenses are shared across CES schools, so approval depends on availability.
+              </p>
+              <dl><dt>Cost</dt><dd>Free if approved</dd><dt>Note</dt><dd>No API access. Unused accounts close after 3 months.</dd></dl>
+              <span class="go">How to apply<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+          </div>
+
+          <h3>Free for verified students</h3>
+          <div class="offer-grid">
+            <a class="offer" href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">GitHub</div><h4>Copilot Student</h4></div>
+                <span class="badge-s free">Free</span>
+              </div>
+              <p>
+                Unlimited code completions, plus 200 AI credits a month (about $2 of chat and agent use). Agent mode, code
+                review and MCP are included. The model is picked automatically; you can't choose one yourself.
+              </p>
+              <dl><dt>Verify</dt><dd>GitHub Education (school email or enrollment documents)</dd><dt>Length</dt><dd>While enrolled, re-checked monthly</dd></dl>
+              <span class="go">Student Developer Pack<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://one.google.com/ai-student" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">Google</div><h4>Google AI Pro</h4></div>
+                <span class="badge-s free">12 months</span>
+              </div>
+              <p>
+                Gemini's Pro tier with higher usage limits, plus 5 TB of storage. Redeem by 31 Dec 2026. It renews at
+                $19.99/month after a year unless you cancel.
+              </p>
+              <dl><dt>Verify</dt><dd>SheerID, 18+, personal Google account, card on file</dd><dt>Note</dt><dd>Gemini CLI for individuals shut down in June 2026. Google now points to Antigravity.</dd></dl>
+              <span class="go">Offer and terms<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://chatgpt.com/codex/students/" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">OpenAI</div><h4>Codex for Students</h4></div>
+                <span class="badge-s free">$100 credit</span>
+              </div>
+              <p>
+                $100 in ChatGPT credits to use Codex past your plan's limits. Works with a free ChatGPT account. These
+                aren't API credits.
+              </p>
+              <dl><dt>Verify</dt><dd>SheerID with a university email, US or Canada</dd><dt>Length</dt><dd>Credits expire after 12 months</dd></dl>
+              <span class="go">Claim credits<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://zed.dev/education" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">Zed</div><h4>Zed Student</h4></div>
+                <span class="badge-s free">1 year</span>
+              </div>
+              <p>
+                Zed Pro free for a year, with $10 a month of AI credit (hard-capped, so no surprise bills). Zed is a
+                separate editor, not a VS Code extension.
+              </p>
+              <dl><dt>Verify</dt><dd>GitHub account older than 30 days plus university email</dd><dt>Length</dt><dd>12 months, then the free plan</dd></dl>
+              <span class="go">Education plan<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://azure.microsoft.com/en-us/free/students" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">Microsoft</div><h4>Azure for Students</h4></div>
+                <span class="badge-s free">$100 credit</span>
+              </div>
+              <p>
+                $100 of Azure credit, including Azure OpenAI, plus free service tiers. Useful if your project calls a
+                model through an API. No credit card needed.
+              </p>
+              <dl><dt>Verify</dt><dd>School email, full-time students</dd><dt>Length</dt><dd>12 months, renewable while a student</dd></dl>
+              <span class="go">Azure for Students<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://www.jetbrains.com/shop/eform/students" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">JetBrains</div><h4>Student Pack</h4></div>
+                <span class="badge-s free">Free</span>
+              </div>
+              <p>
+                Every JetBrains IDE, including PyCharm Pro, for non-commercial use. The paid AI tier isn't included;
+                students get the AI Free tier (3 credits every 30 days).
+              </p>
+              <dl><dt>Verify</dt><dd>University email, ISIC card or GitHub Student Pack</dd><dt>Length</dt><dd>Renewed yearly while a student</dd></dl>
+              <span class="go">Apply<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+          </div>
+
+          <h3>Discounted</h3>
+          <div class="offer-grid">
+            <a class="offer" href="https://mistral.ai/pricing" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">Mistral</div><h4>Mistral Pro, Education</h4></div>
+                <span class="badge-s disc">$5.99/mo</span>
+              </div>
+              <p>Mistral Pro, including Vibe coding in the CLI and IDE, at $5.99/month instead of $14.99, for up to 12 months.</p>
+              <dl><dt>Verify</dt><dd>Student verification; new users only</dd></dl>
+              <span class="go">Pricing<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">Perplexity</div><h4>Perplexity Pro, Students</h4></div>
+                <span class="badge-s disc">$10/mo</span>
+              </div>
+              <p>
+                Perplexity Pro at a student price of $10/month. It's an AI search and research tool rather than a coding
+                assistant. Useful for finding docs, papers and data sources.
+              </p>
+              <dl><dt>Verify</dt><dd>Student verification at sign-up. Check the current terms on Perplexity's site.</dd></dl>
+              <span class="go">Perplexity<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="offer" href="https://kiro.dev/students/" target="_blank" rel="noopener noreferrer">
+              <div class="top">
+                <div><div class="who">Amazon</div><h4>Kiro for Students</h4></div>
+                <span class="badge-s none">BYU not listed</span>
+              </div>
+              <p>
+                1,000 Kiro credits a month for a year at participating schools. BYU isn't on the list yet. The page has a
+                form to request your school.
+              </p>
+              <dl><dt>Verify</dt><dd>Account made with a participating school's email</dd></dl>
+              <span class="go">Request BYU<i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+          </div>
+
+          <div class="callout">
+            <i class="ph ph-info" aria-hidden="true"></i>
+            <p>
+              <strong>Claude:</strong> Anthropic has no individual student plan, and Claude Code needs a paid Pro plan
+              ($20/month). Claude for Education is sold to whole universities, and BYU doesn't have it as of this
+              writing. <a class="inline" href="https://claude.com/solutions/education" target="_blank" rel="noopener noreferrer">Details</a>
+            </p>
+          </div>
+          <div class="callout warn">
+            <i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i>
+            <p>
+              <strong>Ended in 2026:</strong> Cursor's free student year, the Windsurf student discount, ChatGPT Plus
+              "back to school" (closed 31 Oct), Colab Pro for Education sign-ups, and Gemini Code Assist / Gemini CLI for
+              individuals. Older blog posts and videos still advertise these.
+            </p>
+          </div>
+        </section>
+
+        <!-- RANK:START -->
+        <!-- ================================================================ -->
+        <section class="g-sec" id="compare">
+          <h2><span class="idx">09</span>How the tools compare</h2>
+          <p class="sub">
+            Ranked by independent tests run in October and November 2026. Vendor-reported numbers aren't used for the
+            order, because each company tests its own model its own way.
+          </p>
+
+          <h3>The tools, ranked</h3>
+          <p>
+            The <strong>Coding Agent Index</strong> from Artificial Analysis runs each tool itself on three task sets and
+            averages them. It's the only current independent test of the tools rather than just the models.
+            <strong>Terminal-Bench 4.1</strong> measures agents finishing real tasks in a terminal.
+          </p>
+          <div class="rank-wrap">
+            <table class="rank stack">
+              <thead>
+                <tr><th></th><th>Tool</th><th>Agent Index<span class="sm">best setup</span></th><th>Terminal-Bench 4.1<span class="sm">best row</span></th><th>What a BYU student can get</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="pos">1</span></td>
+                  <td><span class="tool">Claude Code</span><span class="sm">Anthropic · Claude models only</span></td>
+                  <td class="num">61.7<span class="sm">Opus 5.5</span></td>
+                  <td class="num">65.8<span class="sm">Opus 5.5</span></td>
+                  <td>No student offer. Needs Claude Pro ($20/month) or API billing.</td>
+                </tr>
+                <tr>
+                  <td><span class="pos">2</span></td>
+                  <td><span class="tool">GitHub Copilot</span><span class="sm">Built into VS Code · widest model menu</span></td>
+                  <td class="num">59.9<span class="sm">Copilot Fusion, max</span></td>
+                  <td class="num">—<span class="sm">not listed</span></td>
+                  <td>Free Student plan, but automatic model choice only and about $2 of chat and agent use a month. The score is for the top paid setup.</td>
+                </tr>
+                <tr>
+                  <td><span class="pos">3</span></td>
+                  <td><span class="tool">Google Antigravity</span><span class="sm">Replaced Gemini CLI for individuals</span></td>
+                  <td class="num">59.4<span class="sm">Gemini 4 Carbon</span></td>
+                  <td class="num">—<span class="sm">not listed</span></td>
+                  <td>Free Google AI Pro year gives Gemini 4 Argon (index 53.2). Carbon needs the Ultra plan.</td>
+                </tr>
+                <tr>
+                  <td><span class="pos">4</span></td>
+                  <td><span class="tool">OpenAI Codex</span><span class="sm">OpenAI models only</span></td>
+                  <td class="num">54.7<span class="sm">GPT-6 Astra</span></td>
+                  <td class="num">60.9<span class="sm">GPT-6.1 Sol</span></td>
+                  <td>$100 of student credit. The free tier runs GPT-6 Luna, which scores 15.2 on Terminal-Bench. The VS Code extension needs Plus.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Not enough independent evidence to rank</h3>
+          <ul>
+            <li>
+              <strong>JetBrains Junie:</strong> the best product agent on SWE-rebench (61.8%), but that test used an older
+              model. Students get only the AI Free tier.
+            </li>
+            <li>
+              <strong>Cursor:</strong> offers top models, but has no current independent result. Its own Composer 2.5 model
+              trails (51.7% on SWE-rebench). The free student year has ended.
+            </li>
+            <li>
+              <strong>Devin Desktop</strong> (formerly Windsurf), <strong>Kiro</strong> and <strong>Zed:</strong> no
+              independent tests of these tools yet.
+            </li>
+            <li>
+              <strong>Local models through Ollama:</strong> the best open models score near the top, but they need
+              datacenter hardware. No 2026 independent results exist for models small enough to run on a laptop.
+            </li>
+          </ul>
+
+          <h3>The models underneath</h3>
+          <p>
+            Two independent views of the models themselves. Vals.ai ran every model in the same agent on Terminal-Bench
+            4.0, so the numbers compare fairly. LMArena WebDev ranks models by nearly a million head-to-head votes from
+            users. It measures which answer people preferred, not whether the code was correct.
+          </p>
+          <div class="rank-wrap">
+            <table class="rank">
+              <thead>
+                <tr><th>Model</th><th>Maker</th><th>Terminal-Bench 4.0<span class="sm">Vals.ai, % solved</span></th><th>WebDev Arena<span class="sm">vote rating</span></th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="tool">Claude Fable 5.2</td><td>Anthropic</td><td class="num">65.2</td><td class="num">1838</td></tr>
+                <tr><td class="tool">Claude Opus 5.5</td><td>Anthropic</td><td class="num">65.2</td><td class="num">1815</td></tr>
+                <tr><td class="tool">Claude Sonnet 5.5</td><td>Anthropic</td><td class="num">64.1</td><td class="num">1772</td></tr>
+                <tr><td class="tool">Kimi K3.1 Pro</td><td>Moonshot · open weights</td><td class="num">63.6</td><td class="num">1687</td></tr>
+                <tr><td class="tool">Gemini 4 Carbon</td><td>Google</td><td class="num">63.1</td><td class="num">1768<span class="sm">preliminary</span></td></tr>
+                <tr><td class="tool">GPT-6 Astra</td><td>OpenAI</td><td class="num">59.6</td><td class="num">1764</td></tr>
+                <tr><td class="tool">Gemini 4 Argon</td><td>Google</td><td class="num">57.6</td><td class="num">1681</td></tr>
+                <tr><td class="tool">GPT-6.1 Sol</td><td>OpenAI</td><td class="num">55.1</td><td class="num">1743</td></tr>
+                <tr><td class="tool">GLM 5.3</td><td>Z.ai · open weights</td><td class="num">38.9</td><td class="num">1622</td></tr>
+                <tr><td class="tool">Qwen 3.8 Max</td><td>Alibaba</td><td class="num">38.9</td><td class="num">1676<span class="sm">preliminary</span></td></tr>
+                <tr><td class="tool">DeepSeek V4.1 Flash</td><td>DeepSeek · open weights</td><td class="num">31.8</td><td class="num">1664</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>What this means for you</h3>
+          <div class="callout">
+            <i class="ph ph-lightbulb" aria-hidden="true"></i>
+            <p>
+              <strong>Free:</strong> start with Copilot Student in VS Code. Add Google AI Pro's free year (Antigravity) and
+              the Codex credits when you need more.
+              <strong>Paying $20 a month:</strong> Claude Pro for Claude Code had the top independent scores in November
+              2026. ChatGPT Plus for Codex is the next option, and Codex with GPT-6.1 Sol is cheapest per task in the
+              Artificial Analysis test ($1.50 against $11.40 for Claude Code with Opus 5.5).
+            </p>
+          </div>
+
+          <h3>Read these numbers carefully</h3>
+          <ul>
+            <li>
+              <strong>Tests mostly measure models, not tools.</strong> The same model scores 2 to 12 points differently
+              depending on the tool around it.
+            </li>
+            <li>
+              <strong>No company wins everything.</strong> Gemini 4 Carbon tops CursorBench, GPT-6 Astra beats Opus 5.5 on
+              FrontierSWE, and Gemini 4 Argon leads DeepSWE in Google's own report.
+            </li>
+            <li>
+              <strong>Headline scores use maximum effort.</strong> Free and student tiers usually run cheaper models or
+              lower effort settings.
+            </li>
+            <li>
+              <strong>Older benchmarks are saturated.</strong> SWE-bench Verified is near its ceiling and widely treated as
+              contaminated, so it isn't used here.
+            </li>
+            <li><strong>These numbers go stale in months.</strong> Terminal-Bench alone went through five versions in about a year.</li>
+          </ul>
+
+          <h3>Sources</h3>
+          <ul class="sources">
+            <li>Artificial Analysis, Coding Agent Index v2.0 (13 Nov 2026): <a class="inline" href="https://artificialanalysis.ai/agents/coding-agents" target="_blank" rel="noopener noreferrer">artificialanalysis.ai/agents/coding-agents</a></li>
+            <li>Terminal-Bench 4.1 leaderboard (13 Nov 2026): <a class="inline" href="https://www.tbench.ai/leaderboard" target="_blank" rel="noopener noreferrer">tbench.ai/leaderboard</a></li>
+            <li>Vals.ai, Terminal-Bench 4.0 (11 Nov 2026): <a class="inline" href="https://www.vals.ai/benchmarks/terminal-bench-4" target="_blank" rel="noopener noreferrer">vals.ai/benchmarks/terminal-bench-4</a></li>
+            <li>LMArena WebDev (11 Nov 2026): <a class="inline" href="https://arena.ai/leaderboard/code/webdev" target="_blank" rel="noopener noreferrer">arena.ai/leaderboard/code/webdev</a></li>
+            <li>SWE-rebench (tasks from May–July 2026): <a class="inline" href="https://swe-rebench.com/" target="_blank" rel="noopener noreferrer">swe-rebench.com</a></li>
+            <li>GitHub Copilot plans and models: <a class="inline" href="https://docs.github.com/en/copilot/get-started/plans" target="_blank" rel="noopener noreferrer">docs.github.com/en/copilot/get-started/plans</a></li>
+          </ul>
+        </section>
+        <!-- RANK:END -->
+      </main>
+    </div>
+
+    <footer class="footer wrap wide">
+      <span>Harrison Stewart · BYU CCE 114</span>
+      <a href="../../">Back to main page</a>
+    </footer>
+  </body>
+</html>

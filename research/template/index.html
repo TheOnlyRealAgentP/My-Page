@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Research Explainer Template · Harrison Stewart</title>
+    <meta name="description" content="A page template for explaining a research project to students and the public, with share, cite, print and projector modes." />
+    <meta name="theme-color" content="#06080b" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../explainer.css" />
+    <script src="../explainer.js" defer></script>
+
+    <!--
+      HOW TO USE THIS TEMPLATE
+      1. Copy this folder to research/<project-name>/ (for example research/fludd/).
+      2. Fill in the details below. They drive the header and the "Cite" button.
+      3. Replace each section's guidance (the dashed boxes) with your own text.
+      4. In js/data.js, point the project's "Explainer" action at "research/<project-name>/".
+      The CSS and JS are shared from research/explainer.css and research/explainer.js.
+    -->
+    <script type="application/json" id="explainer-meta">
+      {
+        "title": "Project title",
+        "question": "The one question this project answers, in plain words?",
+        "authors": ["Harrison Stewart"],
+        "year": 2026,
+        "group": "BYU Hydroinformatics Lab",
+        "groupUrl": "https://hydroinformatics.byu.edu",
+        "status": "Template",
+        "updated": "2026-11-13"
+      }
+    </script>
+  </head>
+  <body class="explainer">
+    <div class="tool-bg" aria-hidden="true"></div>
+
+    <header class="x-header wrap">
+      <a class="back" href="../../#research"><i class="ph ph-arrow-left" aria-hidden="true"></i>Research</a>
+      <div class="eyebrow" data-meta="group"></div>
+      <h1 data-meta="title"></h1>
+      <p class="question" data-meta="question"></p>
+      <div class="byline">
+        <span data-meta="authors"></span>
+        <span class="dot">·</span>
+        <span>Updated <time data-meta="updated"></time></span>
+        <span class="status" data-meta="status"></span>
+      </div>
+
+      <div class="toolbar" role="toolbar" aria-label="Explainer tools">
+        <button type="button" class="tbtn" data-action="share"><i class="ph ph-share-network" aria-hidden="true"></i>Share</button>
+        <button type="button" class="tbtn" data-action="cite"><i class="ph ph-quotes" aria-hidden="true"></i>Cite</button>
+        <button type="button" class="tbtn" data-action="present"><i class="ph ph-presentation" aria-hidden="true"></i>Present</button>
+        <button type="button" class="tbtn" data-action="print"><i class="ph ph-printer" aria-hidden="true"></i>Print handout</button>
+      </div>
+    </header>
+
+    <main class="wrap x-main">
+      <!-- 1 -->
+      <section class="x-sec" id="question">
+        <div class="x-num">01</div>
+        <h2>The question</h2>
+        <div class="guide">
+          <strong>Write:</strong> one or two sentences a first-year engineering student could follow. Start from something
+          they have seen, such as a flooded road or a river gauge, then state the question your project answers.
+          <ul>
+            <li>Define every acronym the first time it appears.</li>
+            <li>Leave methods out of this section. That comes later.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="x-sec" id="why">
+        <div class="x-num">02</div>
+        <h2>Why it matters</h2>
+        <div class="guide">
+          <strong>Write:</strong> who benefits if this works, and what they can do that they couldn't before. One concrete
+          example beats three general claims.
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="x-sec" id="how">
+        <div class="x-num">03</div>
+        <h2>How it works</h2>
+        <div class="guide">
+          <strong>Write:</strong> the method in three to five steps, each one sentence. Pair it with one figure.
+          <ul>
+            <li>A diagram of the data flow works for software projects.</li>
+            <li>A map or plot works for modeling projects.</li>
+            <li>An interactive demo works best of all. Embed it in the figure slot below.</li>
+          </ul>
+        </div>
+        <figure class="figure">
+          <div class="fig-slot">
+            <i class="ph ph-image" aria-hidden="true"></i>
+            <span>Figure or interactive demo goes here</span>
+          </div>
+          <figcaption>Figure 1. Caption that says what the reader should notice, not just what the figure is.</figcaption>
+        </figure>
+      </section>
+
+      <!-- 4 -->
+      <section class="x-sec" id="found">
+        <div class="x-num">04</div>
+        <h2>What we found</h2>
+        <div class="guide">
+          <strong>Write:</strong> the main result as a single sentence with a number in it, then up to three supporting
+          points. Say what the result does <em>not</em> show, too. Students learn as much from the limits as from the
+          finding.
+        </div>
+        <div class="kpis">
+          <div class="kpi"><div class="v">—</div><div class="k">Key number</div></div>
+          <div class="kpi"><div class="v">—</div><div class="k">Key number</div></div>
+          <div class="kpi"><div class="v">—</div><div class="k">Key number</div></div>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="x-sec" id="try">
+        <div class="x-num">05</div>
+        <h2>Try it yourself</h2>
+        <div class="guide">
+          <strong>Write:</strong> a short activity a student can do in 10 minutes: open the demo, change one input,
+          and predict what happens before checking. Add two or three questions they should be able to answer afterward.
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="x-sec" id="data">
+        <div class="x-num">06</div>
+        <h2>Data &amp; code</h2>
+        <div class="guide">
+          <strong>Write:</strong> where the data comes from (agency, dataset, date range) and where the code lives. Link
+          the repository and say which license it uses.
+        </div>
+        <div class="links">
+          <a class="lnk" href="#"><i class="ph ph-github-logo" aria-hidden="true"></i>Code repository</a>
+          <a class="lnk" href="#"><i class="ph ph-database" aria-hidden="true"></i>Data source</a>
+          <a class="lnk" href="#"><i class="ph ph-play" aria-hidden="true"></i>Live demo</a>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="x-sec" id="terms">
+        <div class="x-num">07</div>
+        <h2>Key terms</h2>
+        <div class="guide">
+          <strong>Write:</strong> three to six terms a newcomer will trip over, each with a one-line definition.
+        </div>
+        <dl class="terms">
+          <dt>Term</dt>
+          <dd>One-line definition.</dd>
+          <dt>Term</dt>
+          <dd>One-line definition.</dd>
+        </dl>
+      </section>
+
+      <!-- 8 -->
+      <section class="x-sec" id="cite">
+        <div class="x-num">08</div>
+        <h2>How to cite</h2>
+        <p class="muted">Generated from the details at the top of this page.</p>
+        <div class="cite-box">
+          <div class="cite-tabs" role="tablist">
+            <button type="button" role="tab" aria-selected="true" data-fmt="apa">APA</button>
+            <button type="button" role="tab" aria-selected="false" data-fmt="bibtex">BibTeX</button>
+          </div>
+          <pre id="cite-text"></pre>
+          <button type="button" class="tbtn sm" data-action="copy-cite"><i class="ph ph-copy" aria-hidden="true"></i>Copy</button>
+        </div>
+        <p class="muted related">
+          Related publications from the lab: <a href="https://hydroinformatics.byu.edu" target="_blank" rel="noopener noreferrer">hydroinformatics.byu.edu</a>
+        </p>
+      </section>
+    </main>
+
+    <div class="present-bar" aria-hidden="true">
+      <span class="present-count"></span>
+      <span>← → to move · Esc to exit</span>
+    </div>
+
+    <div class="x-toast" role="status" aria-live="polite"></div>
+
+    <footer class="footer wrap">
+      <span class="print-url"></span>
+      <a href="../../">Harrison Stewart</a>
+    </footer>
+  </body>
+</html>

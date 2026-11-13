@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Traverse Closure & the Compass Rule · Harrison Stewart</title>
+    <meta
+      name="description"
+      content="Interactive explainer: reduce a closed loop traverse step by step, from field angles and distances to compass-rule adjusted coordinates."
+    />
+    <meta name="theme-color" content="#06080b" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="traverse.css" />
+
+    <script src="traverse-math.js" defer></script>
+    <script src="traverse.js" defer></script>
+  </head>
+  <body class="tool">
+    <div class="tool-bg" aria-hidden="true"></div>
+
+    <header class="t-header wrap wide">
+      <a class="back" href="../../#students"><i class="ph ph-arrow-left" aria-hidden="true"></i>CCE 114 Student Hub</a>
+      <div class="eyebrow">Geomatics · Module 1</div>
+      <h1>Traverse Closure &amp; the Compass Rule</h1>
+      <p class="lede">
+        Drag the stations, set how precise your instruments are, and follow a closed loop traverse from field
+        measurements to adjusted coordinates.
+      </p>
+    </header>
+
+    <main class="wrap wide t-layout">
+      <!-- Map -->
+      <section class="panel t-map" aria-label="Traverse map">
+        <svg id="map" viewBox="0 0 800 600" role="img" aria-labelledby="map-desc">
+          <desc id="map-desc">
+            Plan view of the traverse. Stations are draggable; with a keyboard, focus a station and use the arrow keys.
+          </desc>
+          <g id="layers"></g>
+          <g id="handles"></g>
+        </svg>
+        <div class="legend" id="legend"></div>
+        <div class="warn" id="warn" hidden>
+          <i class="ph ph-warning" aria-hidden="true"></i>
+          Two legs cross. Interior angles only make sense for a simple loop, so drag a station to untangle it.
+        </div>
+      </section>
+
+      <!-- Controls -->
+      <section class="panel t-controls" aria-label="Controls">
+        <div class="ctl-row">
+          <span class="ctl-label">Stations</span>
+          <div class="stepper">
+            <button type="button" id="stn-minus" aria-label="Remove a station"><i class="ph ph-minus"></i></button>
+            <output id="stn-count">5</output>
+            <button type="button" id="stn-plus" aria-label="Add a station"><i class="ph ph-plus"></i></button>
+          </div>
+        </div>
+
+        <label class="ctl">
+          <span class="ctl-label">Angle precision <output id="o-angle"></output></span>
+          <input type="range" id="angle" min="0" max="60" step="1" value="10" />
+        </label>
+        <label class="ctl">
+          <span class="ctl-label">Distance precision, constant <output id="o-mm"></output></span>
+          <input type="range" id="mm" min="0" max="50" step="1" value="5" />
+        </label>
+        <label class="ctl">
+          <span class="ctl-label">Distance precision, proportional <output id="o-ppm"></output></span>
+          <input type="range" id="ppm" min="0" max="50" step="1" value="5" />
+        </label>
+        <label class="ctl">
+          <span class="ctl-label">Error exaggeration on map <output id="o-exag"></output></span>
+          <input type="range" id="exag" min="0" max="8" step="1" value="6" />
+        </label>
+
+        <div class="btn-row">
+          <button type="button" class="btn primary" id="remeasure">
+            <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>Measure again
+          </button>
+          <button type="button" class="btn" id="reset"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i>Reset</button>
+        </div>
+        <p class="hint">
+          Precision values are one standard deviation. A typical total station is about 5″ and 2&nbsp;mm&nbsp;+&nbsp;2&nbsp;ppm.
+        </p>
+      </section>
+
+      <!-- Steps -->
+      <section class="panel t-steps" aria-label="Step-by-step reduction">
+        <div class="stats" id="stats"></div>
+        <div class="tabs" role="tablist" id="tabs"></div>
+        <div class="step-body" id="step-body" role="tabpanel" aria-live="polite"></div>
+        <div class="step-nav">
+          <button type="button" class="btn" id="prev"><i class="ph ph-arrow-left" aria-hidden="true"></i>Back</button>
+          <button type="button" class="btn primary" id="next">Next<i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </section>
+
+      <!-- Computation sheet -->
+      <section class="t-sheet" id="sheet" aria-label="Computation sheet"></section>
+    </main>
+
+    <footer class="footer wrap wide">
+      <span>Harrison Stewart · BYU CCE 114</span>
+      <a href="../../">Back to main page</a>
+    </footer>
+  </body>
+</html>
