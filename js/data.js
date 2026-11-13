@@ -40,7 +40,7 @@ window.SITE = {
     bio: "I TA CCE 114, work in the BYU Hydroinformatics Lab, and write FIM (flood inundation map) generation software. When I'm not doing that I'm usually messing with ham radio, Meshtastic or the 3D printer.",
     links: [
       { icon: "github-logo", label: "GitHub", href: "https://github.com/TheOnlyRealAgentP" },
-      { icon: "envelope-simple", label: "Email", href: "#" },
+      { icon: "envelope-simple", label: "Email", email: ["hstew21", "byu.edu"] }, // put together in the browser so bots scanning the files don't pick it up
       { icon: "file-text", label: "Résumé", href: "#" },
     ],
   },

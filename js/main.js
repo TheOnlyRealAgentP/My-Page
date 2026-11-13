@@ -31,7 +31,11 @@
       .map((r) => `<a class="role" ${linkAttrs(r.href, r.label)}>${icon(r.icon)}${esc(r.label)}</a>`)
       .join("");
     const links = p.links
-      .map((l) => `<a ${linkAttrs(l.href, l.label)}>${icon(l.icon)}${esc(l.label)}</a>`)
+      .map((l) =>
+        l.email
+          ? `<a href="mailto:${esc(l.email.join("@"))}">${icon(l.icon)}${esc(l.label)}</a>`
+          : `<a ${linkAttrs(l.href, l.label)}>${icon(l.icon)}${esc(l.label)}</a>`
+      )
       .join("");
 
     $("#hero").innerHTML = `
