@@ -172,9 +172,9 @@ window.SITE = {
           title: "Course help",
           type: "list",
           items: [
-            { icon: "clock", title: "Office hours", sub: "When and where to find me", href: "#" },
+            { icon: "books", title: "CCE 114 course site", sub: "Schedule, labs, slides and course policies", href: "https://byu-hydroinformatics.github.io/cce114-geomatics/" },
+            { icon: "clock", title: "TA office hours", sub: "Hours and contact details are on Learning Suite (BYU login)", href: "https://learningsuite.byu.edu/view/uPQQjqw9-UIA.html" },
             { icon: "chat-circle-dots", title: "Ask a question", sub: "Send a question about a lab or a chapter", href: "#" },
-            { icon: "books", title: "Course resources", sub: "Lab handouts and references", href: "#" },
           ],
         },
       ],

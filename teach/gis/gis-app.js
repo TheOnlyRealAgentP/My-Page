@@ -43,6 +43,25 @@
   const known = () => new Set(store.get("known", []));
   const cardKey = (c, card) => `${c.id}:${card.front}`;
 
+  // Full-size view of a screenshot. Esc, the close button or a click on the image closes it.
+  function zoom(src, alt, captionHtml) {
+    let dlg = document.getElementById("zoom");
+    if (!dlg) {
+      dlg = document.createElement("dialog");
+      dlg.id = "zoom";
+      dlg.className = "zoom-view";
+      dlg.addEventListener("click", (e) => {
+        if (e.target === dlg || e.target.tagName === "IMG" || e.target.closest("[data-close]")) dlg.close();
+      });
+      document.body.appendChild(dlg);
+    }
+    dlg.innerHTML = `<div class="zoom-bar"><span>${captionHtml}</span>
+        <button type="button" class="btn" data-close>${icon("x")}Close</button></div>
+      <img src="${esc(src)}" alt="${esc(alt)}">`;
+    if (typeof dlg.showModal === "function") dlg.showModal();
+    else window.open(src, "_blank", "noopener");
+  }
+
   let toastTimer = 0;
   function toast(msg) {
     const el = document.getElementById("toast");
@@ -257,6 +276,16 @@
                 : ""
             }
             ${s.qgis ? `<div class="qgis-note">${icon("map-trifold")}<p><strong>In QGIS:</strong> ${md(s.qgis)}</p></div>` : ""}
+            ${(s.figures || [])
+              .map(
+                (f) => `<figure class="shot">
+                  <a href="${esc(f.src)}" data-zoom aria-label="Enlarge: ${esc(f.alt)}">
+                    <img src="${esc(f.src)}" alt="${esc(f.alt)}" width="${f.w}" height="${f.h}" loading="lazy" decoding="async">
+                  </a>
+                  <figcaption>${md(f.caption)}</figcaption>
+                </figure>`
+              )
+              .join("")}
           </section>`
           )
           .join("")}
@@ -294,6 +323,13 @@
       app.querySelectorAll("details.example").forEach((d) => (d.open = true));
       window.print();
     });
+
+    app.querySelectorAll("a[data-zoom]").forEach((a) =>
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        zoom(a.getAttribute("href"), a.querySelector("img").alt, a.closest("figure").querySelector("figcaption").innerHTML);
+      })
+    );
 
     app.querySelectorAll(".qc").forEach((box) => {
       const q = quick[+box.dataset.i];

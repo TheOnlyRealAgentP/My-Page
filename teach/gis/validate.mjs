@@ -23,6 +23,35 @@ const BANNED = [
   [/\bdelve|tapestry|game[- ]changer|in today's world|it's important to note\b/i, "AI-sounding filler"],
 ];
 
+// Pixel size of a WebP or PNG file, or null
+function imageSize(p) {
+  const b = fs.readFileSync(p);
+  if (b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP") {
+    const kind = b.toString("ascii", 12, 16);
+    if (kind === "VP8X") return [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)];
+    if (kind === "VP8L") {
+      const v = b.readUInt32LE(21);
+      return [1 + (v & 0x3fff), 1 + ((v >> 14) & 0x3fff)];
+    }
+    if (kind === "VP8 ") return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
+  }
+  if (b.readUInt32BE(0) === 0x89504e47) return [b.readUInt32BE(16), b.readUInt32BE(20)];
+  return null;
+}
+
+let figureCount = 0;
+function checkFigure(file, at, f) {
+  figureCount++;
+  if (!f || !isStr(f.src) || !/^img\/[\w./-]+\.(webp|png)$/.test(f.src)) return err(file, `${at}.src must be a path like "img/qgis/x.webp"`);
+  if (!isStr(f.alt)) err(file, `${at}.alt missing (describe the image for screen readers)`);
+  if (!isStr(f.caption)) err(file, `${at}.caption missing`);
+  const p = path.join(here, f.src);
+  if (!fs.existsSync(p)) return err(file, `${at}: ${f.src} does not exist`);
+  const size = imageSize(p);
+  if (!size) return err(file, `${at}: cannot read the size of ${f.src}`);
+  if (f.w !== size[0] || f.h !== size[1]) err(file, `${at}: w/h are ${f.w}×${f.h} but ${f.src} is ${size[0]}×${size[1]}`);
+}
+
 const ids = new Set();
 let totals = { chapters: 0, sections: 0, cards: 0, questions: 0 };
 
@@ -63,7 +92,11 @@ for (const file of files) {
       if (s.example && !(isStr(s.example.prompt) && Array.isArray(s.example.steps) && isStr(s.example.answer)))
         err(file, `${at}.example needs prompt, steps[], answer`);
       if (s.qgis !== undefined && !isStr(s.qgis)) err(file, `${at}.qgis must be a string`);
-      const keys = Object.keys(s).filter((k) => !["heading", "paragraphs", "bullets", "formula", "example", "qgis"].includes(k));
+      if (s.figures !== undefined) {
+        if (!Array.isArray(s.figures)) err(file, `${at}.figures must be an array`);
+        else s.figures.forEach((f, j) => checkFigure(file, `${at}.figures[${j}]`, f));
+      }
+      const keys = Object.keys(s).filter((k) => !["heading", "paragraphs", "bullets", "formula", "example", "qgis", "figures"].includes(k));
       if (keys.length) err(file, `${at} has unknown keys: ${keys.join(", ")}`);
     });
 
@@ -107,7 +140,7 @@ for (const file of files) {
   }
 }
 
-console.log(`Checked ${files.length} file(s): ${totals.chapters} chapters, ${totals.sections} guide sections, ${totals.cards} cards, ${totals.questions} questions`);
+console.log(`Checked ${files.length} file(s): ${totals.chapters} chapters, ${totals.sections} guide sections, ${figureCount} figures, ${totals.cards} cards, ${totals.questions} questions`);
 warns.forEach((w) => console.log("warn  " + w));
 errors.forEach((e) => console.log("ERROR " + e));
 console.log(errors.length ? `${errors.length} error(s)` : "OK");
