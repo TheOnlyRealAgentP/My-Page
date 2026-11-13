@@ -11,10 +11,16 @@ js/data.js                  ALL main-page content: header, sections, cards, link
 js/main.js                  renders data.js, popups, share buttons, scroll effects
 js/background.js            animated topographic contour background (CONFIG at top)
 
-teach/traverse/             Module 1: traverse closure & the compass rule
-  traverse-math.js          the reduction math (no DOM, testable in Node)
-  traverse.js               map, controls, step-through, computation sheet
-teach/vscode-ai/            Guide: VS Code for AI-assisted projects
+teach/gis/                  CCE 114 & 414 study hub: guides, flashcards, tests
+  data/chNN.js, qgis.js     one content file per chapter (see below)
+  gis-core.js               seeded random tests + calculation-question generators
+  gis-app.js                hub, study guide, flashcard and test views
+  validate.mjs              checks every content file: node teach/gis/validate.mjs
+teach/field/                Field Math: 20 surveying and civil calculators
+  field-core.js             parsing/formatting (angles, bearings, stations)
+  tools/*.js                one F.tool({...}) per calculator
+teach/traverse/             interactive traverse closure & compass rule module
+teach/vscode-ai/            guide: VS Code for AI-assisted projects
 
 research/template/          research explainer template (copy this per project)
 research/explainer.css|js   shared styles and behavior for explainers
@@ -31,6 +37,18 @@ Everything on the main page comes from `js/data.js`:
 - **Research cards** use `actions` (Explainer, Code, Demo, Share) instead of a single link.
 - **Icons**: any [Phosphor icon](https://phosphoricons.com) name.
 - **Card width**: `span` is out of 6 columns on desktop. Cards stack on phones.
+
+## GIS study content
+
+Each chapter is one file in `teach/gis/data/` that calls `GIS.chapter({...})` with a study guide, flashcards and questions. The material is original and follows the chapter order of Bolstad & Manson, *GIS Fundamentals* (7th ed.), the book for both CCE 114 and CCE 414. It does not reproduce the book.
+
+- Edit a question or card directly in its chapter file, then run `node teach/gis/validate.mjs`.
+- Calculation questions with random numbers live in `teach/gis/gis-core.js` (`gen(...)`).
+- Every test URL carries a `seed`, so a shared link rebuilds the same test. Tests print with or without an answer key.
+
+## Field Math calculators
+
+Each calculator in `teach/field/tools/` defines its inputs, a `compute()` that returns results plus the worked steps, an explanation, and a `practice()` that makes random problems. Add a new tool by copying an existing `F.tool({...})` block.
 
 ## Writing a research explainer
 

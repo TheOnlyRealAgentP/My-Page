@@ -167,6 +167,10 @@ a {
   color: var(--text);
   background: rgba(var(--accent-rgb), 0.12);
 }
+@media (max-width: 420px) {
+  .topnav-inner { gap: 0; }
+  .topnav a { padding: 6px 8px; }
+}
 
 /* =========================================================================
    Hero / profile header
@@ -711,7 +715,7 @@ a.card:hover .card-cta i {
 
 .paths {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gap);
   margin-top: 8px;
 }
@@ -799,8 +803,10 @@ a.card:hover .card-cta i {
 .row-go { color: var(--text-faint); font-size: 16px; transition: color 0.2s, transform 0.3s var(--ease); }
 .row.is-link:hover .row-go { color: var(--accent); transform: translateX(3px); }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   .paths { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
   .path { grid-template-columns: 44px minmax(0, 1fr) 20px; padding: 18px; gap: 14px; }
   .path-icon { width: 44px; height: 44px; font-size: 23px; }
   .row.is-link { grid-template-columns: 40px 1fr auto; }
