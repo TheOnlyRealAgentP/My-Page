@@ -52,6 +52,11 @@ GIS.chapter({
     },
     {
       heading: "Buffers",
+      figures: [
+        { src: "img/qgis/buffer-map.webp", w: 1000, h: 1100,
+          alt: "Map of a 150 meter buffer around a proposed sewer running north–south along University Avenue in Provo, with eight labeled manholes, over an OpenStreetMap basemap.",
+          caption: "**The result**: a 150 m buffer around the proposed University Avenue sewer, with manholes MH-01 to MH-08. The sewer and manholes are sample data for teaching. Basemap © OpenStreetMap contributors." }
+      ],
       paragraphs: [
         "A **buffer** is a polygon that encloses all locations within a set distance of a feature. Point buffers are circles, line buffers are corridors with rounded ends, and polygon buffers grow the shape outward (or shrink it with a negative distance). Buffers answer proximity questions such as which wells lie within 300 m of a fuel tank.",
         "A **fixed-distance** buffer uses one distance for every feature. A **variable-distance** buffer reads the distance from an attribute, so a large river can get a 60 m setback while a small creek gets 15 m. A **multi-ring** buffer creates several zones at set distances (for example 100, 200, and 300 m). Overlapping buffers can be kept separate or **dissolved** into one polygon. Dissolve them before reporting total buffered area, or overlaps are counted more than once.",

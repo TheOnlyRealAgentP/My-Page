@@ -15,6 +15,11 @@ GIS.chapter({
   guide: [
     {
       heading: "Tables, records and fields",
+      figures: [
+        { src: "img/qgis/attribute-table.webp", w: 1563, h: 875,
+          alt: "Attribute table of the HUC8 watersheds layer with Utah's watersheds selected and moved to the top of the table.",
+          caption: "**Attribute table (F6)** for the HUC8 layer, with Utah's watersheds selected by `\"states\" LIKE '%UT%'` and moved to the top. Selected rows are highlighted here and on the map." }
+      ],
       paragraphs: [
         "GIS stores descriptive information about features in **tables**. Each row is a **record**, and in a layer's **attribute table** each record describes one feature. Each column is a **field** (an attribute) with a name and a data type. The software links every feature's geometry to its row through a feature ID, so selecting a row selects the feature on the map and the reverse.",
         "A **database** is an organized collection of tables, and a **database management system (DBMS)** is the software that stores, queries, updates and protects them. A database differs from a spreadsheet in ways that matter for engineering data: it enforces data types, enforces unique keys, lets many users edit at once, and handles millions of rows."
@@ -92,6 +97,11 @@ GIS.chapter({
     },
     {
       heading: "SQL and attribute queries",
+      figures: [
+        { src: "img/qgis/select-expression.webp", w: 1563, h: 1031,
+          alt: "Select by Expression dialog with the expression \"states\" LIKE '%UT%' AND \"flood_events\" > 0, and the function list open in the middle.",
+          caption: "**Select by Expression (Ctrl+F3)**: `\"states\" LIKE '%UT%' AND \"flood_events\" > 0` selects Utah watersheds with at least one 2026 flood event. Double-click a field under Fields and Values to insert it without typos." }
+      ],
       paragraphs: [
         "**SQL (Structured Query Language)** is the standard language for relational databases. The basic query is SELECT fields FROM table WHERE condition. Conditions use comparison operators (=, <>, <, >, <=, >=), LIKE with the % wildcard for text patterns, IN for a list of values, BETWEEN for a range, and IS NULL for missing values. Conditions combine with the Boolean operators **AND**, **OR** and **NOT**.",
         "SQL evaluates AND before OR, just as multiplication comes before addition. Use parentheses whenever you mix them, or the query may return far more records than you meant. Aggregate functions (COUNT, SUM, AVG, MIN, MAX) with GROUP BY summarize records by category, and JOIN ... ON links tables inside a query.",
@@ -110,6 +120,11 @@ GIS.chapter({
     },
     {
       heading: "Calculating and summarizing attributes",
+      figures: [
+        { src: "img/qgis/field-calculator.webp", w: 1563, h: 1094,
+          alt: "Field Calculator dialog creating a new decimal field named acres from the expression round($area / 4046.86, 0), with a preview of the result.",
+          caption: "**Field Calculator (Ctrl+I in the attribute table)** creating a decimal field `acres` from `round($area / 4046.86, 0)`. The preview shows the result for one feature before anything is written. Because 67 Utah watersheds are selected, Only update 67 selected features is checked; uncheck it to fill every row." }
+      ],
       paragraphs: [
         "The **Field Calculator** fills a new or existing field with an expression. Common uses are unit conversions, geometry measurements and recoding values. For example, `$area` gives each polygon's area using the project's ellipsoid and area units, while `area($geometry)` uses the units of the layer's CRS. A CASE expression recodes values: CASE WHEN \"age\" > 50 THEN 'replace' WHEN \"age\" > 30 THEN 'inspect' ELSE 'ok' END.",
         "To summarize a whole table, use statistics by group, which is the GIS version of SQL's GROUP BY. Totals of pipe length by material, or impervious area by subwatershed, are typical engineering summaries."

@@ -124,6 +124,11 @@ GIS.chapter({
     },
     {
       heading: "Choosing a transformation and checking RMSE",
+      figures: [
+        { src: "img/qgis/georeferencer.webp", w: 1920, h: 1200,
+          alt: "Georeferencer window showing a simulated scan of a Provo street map with ten ground control points, and the GCP table listing source and destination coordinates, dX, dY and residuals. Point 6 has a residual of 10.6 pixels.",
+          caption: "**Layer > Georeferencer** with a simulated scan of a Provo street map (an OpenStreetMap render, rotated and rescaled) and ten GCPs at street intersections. Point 6 was placed about 16 pixels off on purpose. Its residual (10.6 px) is about twice the next largest; the bad point also pulls the fit, which raises point 4's residual. Delete or fix point 6 and the mean error drops. Basemap © OpenStreetMap contributors." }
+      ],
       paragraphs: [
         "For each GCP, the **residual** is the distance between where the transformation puts the point and where it should be. The **root mean square error (RMSE)** summarizes all residuals in one number. A small RMSE means the transformation fits the control points well. It does not prove the whole image is accurate, especially far from any GCP; independent check points that were not used in the fit give a better test.",
         "If one GCP has a much larger residual than the rest, first check it for a blunder, such as a typed coordinate or a point placed on the wrong corner. Fix or remove it, but do not delete good points just to lower the RMSE.",

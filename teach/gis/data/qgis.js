@@ -15,6 +15,11 @@ GIS.chapter({
   guide: [
     {
       heading: "The QGIS window and projects",
+      figures: [
+        { src: "img/qgis/window.webp", w: 1920, h: 1200,
+          alt: "QGIS 3.44 main window with five numbered callouts: the Browser panel, the Layers panel, the map canvas, the Processing Toolbox and the project CRS button in the status bar. The map shows U.S. HUC8 watersheds shaded by their number of 2026 flood events.",
+          caption: "**The QGIS 3.44 window.** (1) Browser panel, with the lab folder added as a favorite. (2) Layers panel; the HUC8 layer's graduated legend is expanded. (3) Map canvas. (4) Processing Toolbox. (5) Project CRS button, here EPSG:5070 (NAD83 / Conus Albers). Data: USGS Watershed Boundary Dataset; NOAA Storm Events, 2026." }
+      ],
       paragraphs: [
         "QGIS is a free, open-source desktop GIS. The **map canvas** in the middle draws your layers. The **Layers panel** lists the layers in the project. Layers higher in the list draw on top, and each checkbox turns a layer on or off. The **Browser panel** works like a file explorer for spatial data: it shows folders, GeoPackages, databases and web services, and you can drag a data set from it onto the canvas.",
         "The **Processing Toolbox** (Processing > Toolbox, Ctrl+Alt+T) holds hundreds of analysis tools, with a search box at the top. The **status bar** along the bottom shows the cursor coordinates, the map scale and the project CRS as an EPSG code. Double-click a layer to open **Layer Properties**, where symbology, labels, joins, metadata and source settings live.",
@@ -27,6 +32,11 @@ GIS.chapter({
     },
     {
       heading: "Project CRS and layer CRS",
+      figures: [
+        { src: "img/qgis/project-crs.webp", w: 1563, h: 1094,
+          alt: "Project Properties dialog on the CRS page, filtered for UTM zone 12N, with NAD83 / UTM zone 12N (EPSG:26912) selected and its definition and area of use shown below.",
+          caption: "**Project > Properties > CRS**, filtered for “UTM zone 12N”. EPSG:26912 is NAD83 / UTM zone 12N, a common choice for Utah County work; EPSG:32612 is the WGS 84 version. The panel below the list shows the selected CRS's definition and area of use." }
+      ],
       paragraphs: [
         "Every layer has its own CRS, and the project has one CRS used for display. QGIS reprojects layers **on the fly**, so layers stored in different CRSs line up on the canvas without changing the source files. A new project starts in EPSG:4326 (WGS 84), and by default QGIS then switches the project to the CRS of the first layer you add. Both defaults can be changed in Settings > Options > CRS. Change the project CRS in Project > Properties > CRS, or click the EPSG button in the status bar.",
         "Two operations sound alike but do very different things. **Setting (assigning) a layer's CRS** (Layer > Set CRS of Layer(s), Ctrl+Shift+C) only changes how QGIS interprets the coordinates already in the file. Use it only when the CRS is missing or mislabeled. **Reprojecting** (Vector > Data Management Tools > Reproject Layer) calculates new coordinates and writes a new layer. Assigning the wrong CRS puts data in the wrong place on Earth.",
@@ -35,6 +45,11 @@ GIS.chapter({
     },
     {
       heading: "Adding vector, raster, CSV and web layers",
+      figures: [
+        { src: "img/qgis/delimited-text.webp", w: 1563, h: 1219,
+          alt: "Data Source Manager on the Delimited Text page with manholes.csv loaded: CSV format, Point coordinates geometry with X field lon and Y field lat, geometry CRS EPSG:4326, and a sample data table of eight manholes.",
+          caption: "**Layer > Data Source Manager > Delimited Text** with the manhole CSV from the worked example: X field = lon, Y field = lat, Geometry CRS = EPSG:4326. Check the Sample Data table before you click Add." }
+      ],
       paragraphs: [
         "Most data enter through the **Data Source Manager** (Layer > Data Source Manager, Ctrl+L) or the Layer > Add Layer menu. Add Vector Layer (Ctrl+Shift+V) opens shapefiles, GeoPackages, GeoJSON and KML. Add Raster Layer (Ctrl+Shift+R) opens GeoTIFFs and DEMs. Dragging a file from the Browser panel works too.",
         "A spreadsheet of survey points saved as CSV comes in through **Add Delimited Text Layer** (Ctrl+Shift+T). Under Geometry definition choose **Point coordinates**, set the **X field** to the longitude or easting column and the **Y field** to the latitude or northing column, and pick the **Geometry CRS** the coordinates were recorded in. Swapping X and Y, or choosing the wrong CRS, puts the points in the wrong place or off the map entirely.",
@@ -53,6 +68,14 @@ GIS.chapter({
     },
     {
       heading: "The attribute table and Field Calculator",
+      figures: [
+        { src: "img/qgis/attribute-table.webp", w: 1563, h: 875,
+          alt: "Attribute table of the HUC8 watersheds layer with Utah's watersheds selected and moved to the top of the table.",
+          caption: "**Attribute table (F6)** for the HUC8 layer, with Utah's watersheds selected by `\"states\" LIKE '%UT%'` and moved to the top. Selected rows are highlighted here and on the map." },
+        { src: "img/qgis/field-calculator.webp", w: 1563, h: 1094,
+          alt: "Field Calculator dialog creating a new decimal field named acres from the expression round($area / 4046.86, 0), with a preview of the result.",
+          caption: "**Field Calculator (Ctrl+I in the attribute table)** creating a decimal field `acres` from `round($area / 4046.86, 0)`. The preview shows the result for one feature before anything is written. Because 67 Utah watersheds are selected, Only update 67 selected features is checked; uncheck it to fill every row." }
+      ],
       paragraphs: [
         "Open a layer's **attribute table** with F6 or right-click > Open Attribute Table. Each row is a feature and each column is a field. Selecting rows highlights the matching features on the map.",
         "The **Field Calculator** (Ctrl+I, or the abacus button in the attribute table) fills a new or existing field from an expression. For a new field, set its name, type (whole number, decimal, text, date) and length. If the layer is not in edit mode, QGIS switches it on; save afterward with Save Layer Edits or by toggling editing off. A **virtual field** is recalculated on the fly and stored in the project, not in the data file.",
@@ -77,6 +100,11 @@ GIS.chapter({
     },
     {
       heading: "Selecting features and joining tables",
+      figures: [
+        { src: "img/qgis/select-expression.webp", w: 1563, h: 1031,
+          alt: "Select by Expression dialog with the expression \"states\" LIKE '%UT%' AND \"flood_events\" > 0, and the function list open in the middle.",
+          caption: "**Select by Expression (Ctrl+F3)**: `\"states\" LIKE '%UT%' AND \"flood_events\" > 0` selects Utah watersheds with at least one 2026 flood event. Double-click a field under Fields and Values to insert it without typos." }
+      ],
       paragraphs: [
         "**Select by Expression** (Edit > Select > Select Features by Expression, Ctrl+F3, or the expression button in the attribute table) selects features whose attributes meet a condition, such as `\"zoning\" = 'R-1' AND $area > 1000`. **Select by Location** (Vector > Research Tools > Select by Location) selects features by their spatial relationship to another layer: intersect, contain, are within, touch, overlap, cross, equal or disjoint. Selected features are highlighted (yellow by default), and many tools offer a **Selected features only** option.",
         "An **attribute join** (Layer Properties > Joins, then the + button) attaches columns from a table to a layer through a shared key. You choose the **join layer**, the **join field** in that table and the **target field** in your layer. The join is one-to-one: if a key repeats in the join table, only the first match is used. Keys must match exactly, so a county code stored as the text '049' will not match the number 49. The join lives in the project; export the layer to make the joined fields permanent.",
@@ -85,6 +113,11 @@ GIS.chapter({
     },
     {
       heading: "Symbology and labels",
+      figures: [
+        { src: "img/qgis/symbology.webp", w: 1563, h: 1156,
+          alt: "Layer Properties dialog on the Symbology page for the HUC8 layer: Graduated renderer on the flood_events field, Natural Breaks (Jenks) mode, five classes, Blues color ramp.",
+          caption: "**Layer Properties > Symbology**: Graduated on `flood_events`, mode Natural Breaks (Jenks), 5 classes, Blues color ramp. Change the mode and click Classify to see how much the same data can change." }
+      ],
       paragraphs: [
         "Styling lives in Layer Properties > Symbology. **Single Symbol** draws every feature the same way. **Categorized** gives each unique value of a field its own symbol, as for land use or pipe material; click Classify to build the list. **Graduated** splits a numeric field into ranges with a color ramp or symbol sizes, as for population density or pipe age. **Rule-based** gives each symbol its own expression, such as drawing water mains with `\"diam_in\" >= 12` in a thicker line.",
         "For graduated symbols, the classification **mode** shapes the message. Equal Interval makes ranges of equal width. Equal Count (Quantile) puts the same number of features in each class. Natural Breaks (Jenks) groups values to keep each class as uniform as possible. Standard Deviation and Pretty Breaks are also available. The same data can look very different under different modes, so choose deliberately and state which one you used.",
@@ -93,6 +126,17 @@ GIS.chapter({
     },
     {
       heading: "Processing tools and saving results",
+      figures: [
+        { src: "img/qgis/buffer-dialog.webp", w: 1563, h: 1219,
+          alt: "Buffer tool dialog with the proposed sewer as input, a distance of 150 meters, and Dissolve result checked.",
+          caption: "**Vector > Geoprocessing Tools > Buffer** for the worked example. The sewer layer is in EPSG:26912, so the distance unit is meters. With no output file named, the result is a temporary layer." },
+        { src: "img/qgis/buffer-map.webp", w: 1000, h: 1100,
+          alt: "Map of a 150 meter buffer around a proposed sewer running north–south along University Avenue in Provo, with eight labeled manholes, over an OpenStreetMap basemap.",
+          caption: "**The result**: a 150 m buffer around the proposed University Avenue sewer, with manholes MH-01 to MH-08. The sewer and manholes are sample data for teaching. Basemap © OpenStreetMap contributors." },
+        { src: "img/qgis/raster-calculator.webp", w: 1531, h: 1094,
+          alt: "Raster Calculator dialog with the expression \"dem_utah_valley@1\" > 1500 and an output GeoTIFF named above_1500m.tif.",
+          caption: "**Raster > Raster Calculator**: `\"dem_utah_valley@1\" > 1500` on a 30 m USGS 3DEP DEM of Utah Valley. The output is 1 where the ground is above 1,500 m and 0 elsewhere." }
+      ],
       paragraphs: [
         "The common vector tools are under Vector > Geoprocessing Tools and in the Processing Toolbox. Each opens a dialog with inputs, parameters and an output. By default, outputs are **temporary layers**, which vanish when you close QGIS. Save them by typing an output file name before running, or right-click the temporary layer and choose Make Permanent. To run a tool on many inputs, right-click it in the Toolbox and choose Execute as Batch Process.",
         "Save finished data in **GeoPackage** (.gpkg), an OGC standard format and the QGIS default for new vector files. One GeoPackage file can hold many vector layers, rasters and tables. It avoids shapefile limits such as 10-character field names, 2 GB file size and the set of companion files (.shp, .shx, .dbf, .prj) that must travel together. To save a layer, right-click it and choose Export > Save Features As, pick GeoPackage, and set the file name, layer name and CRS."
@@ -118,6 +162,14 @@ GIS.chapter({
     },
     {
       heading: "Georeferencing a scanned map",
+      figures: [
+        { src: "img/qgis/georeferencer.webp", w: 1920, h: 1200,
+          alt: "Georeferencer window showing a simulated scan of a Provo street map with ten ground control points, and the GCP table listing source and destination coordinates, dX, dY and residuals. Point 6 has a residual of 10.6 pixels.",
+          caption: "**Layer > Georeferencer** with a simulated scan of a Provo street map (an OpenStreetMap render, rotated and rescaled) and ten GCPs at street intersections. Point 6 was placed about 16 pixels off on purpose. Its residual (10.6 px) is about twice the next largest; the bad point also pulls the fit, which raises point 4's residual. Delete or fix point 6 and the mean error drops. Basemap © OpenStreetMap contributors." },
+        { src: "img/qgis/georef-transform.webp", w: 684, h: 1009,
+          alt: "Transformation Settings dialog with transformation type Polynomial 1, target CRS EPSG:26912 and an output GeoTIFF path.",
+          caption: "**Transformation Settings**: Polynomial 1 (affine, at least 3 GCPs), target CRS EPSG:26912, and the output GeoTIFF." }
+      ],
       paragraphs: [
         "The **Georeferencer** (Layer > Georeferencer) gives real-world coordinates to a scanned map or image that has none, such as an old plat or an as-built drawing. Open the raster, then add **ground control points (GCPs)**: click a spot on the scan and either type its coordinates or pick the matching spot on a reference layer in the main map canvas. Good GCPs are sharp, permanent features spread across the whole image, like road intersections or section corners.",
         "In Transformation Settings, choose the transformation type, target CRS, resampling method and output file. **Helmert** allows shift, rotation and uniform scale (at least 2 GCPs). **Polynomial 1** is an affine transformation that also allows different scales in x and y and shear, so straight lines stay straight and parallel lines stay parallel (at least 3 GCPs). **Polynomial 2** and **Polynomial 3** can bend the image to correct warping (at least 6 and 10 GCPs). **Thin Plate Spline** rubber-sheets the image so it passes exactly through every GCP.",
@@ -126,6 +178,14 @@ GIS.chapter({
     },
     {
       heading: "Print Layout: building a map for a report",
+      figures: [
+        { src: "img/qgis/print-layout.webp", w: 1920, h: 1200,
+          alt: "Print Layout window with a map of the sewer buffer selected; the Item Properties panel shows the map scale 7200 and CRS EPSG:26912.",
+          caption: "**Project > New Print Layout (Ctrl+P)** with the map item selected. Item Properties shows its scale (1:7,200) and CRS; Lock layers, further down the same panel, keeps the figure from changing when the main map does." },
+        { src: "img/qgis/layout-export.webp", w: 1650, h: 1275,
+          alt: "Finished letter-size map exported from the print layout: title, map of the sewer buffer, legend, north arrow, scale bar in meters, and notes giving the scale, CRS and data sources.",
+          caption: "**The exported figure** (Layout > Export as Image; Export as PDF works the same way): title, map at a round scale, legend, north arrow, scale bar in meters, and the scale, CRS and data sources in a note. Basemap © OpenStreetMap contributors." }
+      ],
       paragraphs: [
         "A **print layout** is a page where you arrange a finished map. Create one with Project > New Print Layout (Ctrl+P) and give it a name. From the Add Item menu, place a **map** frame (Add Map, then drag a rectangle), a **scale bar**, a **north arrow**, a **legend**, and **labels** for the title, author, date and data sources. The Item Properties panel controls each item, such as the map's scale, the scale bar's units and segments, and which layers the legend lists.",
         "For engineering figures, set the map frame to a round scale (such as 1:2,400 or 1:24,000) and use scale bar units that match the report. Remove legend entries the reader does not need, and state the CRS and data sources. When the figure is final, check **Lock layers** in the map item's properties so later changes in the main canvas do not change it.",

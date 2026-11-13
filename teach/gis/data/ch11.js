@@ -48,6 +48,11 @@ GIS.chapter({
     },
     {
       heading: "Slope and aspect",
+      figures: [
+        { src: "img/qgis/terrain-slope.webp", w: 1000, h: 1040,
+          alt: "Slope map of Utah Valley in degrees over a hillshade: pale yellow on the flat valley floor and Utah Lake, dark red on the steep Wasatch Range.",
+          caption: "**Slope in degrees** (Processing Toolbox > Raster terrain analysis > Slope) over the same hillshade. Pale yellow is under 5°, dark red is 45° or more. The valley floor is nearly flat; the Wasatch front turns steep within a couple of kilometers." }
+      ],
       paragraphs: [
         "**Slope** is the steepness of the surface at a cell, reported in degrees (0° flat, 90° vertical) or percent (rise ÷ run × 100). A 45° slope is 100%, so percent values can exceed 100. Road and site grades are usually given in percent.",
         "A GIS computes slope from the 3×3 window around each cell. **Horn's method**, the default in GDAL, QGIS, and ArcGIS, estimates the east-west and north-south rates of change from the columns and rows on either side of the center, weighting the cells directly beside the center by 2. Label the window a b c (north row), d e f (middle row), g h i (south row), with cell size s.",
@@ -76,6 +81,11 @@ GIS.chapter({
     },
     {
       heading: "Hillshade and curvature",
+      figures: [
+        { src: "img/qgis/terrain-hillshade.webp", w: 1000, h: 1040,
+          alt: "Shaded-relief map of Utah Valley: multidirectional hillshade with an elevation color tint and 100 meter contours. Utah Lake is on the left and the Wasatch Range on the right.",
+          caption: "**Hillshade and contours** from a 30 m USGS 3DEP DEM of Utah Valley: a multidirectional hillshade under a 60% opacity elevation tint, with 100 m contours from Raster > Extraction > Contour. Utah Lake is on the left; the Wasatch Range rises on the right." }
+      ],
       paragraphs: [
         "A **hillshade** shows how brightly each cell would be lit by a light source at a given direction (azimuth) and height above the horizon (altitude). Values run from 0 (full shadow) to 255 (full light). The usual convention puts the light in the northwest, at azimuth 315° and altitude 45° (GDAL's defaults); QGIS's native Hillshade tool defaults to 300° and 40°. Most viewers read relief correctly with light from the upper left; light from the south can make valleys look like ridges.",
         "Hillshades are mainly for display, often drawn semi-transparent under a colored DEM. They are also a fast quality check, because lidar artifacts, striping, and mismatched tiles stand out.",

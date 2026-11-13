@@ -43,6 +43,7 @@ Everything on the main page comes from `js/data.js`:
 Each chapter is one file in `teach/gis/data/` that calls `GIS.chapter({...})` with a study guide, flashcards and questions. The material is original and follows the chapter order of Bolstad & Manson, *GIS Fundamentals* (7th ed.), the book for both CCE 114 and CCE 414. It does not reproduce the book.
 
 - Edit a question or card directly in its chapter file, then run `node teach/gis/validate.mjs`.
+- **Screenshots**: a guide section can carry `figures: [{ src, alt, caption, w, h }]`. Images live in `teach/gis/img/qgis/` as WebP. They are real captures from **QGIS 3.44 LTR**, the release on the Clyde 234 lab machines, so they match what students see. The validator checks that each file exists and that `w`/`h` match it. Click a figure on the site to see it full size.
 - Calculation questions with random numbers live in `teach/gis/gis-core.js` (`gen(...)`).
 - Every test URL carries a `seed`, so a shared link rebuilds the same test. Tests print with or without an answer key.
 

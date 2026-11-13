@@ -275,6 +275,12 @@ select {
 .zoom-view img { display: block; width: 100%; height: auto; background: #fff; cursor: zoom-out; }
 .zoom-view .zoom-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; font-size: 13px; color: var(--text-dim); }
 .zoom-view .zoom-bar button { flex: none; }
+@media (max-width: 700px) {
+  /* On phones, show the screenshot large enough to read and let it pan */
+  .zoom-view .zoom-bar { position: sticky; left: 0; top: 0; background: #0b0e13; width: calc(100vw - 4vw - 2px); box-sizing: border-box; }
+  .zoom-view .zoom-bar span { display: none; }
+  .zoom-view img { width: 960px; max-width: none; }
+}
 .terms-panel, .quick { margin-top: 18px; }
 .terms { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; gap: 8px 20px; margin: 14px 0 0; font-size: 14px; }
 .terms dt { font-weight: 600; color: var(--text); }

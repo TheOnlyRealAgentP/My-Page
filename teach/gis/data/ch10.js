@@ -15,6 +15,11 @@ GIS.chapter({
   guide: [
     {
       heading: "Rasters and map algebra",
+      figures: [
+        { src: "img/qgis/raster-calculator.webp", w: 1531, h: 1094,
+          alt: "Raster Calculator dialog with the expression \"dem_utah_valley@1\" > 1500 and an output GeoTIFF named above_1500m.tif.",
+          caption: "**Raster > Raster Calculator**: `\"dem_utah_valley@1\" > 1500` on a 30 m USGS 3DEP DEM of Utah Valley. The output is 1 where the ground is above 1,500 m and 0 elsewhere." }
+      ],
       paragraphs: [
         "A raster stores one value in every cell of a regular grid. Raster analysis treats each grid as a variable in an equation. **Map algebra** is the language for this: you write an expression such as `\"elev_ft@1\" * 0.3048`, and the GIS evaluates it cell by cell to make a new raster.",
         "Raster operations are grouped by which cells feed each output cell. **Local** operations use only the same cell location in each input. **Neighborhood** (focal) operations use a window of cells around each location. **Zonal** operations use all cells that share a zone value. **Global** operations can use every cell in the raster. The local, focal, and zonal groups come from C. Dana Tomlin's map algebra; many textbooks and programs add global as a fourth group, and most raster tools fit one of the four.",

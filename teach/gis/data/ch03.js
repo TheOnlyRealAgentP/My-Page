@@ -180,6 +180,11 @@ GIS.chapter({
     },
     {
       heading: "Working with coordinate reference systems in QGIS",
+      figures: [
+        { src: "img/qgis/project-crs.webp", w: 1563, h: 1094,
+          alt: "Project Properties dialog on the CRS page, filtered for UTM zone 12N, with NAD83 / UTM zone 12N (EPSG:26912) selected and its definition and area of use shown below.",
+          caption: "**Project > Properties > CRS**, filtered for “UTM zone 12N”. EPSG:26912 is NAD83 / UTM zone 12N, a common choice for Utah County work; EPSG:32612 is the WGS 84 version. The panel below the list shows the selected CRS's definition and area of use." }
+      ],
       paragraphs: [
         "A **coordinate reference system (CRS)** combines a datum, a coordinate system (geographic or projected) and units. Common CRSs have **EPSG codes**: 4326 is WGS 84 latitude/longitude, 4269 is NAD83 latitude/longitude, 26912 is NAD83 / UTM zone 12N, 32612 is WGS 84 / UTM zone 12N, and 3857 is Web Mercator.",
         "Two operations are easy to confuse. **Assigning** (setting) a CRS tells the software what the stored coordinates already are. It changes no numbers and is only right when the existing label is missing or wrong. **Reprojecting** (transforming) computes new coordinates in a different CRS and writes them to a new layer. If you assign the wrong CRS, a layer lands in the wrong place, often hundreds of kilometers away or near latitude 0°, longitude 0°.",
