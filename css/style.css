@@ -786,6 +786,32 @@ a.card:hover .card-cta i {
   border-color: rgba(var(--accent-rgb), 0.4);
   background: rgba(var(--accent-rgb), 0.08);
 }
+.act.primary {
+  color: #04121a;
+  border-color: var(--accent);
+  background: var(--accent);
+  font-weight: 600;
+}
+.act.primary:hover { color: #04121a; background: #7ad8f5; border-color: #7ad8f5; }
+
+/* card with a picture (e.g. the National Flood Map) */
+.card.has-media { flex-direction: row; gap: 28px; }
+.card-body { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+.card-media {
+  position: relative;
+  flex: 1.3 1 0;
+  min-height: 270px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: #0b0e12;
+}
+.card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+a.card-media:hover img { transform: scale(1.04); }
+@media (max-width: 900px) {
+  .card.has-media { flex-direction: column; gap: 18px; }
+  .card-media { flex: none; min-height: 0; aspect-ratio: 16 / 9; }
+}
 
 .row.is-link { cursor: pointer; }
 .row-go { color: var(--text-faint); font-size: 16px; transition: color 0.2s, transform 0.3s var(--ease); }
@@ -1018,6 +1044,8 @@ a.card:hover .card-cta i {
   .card p { grid-column: 1 / -1; margin-top: 10px; font-size: 13.5px; line-height: 1.5; }
   .card .tags { display: none; }
   .card .actions { grid-column: 1 / -1; margin-top: 12px; }
+  .card.has-media .card-body { display: contents; }
+  .card.has-media .card-media { grid-column: 1 / -1; margin-top: 14px; aspect-ratio: 16 / 10; }
 
   .row { padding: 13px 14px; gap: 12px; }
 }

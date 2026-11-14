@@ -31,6 +31,7 @@ presentations/              talks and class slides (harrisonpstewart.com/present
   view.html, viewer.*       full-screen presenter for PDF talks
   deck.css, deck.js         shared look and keys for web decks (reveal.js)
   _web-template/            copy this to start a web deck with speaker notes
+research/national-flood-map/ National Flood Map explainer (the map itself is its own repo)
 research/fim/               FIM & HAND reading list (every citation checked against Crossref)
 calendar/                   calendar page: my events, talks, BYU academic calendar, U.S. holidays
   events.js                 my events (office hours, review sessions); format at the top

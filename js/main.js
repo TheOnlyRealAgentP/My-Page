@@ -69,7 +69,7 @@
   function renderCard(c, i) {
     const hasActions = c.actions?.length;
     const isLink = !hasActions && c.href !== undefined && c.href !== "";
-    const cls = ["card", "reveal", `span-${c.span || 3}`, c.featured ? "featured" : "", isLink ? "" : "is-static"].join(" ");
+    const cls = ["card", "reveal", `span-${c.span || 3}`, c.featured ? "featured" : "", isLink ? "" : "is-static", c.image ? "has-media" : ""].join(" ");
 
     const tags = c.tags?.length
       ? `<div class="tags">${c.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>`
@@ -81,14 +81,14 @@
         .map((a) =>
           a.share !== undefined
             ? `<button type="button" class="act" data-share="${esc(a.share)}" data-title="${esc(c.title)}">${icon(a.icon || "share-network")}${esc(a.label || "Share")}</button>`
-            : `<a class="act" ${linkAttrs(a.href, `${c.title}: ${a.label}`)}>${icon(a.icon)}${esc(a.label)}</a>`
+            : `<a class="act${a.primary ? " primary" : ""}" ${linkAttrs(a.href, `${c.title}: ${a.label}`)}>${icon(a.icon)}${esc(a.label)}</a>`
         )
         .join("")}</div>`;
     } else if (isLink) {
       foot = `<span class="card-cta">${esc(c.cta || "Open")}${icon("arrow-up-right")}</span>`;
     }
 
-    const inner = `
+    let inner = `
       <div class="card-top">
         <div class="card-icon">${icon(c.icon, "ph-duotone")}</div>
         ${c.status ? `<span class="card-status">${esc(c.status)}</span>` : ""}
@@ -98,6 +98,13 @@
       <p>${esc(c.desc)}</p>
       ${tags}
       ${foot}`;
+
+    // optional picture: beside the text on wide screens, under it on phones
+    if (c.image) {
+      const img = `<img src="${esc(c.image.src)}" alt="${esc(c.image.alt || "")}" loading="lazy"${c.image.w ? ` width="${+c.image.w}" height="${+c.image.h}"` : ""} />`;
+      const media = c.image.href && !isLink ? `<a class="card-media" ${linkAttrs(c.image.href, c.title)}>${img}</a>` : `<div class="card-media">${img}</div>`;
+      inner = `<div class="card-body">${inner}</div>${media}`;
+    }
 
     const style = `style="--d:${i * 70}ms"`;
     return isLink

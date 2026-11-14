@@ -122,6 +122,7 @@
 .fig-slot i { font-size: 30px; }
 .figure img,
 .figure iframe { width: 100%; border: 0; border-radius: 14px; display: block; }
+.figure img { height: auto; }
 .figure figcaption { margin-top: 10px; font-size: 13px; color: var(--text-faint); }
 
 .kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }

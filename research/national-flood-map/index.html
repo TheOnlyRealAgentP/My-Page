@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>National Flood Map · Harrison Stewart</title>
+    <meta name="description" content="An interactive map of the 2- to 100-year floods (and the 500-year where available) for 2,109 watersheds across the lower 48, built from NOAA HAND data and National Water Model flows." />
+    <meta name="theme-color" content="#06080b" />
+    <meta property="og:title" content="National Flood Map" />
+    <meta property="og:description" content="Where rivers go when they flood: the 2- to 100-year floods for 2,109 watersheds across the lower 48." />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://harrisonpstewart.com/research/national-flood-map/img/og.jpg" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../explainer.css" />
+    <style>
+      .open-map {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 18px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #04121a;
+        font-weight: 600;
+        font-size: 14.5px;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .open-map:hover { transform: translateY(-1px); box-shadow: 0 10px 30px -12px var(--accent-glow); }
+      .hero-fig { margin-top: 26px; }
+      .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .pair figure { margin: 0; }
+      .pair .tag-label { display: block; margin-top: 6px; font-family: var(--mono); font-size: 12px; color: var(--text-faint); }
+      .caution {
+        margin: 16px 0 0;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(242, 184, 102, 0.3);
+        background: rgba(242, 184, 102, 0.06);
+        color: var(--text-dim);
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+      .caution strong { color: #f2b866; }
+      .steps { margin: 4px 0 0; padding-left: 20px; color: var(--text-dim); font-size: 16px; line-height: 1.7; }
+      .steps li { margin: 0 0 10px; }
+      .steps strong, .limits strong { color: var(--text); }
+      .limits { margin: 14px 0 0; padding-left: 20px; color: var(--text-dim); font-size: 15px; line-height: 1.65; }
+      .limits li { margin: 0 0 6px; }
+      .qs details { margin-top: 6px; color: var(--text-faint); font-size: 14px; }
+      .qs summary { cursor: pointer; color: var(--accent); }
+      .data-cite { margin-top: 12px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--text-dim); overflow-wrap: anywhere; }
+      @media (max-width: 640px) {
+        .pair { grid-template-columns: minmax(0, 1fr); }
+        .kpis { grid-template-columns: minmax(0, 1fr); }
+      }
+    </style>
+    <script src="../explainer.js" defer></script>
+
+    <script type="application/json" id="explainer-meta">
+      {
+        "title": "National Flood Map",
+        "question": "Which land floods in a 2-year flood, a 10-year flood or a 100-year flood, for the rivers and streams of the whole lower 48?",
+        "authors": ["Harrison Stewart"],
+        "year": 2026,
+        "group": "BYU Hydroinformatics Lab",
+        "groupUrl": "https://hydroinformatics.byu.edu",
+        "status": "Live",
+        "updated": "2026-11-14"
+      }
+    </script>
+  </head>
+  <body class="explainer">
+    <div class="tool-bg" aria-hidden="true"></div>
+
+    <header class="x-header wrap">
+      <a class="back" href="../../#research"><i class="ph ph-arrow-left" aria-hidden="true"></i>Research</a>
+      <div class="eyebrow" data-meta="group"></div>
+      <h1 data-meta="title"></h1>
+      <p class="question" data-meta="question"></p>
+      <div class="byline">
+        <span data-meta="authors"></span>
+        <span class="dot">·</span>
+        <span>Updated <time data-meta="updated"></time></span>
+        <span class="status" data-meta="status"></span>
+      </div>
+
+      <div class="toolbar" role="toolbar" aria-label="Explainer tools">
+        <button type="button" class="tbtn" data-action="share"><i class="ph ph-share-network" aria-hidden="true"></i>Share</button>
+        <button type="button" class="tbtn" data-action="cite"><i class="ph ph-quotes" aria-hidden="true"></i>Cite</button>
+        <button type="button" class="tbtn" data-action="present"><i class="ph ph-presentation" aria-hidden="true"></i>Present</button>
+        <button type="button" class="tbtn" data-action="print"><i class="ph ph-printer" aria-hidden="true"></i>Print handout</button>
+      </div>
+      <a class="open-map" href="https://theonlyrealagentp.github.io/national-flood-map/" target="_blank" rel="noopener noreferrer"><i class="ph ph-map-trifold" aria-hidden="true"></i>Open the map</a>
+    </header>
+
+    <main class="wrap x-main">
+      <!-- 1 -->
+      <section class="x-sec" id="question">
+        <div class="x-num">01</div>
+        <h2>The question</h2>
+        <p>
+          When a river floods, which land goes under water? FEMA's flood maps answer that where a study has been done, for
+          the 100-year and 500-year floods. I wanted one map that covers every river and stream the National Water Model
+          tracks in the lower 48, for every flood from the common 2-year flood up to the 100-year, and the 500-year where
+          I have the flows for it.
+        </p>
+        <figure class="figure hero-fig">
+          <img src="img/st-louis.webp" width="1600" height="943" alt="Dark map of the area north of St. Louis with the Missouri and Mississippi river floodplains and their side streams shaded blue." />
+          <figcaption>
+            Figure 1. Where the Missouri River meets the Mississippi, just north of St. Louis. Each spot is colored by the
+            most frequent flood that reaches it. Basemap: OpenFreeMap, © OpenStreetMap contributors.
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- 2 -->
+      <section class="x-sec" id="why">
+        <div class="x-num">02</div>
+        <h2>Why it matters</h2>
+        <p>
+          Return periods are how engineers size culverts, bridges and levees, but a "100-year flood" is hard to picture.
+          Seeing the 2-year and the 100-year flood on a river you know makes it click: how much more land the rare flood
+          takes, and how often the low ground already floods.
+        </p>
+        <p>
+          It's also a national data set. Every watershed's flood extents can be downloaded as a GeoTIFF, with a table of
+          flows for every stream reach, so you can pull it into QGIS or ArcGIS Pro and use it.
+        </p>
+        <p class="caution">
+          <strong>Not a FEMA flood map.</strong> These are modeled flood extents from a research workflow. They show where
+          water goes, not how deep it gets, and they leave out levees, culverts, dams and local studies. Don't use them for
+          insurance, permits, property decisions or emergencies.
+        </p>
+      </section>
+
+      <!-- 3 -->
+      <section class="x-sec" id="how">
+        <div class="x-num">03</div>
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>
+            <strong>Terrain.</strong> NOAA Office of Water Prediction's HAND (Height Above Nearest Drainage) data, from
+            CIROH's public bucket, run through <a href="https://github.com/sdmlua/FIMserv" target="_blank" rel="noopener noreferrer">FIMserv</a>.
+          </li>
+          <li>
+            <strong>Flows.</strong> A return-period flow for every National Water Model reach. Most watersheds use CIROH's
+            precomputed return-period flows (2 to 100 years). 171 watersheds use a Log-Pearson Type III fit to the yearly
+            peak flows in the 44-year NWM v3.0 retrospective (1979 to 2023), which also gives the 500-year flood.
+          </li>
+          <li>
+            <strong>Flooding.</strong> HAND's rating curves turn each reach's flow into a water level, and every cell that
+            sits lower than that above its stream floods. Each watershed gets a 10 m flood extent for each return period.
+          </li>
+          <li>
+            <strong>The web map.</strong> All the watersheds go into one national tile set, 9.55 m pixels at full zoom.
+            Each pixel stores which floods reach it, and your browser colors it for whatever you pick, so one set of tiles
+            covers every view.
+          </li>
+        </ol>
+        <figure class="figure">
+          <div class="pair">
+            <figure>
+              <img src="img/st-louis-2yr.webp" width="1000" height="567" loading="lazy" alt="The same St. Louis area showing only the 2-year flood." />
+              <span class="tag-label">2-year flood · 50% chance each year</span>
+            </figure>
+            <figure>
+              <img src="img/st-louis-100yr.webp" width="1000" height="567" loading="lazy" alt="The same St. Louis area showing the 100-year flood, which covers more of the edges and side streams." />
+              <span class="tag-label">100-year flood · 1% chance each year</span>
+            </figure>
+          </div>
+          <figcaption>
+            Figure 2. Same place, two floods. Most of the big-river floodplain is already wet in the 2-year flood here, and
+            the 100-year flood mostly adds the edges and the side streams. Levees aren't in the model, so some of that land
+            is protected in real life.
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- 4 -->
+      <section class="x-sec" id="found">
+        <div class="x-num">04</div>
+        <h2>What's in it</h2>
+        <p>Every watershed in the lower 48 that NOAA publishes HAND data for is on the map.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="v">2,109</div><div class="k">watersheds (HUC8s) with flood extents</div></div>
+          <div class="kpi"><div class="v">2 to 500</div><div class="k">year floods; the 500-year in 171 watersheds</div></div>
+          <div class="kpi"><div class="v">9.55 m</div><div class="k">pixels at full zoom</div></div>
+        </div>
+        <figure class="figure">
+          <img src="img/lower-48.webp" width="1400" height="842" loading="lazy" alt="The lower 48 states on a dark globe, almost entirely shaded blue where watersheds are mapped." />
+          <figcaption>Figure 3. Zoomed all the way out, every mapped watershed shows. Basemap: OpenFreeMap, © OpenStreetMap contributors.</figcaption>
+        </figure>
+        <p>What it doesn't show:</p>
+        <ul class="limits">
+          <li><strong>Depth.</strong> It shows where water goes, not how deep it gets.</li>
+          <li><strong>Levees, culverts, dams and local studies.</strong> None of these are in the model.</li>
+          <li><strong>The 500-year flood everywhere.</strong> Only the 171 Log-Pearson watersheds have it. Elsewhere the 100-year flood is the biggest one shown.</li>
+          <li><strong>Every reach.</strong> Reaches CIROH doesn't have flows for are left out.</li>
+          <li><strong>Alaska, Hawaii, Puerto Rico and the Pacific islands.</strong> The watersheds with HAND data were run, but there are no return-period flows outside the lower 48 yet.</li>
+          <li>
+            <strong>Perfect terrain.</strong> How good a map like this is depends a lot on the elevation and stream data
+            behind it, which our lab has looked at directly
+            (<a href="https://doi.org/10.3390/hydrology12080202" target="_blank" rel="noopener noreferrer">Miskin et al., 2025</a>).
+          </li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section class="x-sec" id="try">
+        <div class="x-num">05</div>
+        <h2>Try it yourself</h2>
+        <p>About 10 minutes.</p>
+        <ol class="steps">
+          <li><a href="https://theonlyrealagentp.github.io/national-flood-map/" target="_blank" rel="noopener noreferrer">Open the map</a> and search for a town on a river you know.</li>
+          <li>Before you touch anything, guess how much wider the 100-year flood is than the 2-year flood there.</li>
+          <li>Switch to <strong>One period</strong> and slide from the 2-year to the 100-year flood. How close was your guess?</li>
+          <li>Click a stream to see its flow for each return period.</li>
+        </ol>
+        <div class="qs">
+          <p>Questions to answer afterward:</p>
+          <ol class="steps">
+            <li>
+              A 100-year flood has a 1% chance of happening in any year. What are the odds of at least one in 30 years?
+              <details><summary>Answer</summary>1 − 0.99<sup>30</sup> ≈ 26%. A "100-year flood" can happen twice in a decade.</details>
+            </li>
+            <li>Where does the flooded area grow the most between the 2-year and the 100-year flood: narrow valleys or flat land? Why?</li>
+            <li>Name two things this map leaves out that would change who actually floods.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="x-sec" id="data">
+        <div class="x-num">06</div>
+        <h2>Data &amp; code</h2>
+        <p>
+          The site is a static page on GitHub Pages. MapLibre draws the map, and the national flood tiles are a single
+          PMTiles file hosted on Hugging Face. The code is MIT-licensed and the data is CC BY 4.0.
+        </p>
+        <p>
+          Sources: NOAA Office of Water Prediction (HAND, National Water Model v3.0 retrospective), CIROH (return-period
+          flows and the public HAND bucket), FIMserv from the Surface Dynamics Modeling Lab at the University of Alabama
+          (<a href="https://doi.org/10.1016/j.envsoft.2025.106581" target="_blank" rel="noopener noreferrer">Baruah et al., 2025</a>),
+          and USGS (Watershed Boundary Dataset, NHDPlus V2).
+        </p>
+        <div class="links">
+          <a class="lnk" href="https://theonlyrealagentp.github.io/national-flood-map/" target="_blank" rel="noopener noreferrer"><i class="ph ph-play" aria-hidden="true"></i>Live map</a>
+          <a class="lnk" href="https://github.com/TheOnlyRealAgentP/national-flood-map" target="_blank" rel="noopener noreferrer"><i class="ph ph-github-logo" aria-hidden="true"></i>Code on GitHub</a>
+          <a class="lnk" href="https://huggingface.co/datasets/TheOnlyRealAgentP/national-flood-map-data" target="_blank" rel="noopener noreferrer"><i class="ph ph-database" aria-hidden="true"></i>Data on Hugging Face</a>
+        </div>
+        <p class="muted" style="margin-top: 16px">To cite the data set:</p>
+        <p class="data-cite">National Flood Map contributors (2026). National Flood Map: return-period flood extents for US watersheds (version 1.0.0) [Data set]. https://theonlyrealagentp.github.io/national-flood-map/</p>
+      </section>
+
+      <!-- 7 -->
+      <section class="x-sec" id="terms">
+        <div class="x-num">07</div>
+        <h2>Key terms</h2>
+        <dl class="terms">
+          <dt>Return period</dt>
+          <dd>The average time between floods of a given size. A 100-year flood has a 1% chance of happening in any year.</dd>
+          <dt>HUC8</dt>
+          <dd>A mid-size watershed in the USGS Watershed Boundary Dataset, named by an 8-digit code.</dd>
+          <dt>HAND</dt>
+          <dd>Height Above Nearest Drainage: how high each spot sits above the stream it drains to.</dd>
+          <dt>National Water Model</dt>
+          <dd>NOAA's model of streamflow on millions of river and stream reaches across the US.</dd>
+          <dt>Log-Pearson Type III</dt>
+          <dd>The standard distribution for flood frequency in the US. Fit it to yearly peak flows to get the 100-year flow.</dd>
+          <dt>Flood extent</dt>
+          <dd>The area that's under water, without the depth.</dd>
+        </dl>
+      </section>
+
+      <!-- 8 -->
+      <section class="x-sec" id="cite">
+        <div class="x-num">08</div>
+        <h2>How to cite</h2>
+        <p class="muted">This page:</p>
+        <div class="cite-box">
+          <div class="cite-tabs" role="tablist">
+            <button type="button" role="tab" aria-selected="true" data-fmt="apa">APA</button>
+            <button type="button" role="tab" aria-selected="false" data-fmt="bibtex">BibTeX</button>
+          </div>
+          <pre id="cite-text"></pre>
+          <button type="button" class="tbtn sm" data-action="copy-cite"><i class="ph ph-copy" aria-hidden="true"></i>Copy</button>
+        </div>
+        <p class="muted related">
+          Background reading: my <a href="../fim/">FIM &amp; HAND reading list</a>, including the BYU Hydroinformatics Lab's
+          flood mapping papers. More from the lab at
+          <a href="https://hydroinformatics.byu.edu/publications" target="_blank" rel="noopener noreferrer">hydroinformatics.byu.edu</a>.
+        </p>
+      </section>
+    </main>
+
+    <div class="present-bar" aria-hidden="true">
+      <span class="present-count"></span>
+      <span>← → to move · Esc to exit</span>
+    </div>
+
+    <div class="x-toast" role="status" aria-live="polite"></div>
+
+    <footer class="footer wrap">
+      <span class="print-url"></span>
+      <a href="../../">Harrison Stewart</a>
+    </footer>
+  </body>
+</html>

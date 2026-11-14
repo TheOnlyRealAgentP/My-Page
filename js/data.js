@@ -67,7 +67,7 @@ window.SITE = {
       icon: "flask",
       kicker: "Research",
       title: "What I'm working on",
-      desc: "FIMview, my flood mapping control room, RIVR, a river forecast app, and a FIM reading list.",
+      desc: "The National Flood Map, plus FIMview, RIVR and a reading list on flood mapping.",
       href: "#research",
     },
     {
@@ -201,6 +201,29 @@ window.SITE = {
         {
           type: "cards",
           items: [
+            {
+              icon: "globe-hemisphere-west",
+              kicker: "Flood mapping",
+              title: "National Flood Map",
+              desc: "Where rivers go when they flood, for 2,109 watersheds across the lower 48. Pick any flood from the 2-year to the 100-year (the 500-year in some places) and watch the floodplain grow. Built with FIMserv from NOAA's HAND data and National Water Model flows.",
+              tags: ["HAND", "National Water Model", "FIMserv", "MapLibre"],
+              status: "Live",
+              featured: true,
+              span: 6,
+              image: {
+                src: "research/national-flood-map/img/st-louis.webp",
+                w: 1600,
+                h: 943,
+                alt: "Flood map of the Missouri and Mississippi rivers north of St. Louis",
+                href: "https://theonlyrealagentp.github.io/national-flood-map/",
+              },
+              actions: [
+                { label: "Open the map", icon: "map-trifold", href: "https://theonlyrealagentp.github.io/national-flood-map/", primary: true },
+                { label: "How it's made", icon: "book-open-text", href: "research/national-flood-map/" },
+                { label: "Data", icon: "database", href: "https://huggingface.co/datasets/TheOnlyRealAgentP/national-flood-map-data" },
+                { label: "Code", icon: "github-logo", href: "https://github.com/TheOnlyRealAgentP/national-flood-map" },
+              ],
+            },
             {
               icon: "waves",
               kicker: "Flood mapping",
