@@ -64,11 +64,11 @@ window.SITE = {
       href: "presentations/",
     },
     {
-      icon: "globe-hemisphere-west",
+      icon: "flask",
       kicker: "Research",
-      title: "National Flood Map",
-      desc: "Where rivers flood, from the 2-year to the 100-year flood, across the lower 48.",
-      href: "https://theonlyrealagentp.github.io/national-flood-map/",
+      title: "What I'm working on",
+      desc: "The National Flood Map, FIMview, RIVR and a reading list on flood mapping.",
+      href: "#research",
     },
     {
       icon: "compass-tool",
@@ -76,6 +76,15 @@ window.SITE = {
       title: "Calculators",
       desc: "Curves, leveling, COGO, Manning's and a graphing calculator. They show the work, not just the answer.",
       href: "#tools",
+    },
+    {
+      icon: "globe-hemisphere-west",
+      kicker: "Research · live",
+      title: "National Flood Map",
+      desc: "Where rivers flood, from the 2-year to the 100-year flood, across the lower 48.",
+      href: "https://theonlyrealagentp.github.io/national-flood-map/",
+      image: "research/national-flood-map/img/tile.webp",
+      wide: true,
     },
   ],
 
