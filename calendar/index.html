@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calendar · Harrison Stewart</title>
+    <meta name="description" content="Office hours, review sessions and talks. Times are Mountain Time." />
+    <meta name="theme-color" content="#06080b" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="calendar.css" />
+    <script src="config.js" defer></script>
+    <script src="calendar.js" defer></script>
+  </head>
+  <body>
+    <div class="c-bg" aria-hidden="true"></div>
+    <div class="wrap c-top">
+      <a class="back" href="../"><i class="ph ph-arrow-left" aria-hidden="true"></i>Home</a>
+    </div>
+    <main class="wrap c-main">
+      <header class="c-head">
+        <h1>Calendar</h1>
+        <p class="lede">Office hours, review sessions and talks. Times are Mountain Time.</p>
+        <div class="c-bar" id="bar" hidden>
+          <div class="seg" role="group" aria-label="View">
+            <button type="button" data-view="list"><i class="ph ph-list-bullets" aria-hidden="true"></i>List</button>
+            <button type="button" data-view="month"><i class="ph ph-calendar-blank" aria-hidden="true"></i>Month</button>
+          </div>
+          <div class="subs">
+            <a class="act" id="sub-google" target="_blank" rel="noopener noreferrer"><i class="ph ph-google-logo" aria-hidden="true"></i>Add to Google Calendar</a>
+            <a class="act" id="sub-ics"><i class="ph ph-calendar-plus" aria-hidden="true"></i>Apple / Outlook</a>
+          </div>
+        </div>
+      </header>
+      <div id="cal" aria-live="polite"></div>
+    </main>
+    <footer class="footer wrap">
+      <span>© <span id="yr">2026</span> Harrison Stewart</span>
+      <span>73 de KJ5JTS</span>
+    </footer>
+  </body>
+</html>

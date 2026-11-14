@@ -32,10 +32,11 @@ presentations/              talks and class slides (harrisonpstewart.com/present
   deck.css, deck.js         shared look and keys for web decks (reveal.js)
   _web-template/            copy this to start a web deck with speaker notes
 research/fim/               FIM & HAND reading list (every citation checked against Crossref)
+calendar/                   public Google Calendar (office hours, talks); set it up in calendar/config.js
 research/template/          research explainer template (copy this per project)
 research/explainer.css|js   shared styles and behavior for explainers
 
-assets/                     favicon, us-contours.svg (the background map), and a place for a headshot / résumé PDF
+assets/                     favicon, us-contours.svg (the background map), and the headshot
 ```
 
 ## Editing the main page
