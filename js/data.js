@@ -72,10 +72,10 @@ window.SITE = {
     },
     {
       icon: "compass-tool",
-      kicker: "Surveying & civil",
+      kicker: "Tools",
       title: "Calculators",
       desc: "Curves, leveling, COGO, Manning's and a graphing calculator. They show the work, not just the answer.",
-      href: "#surveying",
+      href: "#tools",
     },
   ],
 
@@ -238,9 +238,9 @@ window.SITE = {
 
     /* ------------------------------------------------------------------ */
     {
-      id: "surveying",
-      label: "Surveying & Civil Tools",
-      navLabel: "Surveying",
+      id: "tools",
+      label: "Tools",
+      navLabel: "Tools",
       icon: "compass-tool",
       blurb: "The math that keeps coming up in surveying and civil classes, with the steps shown.",
       groups: [

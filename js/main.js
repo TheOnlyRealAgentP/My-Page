@@ -279,33 +279,105 @@
     els.forEach((el) => io.observe(el));
   }
 
-  function activeNav() {
+  const phone = window.matchMedia("(max-width: 640px)");
+
+  function setActive(id) {
     const links = [...document.querySelectorAll("#nav a")];
-    const map = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+    let current = null;
+    links.forEach((a) => {
+      const on = a.getAttribute("href") === `#${id}`;
+      a.classList.toggle("active", on);
+      if (on) current = a;
+    });
+    // keep the active pill visible on narrow screens without moving the page
+    const nav = current?.parentElement;
+    if (nav && nav.scrollWidth > nav.clientWidth) {
+      nav.scrollTo({ left: current.offsetLeft - nav.clientWidth / 2 + current.offsetWidth / 2, behavior: "smooth" });
+    }
+  }
+
+  function activeNav() {
     if (!("IntersectionObserver" in window)) return;
     const io = new IntersectionObserver(
       (entries) =>
         entries.forEach((en) => {
-          if (!en.isIntersecting) return;
-          links.forEach((a) => a.classList.remove("active"));
-          const a = map.get(en.target.id);
-          if (a) {
-            a.classList.add("active");
-            // keep the active pill visible on narrow screens without moving the page
-            const nav = a.parentElement;
-            if (nav.scrollWidth > nav.clientWidth) {
-              nav.scrollTo({ left: a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2, behavior: "smooth" });
-            }
-          }
+          // phones follow the pinned section title instead (see phoneBars)
+          if (en.isIntersecting && !phone.matches) setActive(en.target.id);
         }),
       { rootMargin: "-45% 0px -50% 0px" }
     );
     document.querySelectorAll(".section").forEach((s) => io.observe(s));
   }
 
+  /* ---------- Phones: pinned section titles + scroll progress ---------- */
+  function phoneBars() {
+    const root = document.documentElement;
+    const nav = document.querySelector(".topnav");
+    const heads = [...document.querySelectorAll(".section-head")];
+    let navh = 0;
+    let queued = false;
+    let shown;
+
+    const update = () => {
+      queued = false;
+      const max = root.scrollHeight - window.innerHeight;
+      nav.style.setProperty("--p", max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : "0");
+      if (!phone.matches) {
+        heads.forEach((h) => h.classList.remove("stuck"));
+        shown = undefined;
+        return;
+      }
+      // a title counts as pinned once it reaches the bottom of the menu bar
+      let id = "";
+      heads.forEach((h) => {
+        const pinned = h.getBoundingClientRect().top <= navh + 1;
+        h.classList.toggle("stuck", pinned);
+        if (pinned) id = h.parentElement.id;
+      });
+      // the last section is too short to pin, so it wins at the bottom of the page
+      if (last && max > 0 && window.scrollY >= max - 2) id = last.id;
+      if (id !== shown) {
+        shown = id;
+        setActive(id);
+      }
+    };
+    const last = heads[heads.length - 1]?.parentElement;
+    const measure = () => {
+      navh = nav.offsetHeight;
+      root.style.setProperty("--navh", `${navh}px`);
+      // let the last section scroll up far enough for its title to pin
+      // (the space below it doesn't depend on its own height, so no reset is needed)
+      if (last && phone.matches) {
+        const after = root.scrollHeight - (last.getBoundingClientRect().bottom + window.scrollY);
+        last.style.minHeight = `${Math.max(0, Math.ceil(window.innerHeight - navh - after))}px`;
+      } else if (last) {
+        last.style.minHeight = "";
+      }
+      update();
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!queued) {
+          queued = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", measure);
+    measure();
+    // the page grew, so redo a jump like /#about that ran before it could reach the target
+    const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (phone.matches && target) target.scrollIntoView({ behavior: "instant" });
+  }
+
   render();
+  // old links to #surveying go to the renamed Tools section
+  if (location.hash === "#surveying") history.replaceState(null, "", "#tools");
   wireClicks();
   spotlight();
   reveal();
   activeNav();
+  phoneBars();
 })();
