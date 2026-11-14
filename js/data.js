@@ -41,8 +41,7 @@ window.SITE = {
     links: [
       { icon: "github-logo", label: "GitHub", href: "https://github.com/TheOnlyRealAgentP" },
       { icon: "envelope-simple", label: "Email", email: ["hstew21", "byu.edu"] }, // put together in the browser so bots scanning the files don't pick it up
-      // "#" shows "not ready yet"; change to "calendar/" once calendar/config.js has the calendar ID
-      { icon: "calendar-blank", label: "Calendar", href: "#" },
+      { icon: "calendar-blank", label: "Calendar", href: "calendar/" },
     ],
   },
 

@@ -32,7 +32,11 @@ presentations/              talks and class slides (harrisonpstewart.com/present
   deck.css, deck.js         shared look and keys for web decks (reveal.js)
   _web-template/            copy this to start a web deck with speaker notes
 research/fim/               FIM & HAND reading list (every citation checked against Crossref)
-calendar/                   public Google Calendar (office hours, talks); set it up in calendar/config.js
+calendar/                   calendar page: my events, talks, BYU academic calendar, U.S. holidays
+  events.js                 my events (office hours, review sessions); format at the top
+  byu.js                    BYU dates, made by update-byu.py (rerun when BYU posts a new year)
+  holidays.js               U.S. holidays worked out from their rules
+  config.js                 optional: connect a public Google Calendar
 research/template/          research explainer template (copy this per project)
 research/explainer.css|js   shared styles and behavior for explainers
 
