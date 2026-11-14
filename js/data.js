@@ -64,18 +64,18 @@ window.SITE = {
       href: "presentations/",
     },
     {
-      icon: "compass-tool",
-      kicker: "Surveying & civil",
-      title: "Calculators",
-      desc: "Curves, leveling, COGO, Manning's and a graphing calculator. They show the work, not just the answer.",
-      href: "#surveying",
-    },
-    {
       icon: "flask",
       kicker: "Research",
       title: "What I'm working on",
       desc: "FIMview, my flood mapping control room, RIVR, a river forecast app, and a FIM reading list.",
       href: "#research",
+    },
+    {
+      icon: "compass-tool",
+      kicker: "Surveying & civil",
+      title: "Calculators",
+      desc: "Curves, leveling, COGO, Manning's and a graphing calculator. They show the work, not just the answer.",
+      href: "#surveying",
     },
   ],
 
@@ -192,6 +192,52 @@ window.SITE = {
 
     /* ------------------------------------------------------------------ */
     {
+      id: "research",
+      label: "Research",
+      navLabel: "Research",
+      icon: "flask",
+      blurb: "What I'm working on right now.",
+      groups: [
+        {
+          type: "cards",
+          items: [
+            {
+              icon: "waves",
+              kicker: "Flood mapping",
+              title: "FIMview",
+              desc: "A control room for HAND flood mapping across the US, built on FIMserv. It runs anything from one HUC8 up to whole basins, makes maps for return-period floods like the 100-year, and has an AI assistant (Fludd) built in.",
+              tags: ["FIMserv", "HAND", "National Water Model"],
+              status: "Active",
+              featured: true,
+              span: 2,
+              actions: [{ label: "Slides", icon: "presentation", href: "presentations/2026-fimview-and-fimserv/" }],
+            },
+            {
+              icon: "map-trifold",
+              kicker: "Flutter app",
+              title: "RIVR",
+              desc: "A river app. Tap any river on the map to get its National Water Model forecast (short, medium and long range) with the 2- to 100-year flood lines, plus FEMA flood zones.",
+              tags: ["Flutter", "Mapbox", "National Water Model", "FEMA"],
+              status: "Active",
+              span: 2,
+            },
+            {
+              icon: "books",
+              kicker: "Reading list",
+              title: "FIM research",
+              desc: "The HAND flood mapping papers I keep coming back to, plus our lab's flood mapping work.",
+              tags: ["HAND", "FIM", "National Water Model"],
+              href: "research/fim/",
+              cta: "Open the reading list",
+              span: 2,
+            },
+          ],
+        },
+      ],
+    },
+
+    /* ------------------------------------------------------------------ */
+    {
       id: "surveying",
       label: "Surveying & Civil Tools",
       navLabel: "Surveying",
@@ -247,52 +293,6 @@ window.SITE = {
             { icon: "ruler", title: "Differential leveling", sub: "Reduce your notes and check the math", href: "teach/field/#/leveling" },
             { icon: "globe-hemisphere-west", title: "Grid and ground distances", sub: "Combined scale factor for State Plane", href: "teach/field/#/grid-ground" },
             { icon: "waves", title: "Open channel flow", sub: "Manning's for ditches and channels", href: "teach/field/#/manning" },
-          ],
-        },
-      ],
-    },
-
-    /* ------------------------------------------------------------------ */
-    {
-      id: "research",
-      label: "Research",
-      navLabel: "Research",
-      icon: "flask",
-      blurb: "What I'm working on right now.",
-      groups: [
-        {
-          type: "cards",
-          items: [
-            {
-              icon: "waves",
-              kicker: "Flood mapping",
-              title: "FIMview",
-              desc: "A control room for HAND flood mapping across the US, built on FIMserv. It runs anything from one HUC8 up to whole basins, makes maps for return-period floods like the 100-year, and has an AI assistant (Fludd) built in.",
-              tags: ["FIMserv", "HAND", "National Water Model"],
-              status: "Active",
-              featured: true,
-              span: 2,
-              actions: [{ label: "Slides", icon: "presentation", href: "presentations/2026-fimview-and-fimserv/" }],
-            },
-            {
-              icon: "map-trifold",
-              kicker: "Flutter app",
-              title: "RIVR",
-              desc: "A river app. Tap any river on the map to get its National Water Model forecast (short, medium and long range) with the 2- to 100-year flood lines, plus FEMA flood zones.",
-              tags: ["Flutter", "Mapbox", "National Water Model", "FEMA"],
-              status: "Active",
-              span: 2,
-            },
-            {
-              icon: "books",
-              kicker: "Reading list",
-              title: "FIM research",
-              desc: "The HAND flood mapping papers I keep coming back to, plus our lab's flood mapping work.",
-              tags: ["HAND", "FIM", "National Water Model"],
-              href: "research/fim/",
-              cta: "Open the reading list",
-              span: 2,
-            },
           ],
         },
       ],
