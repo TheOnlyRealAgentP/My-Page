@@ -50,6 +50,15 @@ window.SITE = {
 
   paths: [
     {
+      icon: "globe-hemisphere-west",
+      kicker: "Research · live",
+      title: "National Flood Map",
+      desc: "Where rivers flood, from the 2-year to the 100-year flood, across the lower 48.",
+      href: "https://theonlyrealagentp.github.io/national-flood-map/",
+      image: "research/national-flood-map/img/tile.webp",
+      wide: true,
+    },
+    {
       icon: "student",
       kicker: "CCE 114 & 414",
       title: "GIS & QGIS",
@@ -76,15 +85,6 @@ window.SITE = {
       title: "Calculators",
       desc: "Curves, leveling, COGO, Manning's and a graphing calculator. They show the work, not just the answer.",
       href: "#tools",
-    },
-    {
-      icon: "globe-hemisphere-west",
-      kicker: "Research · live",
-      title: "National Flood Map",
-      desc: "Where rivers flood, from the 2-year to the 100-year flood, across the lower 48.",
-      href: "https://theonlyrealagentp.github.io/national-flood-map/",
-      image: "research/national-flood-map/img/tile.webp",
-      wide: true,
     },
   ],
 
