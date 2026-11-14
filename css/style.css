@@ -758,6 +758,18 @@ a.path[target="_blank"]:hover .path-arrow { transform: translate(2px, -2px); }
   .path.wide { grid-template-columns: 52px minmax(0, 1fr) minmax(0, 200px) 24px; }
 }
 
+/* wide screens: less empty space so the header and all the shortcut tiles fit on one screen */
+@media (min-width: 1100px) {
+  .hero { padding-top: 20px; padding-bottom: 20px; }
+  .avatar { margin-bottom: 16px; }
+  .roles { margin-top: 12px; }
+  .hero .bio { margin-top: 12px; }
+  .social { margin-top: 18px; }
+  .paths { margin-top: 0; }
+  .path { padding-top: 16px; padding-bottom: 16px; }
+  .path.wide .path-thumb { height: 76px; }
+}
+
 .group + .group { margin-top: 26px; }
 .group-title {
   margin: 0 0 12px;
