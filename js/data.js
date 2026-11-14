@@ -64,11 +64,11 @@ window.SITE = {
       href: "presentations/",
     },
     {
-      icon: "flask",
+      icon: "globe-hemisphere-west",
       kicker: "Research",
-      title: "What I'm working on",
-      desc: "The National Flood Map, plus FIMview, RIVR and a reading list on flood mapping.",
-      href: "#research",
+      title: "National Flood Map",
+      desc: "Where rivers flood, from the 2-year to the 100-year flood, across the lower 48.",
+      href: "https://theonlyrealagentp.github.io/national-flood-map/",
     },
     {
       icon: "compass-tool",

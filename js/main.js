@@ -52,14 +52,14 @@
     return `<div class="paths">${paths
       .map(
         (p, i) => `
-        <a class="path reveal" href="${esc(p.href)}" style="--d:${i * 90}ms">
+        <a class="path reveal" ${linkAttrs(p.href, p.title)} style="--d:${i * 90}ms">
           <div class="path-icon">${icon(p.icon, "ph-duotone")}</div>
           <div>
             <div class="card-kicker">${esc(p.kicker)}</div>
             <h3>${esc(p.title)}</h3>
             <p>${esc(p.desc)}</p>
           </div>
-          <i class="ph ph-arrow-down-right path-arrow" aria-hidden="true"></i>
+          <i class="ph ph-${isExternal(p.href) ? "arrow-up-right" : "arrow-down-right"} path-arrow" aria-hidden="true"></i>
         </a>`
       )
       .join("")}</div>`;
