@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FIM &amp; HAND reading list · Harrison Stewart</title>
-    <meta name="description" content="Papers on Height Above Nearest Drainage (HAND) and flood inundation mapping (FIM): where HAND came from, national-scale flood mapping, accuracy, tools, and the BYU Hydroinformatics Lab's flood mapping work." />
+    <meta name="description" content="Papers on Height Above Nearest Drainage (HAND) flood inundation mapping: where HAND came from, national-scale flood maps, accuracy, tools, and the BYU Hydroinformatics Lab's flood mapping work." />
     <meta name="theme-color" content="#06080b" />
     <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,9 +22,9 @@
     <main class="wrap r-main">
       <header class="r-head">
         <h1>FIM &amp; HAND reading list</h1>
-        <p class="lede">Papers I keep coming back to while building <a href="../../presentations/2026-fimview-and-fimserv/">FIMview</a>: where HAND came from, how it became a national flood mapping method, how well it works, the tools, and what our lab has published on flood mapping.</p>
-        <nav class="r-toc" aria-label="Sections"><a href="#start">Where HAND comes from</a> <a href="#national">HAND flood mapping for the whole country</a> <a href="#accuracy">How well it works</a> <a href="#tools">Tools and code</a> <a href="#lab">From the BYU Hydroinformatics Lab</a></nav>
-        <p class="small">33 papers plus the code. Every title links to the paper through its DOI. Last checked November 2026.</p>
+        <p class="lede">The HAND flood mapping papers I keep coming back to while building <a href="../../presentations/2026-fimview-and-fimserv/">FIMview</a>.</p>
+        <nav class="r-toc" aria-label="Sections"><a href="#start">Where HAND comes from</a> <a href="#national">National scale</a> <a href="#accuracy">How well it works</a> <a href="#tools">Tools and code</a> <a href="#lab">From the BYU Hydroinformatics Lab</a></nav>
+        <p class="small">23 papers plus the code. Titles link to the paper. Last checked November 2026.</p>
       </header>
     <section id="start" aria-labelledby="start-h">
       <h2 id="start-h">Where HAND comes from</h2>
@@ -45,7 +45,7 @@
       </ol>
     </section>
     <section id="national" aria-labelledby="national-h">
-      <h2 id="national-h">HAND flood mapping for the whole country</h2>
+      <h2 id="national-h">National scale</h2>
       
       <ol class="refs">
       <li>
@@ -105,20 +105,12 @@
         <p class="note">FIMserv, the Python package FIMview is built on. It runs NOAA&#x27;s operational HAND-FIM framework without the heavy setup.</p>
       </li>
       <li>
-        <p class="cite">Dhital, S., Burauh, A., Nikrou, P., &amp; Cohen, S. (2025). <a href="https://doi.org/10.22541/essoar.173991732.27843939/v1" target="_blank" rel="noopener noreferrer">Enhancement of the NOAA Flood Inundation Mapping Framework (OWP HAND-FIM) through Surrogate Modeling</a>. <span class="venue">Preprint (ESS Open Archive)</span>.</p>
-        <p class="note">Speeds up and improves OWP HAND-FIM with surrogate modeling.</p>
-      </li>
-      <li>
         <p class="cite">Hu, A., &amp; Demir, I. (2021). <a href="https://doi.org/10.3390/hydrology8020065" target="_blank" rel="noopener noreferrer">Real-Time Flood Mapping on Client-Side Web Systems Using HAND Model</a>. <span class="venue">Hydrology, <i>8</i>(2), 65</span>.</p>
         <p class="note">HAND flood mapping running in the browser, in real time.</p>
       </li>
       <li>
         <p class="cite">Cohen, S., Brakenridge, G. R., Kettner, A., Bates, B., Nelson, J., McDonald, R., et al. (2018). <a href="https://doi.org/10.1111/1752-1688.12609" target="_blank" rel="noopener noreferrer">Estimating Floodwater Depths from Flood Inundation Maps and Topography</a>. <span class="venue">JAWRA Journal of the American Water Resources Association, <i>54</i>(4), 847-858</span>.</p>
         <p class="note">FwDET: gets flood depth from a flood extent map plus terrain.</p>
-      </li>
-      <li>
-        <p class="cite">Follum, M. L., Tavakoly, A. A., Niemann, J. D., &amp; Snow, A. D. (2017). <a href="https://doi.org/10.1111/1752-1688.12476" target="_blank" rel="noopener noreferrer">AutoRAPID: A Model for Prompt Streamflow Estimation and Flood Inundation Mapping over Regional to Continental Extents</a>. <span class="venue">JAWRA Journal of the American Water Resources Association, <i>53</i>(2), 280-299</span>.</p>
-        <p class="note">AutoRAPID: couples river routing with flood mapping to get flows and flood extents fast over large areas.</p>
       </li>
       <li>
         <p class="cite"><a href="https://github.com/NOAA-OWP/inundation-mapping" target="_blank" rel="noopener noreferrer">NOAA-OWP/inundation-mapping</a> <span class="venue">on GitHub</span></p>
@@ -132,51 +124,27 @@
     </section>
     <section id="lab" aria-labelledby="lab-h">
       <h2 id="lab-h">From the BYU Hydroinformatics Lab</h2>
-      <p class="sec-note">More on the <a href="https://hydroinformatics.byu.edu/publications" target="_blank" rel="noopener noreferrer">lab's publications page</a>.</p>
+      <p class="sec-note">Just the flood mapping ones. The rest are on the <a href="https://hydroinformatics.byu.edu/publications" target="_blank" rel="noopener noreferrer">lab's publications page</a>.</p>
       <ol class="refs">
       <li>
         <p class="cite">Wagle, P., Oldham, S. J., Nelson, E. J., Hales, R. C., Hotchkiss, R. H., Ames, D. P., et al. (2026). <a href="https://doi.org/10.1111/1752-1688.70107" target="_blank" rel="noopener noreferrer">Integrating Modeled Flood Maps From the National Water Model and Diverse Sources for Enhanced Forecasting and Preparedness</a>. <span class="venue">JAWRA Journal of the American Water Resources Association, <i>62</i>(2), e70107</span>.</p>
         <p class="note">Bringing National Water Model flood maps together with maps from other agencies and sources for forecasting and preparedness.</p>
       </li>
       <li>
-        <p class="cite">Maghami, I., Ames, D. P., Aghababaei, A., Chapagain, A. R., Anderson, J. M., &amp; Garcia, J. J. (2026). <a href="https://doi.org/10.1016/j.ejrh.2026.103108" target="_blank" rel="noopener noreferrer">How well do U.S. National Water Model short-range forecasts predict flood event timing and magnitude?</a>. <span class="venue">Journal of Hydrology: Regional Studies, <i>64</i>, 103108</span>.</p>
-        <p class="note">How well National Water Model short-range forecasts get the timing and size of floods right.</p>
-      </li>
-      <li>
-        <p class="cite">Markert, K. N., Lee, H., Williams, G. P., Nelson, E. J., Ames, D. P., Griffin, R. E., et al. (2026). <a href="https://doi.org/10.5194/hess-30-459-2026" target="_blank" rel="noopener noreferrer">Evaluating the feasibility of scaling the FIER framework for large-scale flood inundation prediction</a>. <span class="venue">Hydrology and Earth System Sciences, <i>30</i>(2), 459-484</span>.</p>
-        <p class="note">Scaling FIER, a satellite-based flood forecasting framework, to large areas.</p>
-      </li>
-      <li>
         <p class="cite">Miskin, T. J., Rosas, L. R., Hales, R. C., Nelson, E. J., Follum, M. L., Gutenson, J. L., et al. (2025). <a href="https://doi.org/10.3390/hydrology12080202" target="_blank" rel="noopener noreferrer">Impact of Elevation and Hydrography Data on Modeled Flood Map Accuracy Using ARC and Curve2Flood</a>. <span class="venue">Hydrology, <i>12</i>(8), 202</span>.</p>
         <p class="note">How the choice of DEM (FABDEM, SRTM, ALOS, 3DEP) and stream data changes flood map accuracy with ARC and Curve2Flood.</p>
-      </li>
-      <li>
-        <p class="cite">Prince, L., Hales, R. C., Markert, K. N., Nelson, E. J., Williams, G. P., Ames, D. P., et al. (2025). <a href="https://doi.org/10.3390/rs17091648" target="_blank" rel="noopener noreferrer">Assessing Coincidence of Satellite Acquisitions and Flood Events to Predict Suitability for Flood Map Synthesis</a>. <span class="venue">Remote Sensing, <i>17</i>(9), 1648</span>.</p>
-        <p class="note">When satellites actually catch a flood, and what that means for building flood maps from imagery.</p>
       </li>
       <li>
         <p class="cite">Rostami, A., Chang, C. H., Lee, H., Wan, H. H., Du, T. L. T., Markert, K. N., et al. (2024). <a href="https://doi.org/10.3390/rs16234357" target="_blank" rel="noopener noreferrer">Forecasting Flood Inundation in U.S. Flood-Prone Regions Through a Data-Driven Approach (FIER): Using VIIRS Water Fractions and the National Water Model</a>. <span class="venue">Remote Sensing, <i>16</i>(23), 4357</span>.</p>
         <p class="note">FIER: forecasting flood extent in U.S. flood-prone regions from satellite water maps and the National Water Model.</p>
       </li>
       <li>
-        <p class="cite">Wan, H. H., Lee, H., Thuy Du, T. L., Rostami, A., Chang, C. H., Markert, K. N., et al. (2025). <a href="https://doi.org/10.1016/j.envsoft.2025.106562" target="_blank" rel="noopener noreferrer">An interpretable and scalable model for rapid flood extent forecasting using satellite imagery and machine learning with rotated EOF analysis</a>. <span class="venue">Environmental Modelling & Software, <i>192</i>, 106562</span>.</p>
-        <p class="note">A fast, interpretable model for forecasting flood extent from satellite imagery.</p>
-      </li>
-      <li>
-        <p class="cite">Markert, K. N., da Silva, G., Ames, D. P., Maghami, I., Williams, G. P., Nelson, E. J., et al. (2024). <a href="https://doi.org/10.1016/j.envsoft.2024.106123" target="_blank" rel="noopener noreferrer">Design and implementation of a BigQuery dataset and application programmer interface (API) for the U.S. National Water Model</a>. <span class="venue">Environmental Modelling & Software, <i>179</i>, 106123</span>.</p>
-        <p class="note">A BigQuery dataset and API for National Water Model output, so you can query it instead of downloading it.</p>
-      </li>
-      <li>
-        <p class="cite">Souffront Alcantara, M. A., Kesler, C., Stealey, M. J., Nelson, E. J., Ames, D. P., &amp; Jones, N. L. (2018). <a href="https://doi.org/10.1111/1752-1688.12608" target="_blank" rel="noopener noreferrer">Cyberinfrastructure and Web Apps for Managing and Disseminating the National Water Model</a>. <span class="venue">JAWRA Journal of the American Water Resources Association, <i>54</i>(4), 859-871</span>.</p>
-        <p class="note">Early web apps for getting National Water Model forecasts out to people.</p>
+        <p class="cite">Markert, K. N., Lee, H., Williams, G. P., Nelson, E. J., Ames, D. P., Griffin, R. E., et al. (2026). <a href="https://doi.org/10.5194/hess-30-459-2026" target="_blank" rel="noopener noreferrer">Evaluating the feasibility of scaling the FIER framework for large-scale flood inundation prediction</a>. <span class="venue">Hydrology and Earth System Sciences, <i>30</i>(2), 459-484</span>.</p>
+        <p class="note">Scaling FIER up to large areas.</p>
       </li>
       <li>
         <p class="cite">Buahin, C. A., Sangwan, N., Fagan, C., Maidment, D. R., Horsburgh, J. S., Nelson, E. J., et al. (2017). <a href="https://doi.org/10.1111/1752-1688.12500" target="_blank" rel="noopener noreferrer">Probabilistic Flood Inundation Forecasting Using Rating Curve Libraries</a>. <span class="venue">JAWRA Journal of the American Water Resources Association, <i>53</i>(2), 300-315</span>.</p>
         <p class="note">Probabilistic flood inundation forecasts from libraries of rating curves.</p>
-      </li>
-      <li>
-        <p class="cite">Hales, R. C., Nelson, E. J., Souffront, M., Gutierrez, A. L., Prudhomme, C., Kopp, S., et al. (2025). <a href="https://doi.org/10.1111/jfr3.12859" target="_blank" rel="noopener noreferrer">Advancing global hydrologic modeling with the GEOGloWS ECMWF streamflow service</a>. <span class="venue">Journal of Flood Risk Management, <i>18</i>(1), e12859</span>.</p>
-        <p class="note">The GEOGLOWS ECMWF streamflow service: global streamflow forecasts.</p>
       </li>
       <li>
         <p class="cite">Smemoe, C. M., Nelson, E. J., Zundel, A. K., &amp; Miller, A. W. (2007). <a href="https://doi.org/10.1111/j.1752-1688.2007.00028.x" target="_blank" rel="noopener noreferrer">Demonstrating Floodplain Uncertainty Using Flood Probability Maps1</a>. <span class="venue">JAWRA Journal of the American Water Resources Association, <i>43</i>(2), 359-371</span>.</p>
@@ -185,14 +153,6 @@
       <li>
         <p class="cite">Noman, N. S., Nelson, E. J., &amp; Zundel, A. K. (2001). <a href="https://doi.org/10.1061/(ASCE)0733-9496(2001)127:6(394)" target="_blank" rel="noopener noreferrer">Review of Automated Floodplain Delineation from Digital Terrain Models</a>. <span class="venue">Journal of Water Resources Planning and Management, <i>127</i>(6), 394-402</span>.</p>
         <p class="note">A review of automated floodplain delineation from terrain models, from before HAND.</p>
-      </li>
-      <li>
-        <p class="cite">Ames, D. P. (2026). <a href="https://doi.org/10.3390/w18070796" target="_blank" rel="noopener noreferrer">Mapping Water: A Brief History of GIS in Hydrology and a Path Toward AI-Native Modeling</a>. <span class="venue">Water, <i>18</i>(7), 796</span>.</p>
-        <p class="note">A history of GIS in hydrology and where AI-native modeling is headed.</p>
-      </li>
-      <li>
-        <p class="cite">Patel, A., Halgren, J., Wills, Z., Frazier, N., Lee, B., Cunningham, J., et al. (2025). <a href="https://doi.org/10.1016/j.envsoft.2025.106666" target="_blank" rel="noopener noreferrer">NextGen In A Box (NGIAB): Open-Source containerization of the NextGen framework to enable community-driven hydrology modeling</a>. <span class="venue">Environmental Modelling & Software, <i>193</i>, 106666</span>.</p>
-        <p class="note">NextGen in a Box: the NextGen framework, the National Water Model&#x27;s successor, in a container.</p>
       </li>
       </ol>
     </section>

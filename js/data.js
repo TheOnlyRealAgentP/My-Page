@@ -287,7 +287,7 @@ window.SITE = {
               icon: "books",
               kicker: "Reading list",
               title: "FIM research",
-              desc: "The papers on HAND and flood inundation mapping I keep coming back to, plus our lab's flood mapping work. Every one links to the paper.",
+              desc: "The HAND flood mapping papers I keep coming back to, plus our lab's flood mapping work.",
               tags: ["HAND", "FIM", "National Water Model"],
               href: "research/fim/",
               cta: "Open the reading list",
