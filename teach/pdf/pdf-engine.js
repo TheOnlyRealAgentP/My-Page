@@ -147,8 +147,9 @@
 .pdf-sheet + .pdf-sheet { margin-top: 28px; }
 .pdf-sheet-name { font-size: 13pt; margin: 0 0 8px; color: #000; }
 .pdf-sheet table { border-collapse: collapse; font: 9.5pt/1.3 Arial, Helvetica, sans-serif; }
-.pdf-sheet td, .pdf-sheet th { border: 1px solid #c4c4c4; padding: 3px 6px; vertical-align: top; max-width: 3.2in; overflow-wrap: anywhere; }
-.pdf-sheet td[data-t="n"] { text-align: right; white-space: nowrap; }
+.pdf-sheet td, .pdf-sheet th { border: 1px solid #c4c4c4; padding: 3px 6px; vertical-align: top; white-space: nowrap; }
+.pdf-sheet td.long { white-space: normal; min-width: 1.6in; max-width: 3.2in; overflow-wrap: anywhere; }
+.pdf-sheet td[data-t="n"] { text-align: right; }
 .pdf-word .docx-wrapper { background: none; padding: 0; display: block; }
 .pdf-word .docx-wrapper > section.docx { box-shadow: none; margin: 0 0 24px; }
 .pdf-pptx { width: 1280px; background: #fff; }
@@ -222,6 +223,16 @@
     const total = box.scrollHeight;
     const pageHb = pageH / s;
     const spans = blockedSpans(box);
+    // forced page breaks (break-after: page / break-before: page)
+    const boxRectTop = box.getBoundingClientRect().top;
+    const forced = [];
+    box.querySelectorAll("*").forEach((el) => {
+      const cs = getComputedStyle(el);
+      const r = el.getBoundingClientRect();
+      if (cs.breakAfter === "page" || cs.pageBreakAfter === "always") forced.push(r.bottom - boxRectTop);
+      if (cs.breakBefore === "page" || cs.pageBreakBefore === "always") forced.push(r.top - boxRectTop);
+    });
+    forced.sort((a, b) => a - b);
     const contentEnd = spans.length ? Math.min(total, spans[spans.length - 1][1] + padBottom) : total;
     const wPt = pageW / PX;
     const hPt = pageH / PX;
@@ -229,7 +240,9 @@
     let first = true;
     let thumb = null;
     while (first || start < contentEnd - padBottom - 1) {
-      const limit = first ? pageHb - padBottom : start + pageHb - padTop - padBottom;
+      let limit = first ? pageHb - padBottom : start + pageHb - padTop - padBottom;
+      const fb = forced.find((y) => y > start + 1 && y <= limit);
+      if (fb !== undefined) limit = fb;
       let end = Math.min(breakAt(spans, start, limit), contentEnd);
       if (end <= start) end = Math.min(limit, contentEnd);
       const sliceH = Math.max(1, Math.ceil(end - start));
@@ -419,11 +432,19 @@
         box.className = "pdf-doc " + extraClass;
         box.innerHTML = part;
         stage.replaceChildren(box);
-        // wide content (spreadsheets): try landscape, then shrink to fit
-        box.style.width = "max-content";
-        box.style.padding = "0";
-        const natural = box.scrollWidth;
-        if (natural > wPt * PX - 2 * mPx && (opts.landscape !== false)) [wPt, hPt] = [hPt, wPt];
+        // lay out at the page's text width; only content that still sticks out (wide tables)
+        // gets a sideways page, and then shrinks to fit
+        await document.fonts?.ready;
+        const fitW = (w) => {
+          box.style.padding = "0";
+          box.style.width = w + "px";
+          return Math.max(w, box.scrollWidth);
+        };
+        let natural = fitW(wPt * PX - 2 * mPx);
+        if (natural > wPt * PX - 2 * mPx + 1 && opts.landscape !== false) {
+          [wPt, hPt] = [hPt, wPt];
+          natural = fitW(wPt * PX - 2 * mPx);
+        }
         const pageW = wPt * PX;
         const pageH = hPt * PX;
         const s = Math.min(1, (pageW - 2 * mPx) / Math.max(1, natural));
@@ -557,7 +578,10 @@
     for (const name of wb.SheetNames) {
       const ws = wb.Sheets[name];
       if (!ws || !ws["!ref"]) continue;
-      const html = XLSX.utils.sheet_to_html(ws, { header: "", footer: "" });
+      const tpl = document.createElement("template");
+      tpl.innerHTML = XLSX.utils.sheet_to_html(ws, { header: "", footer: "" });
+      tpl.content.querySelectorAll("td").forEach((td) => td.textContent.length > 32 && td.classList.add("long")); // only long text wraps
+      const html = tpl.innerHTML;
       const title = wb.SheetNames.length > 1 ? `<h2 class="pdf-sheet-name">${escHtml(name)}</h2>` : "";
       parts.push(`<div class="pdf-sheet">${title}${html}</div>`);
     }
