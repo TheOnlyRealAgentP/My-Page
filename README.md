@@ -24,6 +24,9 @@ teach/calc/                 Engineering Calculator: graphing, stats, matrices, s
   calc-app.js               the seven tabs
 teach/traverse/             interactive traverse closure & compass rule module
 teach/vscode-ai/            guide: VS Code for AI-assisted projects
+teach/pdf/                  PDF tools: convert files to PDF, combine PDFs (all in the browser)
+  pdf-engine.js             conversions and merging; loads pdf-lib, SheetJS etc. from CDNs on demand
+  pdf-app.js                the file list, page picking and downloads
 
 presentations/              talks and class slides (harrisonpstewart.com/presentations/)
   talks.js                  the list of talks; how to add one is at the top of the file

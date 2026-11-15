@@ -138,6 +138,33 @@ window.SITE = {
           ],
         },
         {
+          title: "Turning in work",
+          type: "cards",
+          items: [
+            {
+              icon: "file-pdf",
+              kicker: "Photos, Word, Excel, PowerPoint",
+              title: "Convert to PDF",
+              desc: "Turn photos of your work, Word docs, spreadsheets and slides into a PDF you can turn in. It runs in your browser, so nothing gets uploaded.",
+              tags: ["Phone camera", "Office files", "No upload"],
+              href: "teach/pdf/#convert",
+              cta: "Convert files",
+              span: 3,
+              status: "New",
+            },
+            {
+              icon: "files",
+              kicker: "Merge, reorder, pick pages",
+              title: "Combine PDFs",
+              desc: "Put several PDFs or photos into one file, in the order you want. You can pick which pages to keep and turn sideways pages.",
+              tags: ["Drag to reorder", "Page ranges", "Rotate"],
+              href: "teach/pdf/#combine",
+              cta: "Combine files",
+              span: 3,
+            },
+          ],
+        },
+        {
           title: "QGIS (CCE 114)",
           type: "cards",
           items: [

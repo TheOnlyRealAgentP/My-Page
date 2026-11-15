@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF Tools · Harrison Stewart</title>
+    <meta
+      name="description"
+      content="Turn photos, Word, Excel and PowerPoint files into PDFs, or combine PDFs into one file. It all runs in your browser, so nothing gets uploaded."
+    />
+    <meta name="theme-color" content="#06080b" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="pdf.css" />
+
+    <script src="pdf-engine.js" defer></script>
+    <script src="pdf-app.js" defer></script>
+  </head>
+  <body>
+    <div class="tool-bg" aria-hidden="true"></div>
+    <div class="topbar wrap">
+      <a class="back" href="../../#students"><i class="ph ph-arrow-left" aria-hidden="true"></i>TA resources</a>
+    </div>
+
+    <main class="wrap p-main">
+      <header class="p-head">
+        <div>
+          <div class="eyebrow">CCE 114 &amp; 414 · turning in work</div>
+          <h1>PDF tools</h1>
+          <p class="lede">Turn photos, Word, Excel and PowerPoint files into PDFs, or put several PDFs together into one. Your files stay on your computer. Nothing gets uploaded.</p>
+        </div>
+        <div class="seg" role="tablist" aria-label="Tool">
+          <button type="button" role="tab" data-mode="convert" id="tab-convert"><i class="ph ph-file-arrow-up" aria-hidden="true"></i>Convert to PDF</button>
+          <button type="button" role="tab" data-mode="combine" id="tab-combine"><i class="ph ph-files" aria-hidden="true"></i>Combine PDFs</button>
+        </div>
+      </header>
+
+      <section class="drop" id="drop" aria-labelledby="drop-title">
+        <i class="ph ph-upload-simple drop-ic" aria-hidden="true"></i>
+        <p class="drop-title" id="drop-title">Drop files here</p>
+        <div class="drop-btns">
+          <button type="button" class="btn primary" id="pick"><i class="ph ph-folder-open" aria-hidden="true"></i>Choose files</button>
+          <button type="button" class="btn" id="snap" hidden><i class="ph ph-camera" aria-hidden="true"></i>Take a photo</button>
+        </div>
+        <p class="drop-types" id="drop-types"></p>
+        <input type="file" id="file-in" multiple hidden />
+        <input type="file" id="cam-in" accept="image/*" capture="environment" hidden />
+      </section>
+
+      <div class="opts" id="opts" hidden>
+        <label class="opt">Page size
+          <select id="o-size">
+            <option value="letter">Letter (8.5 × 11 in)</option>
+            <option value="a4">A4</option>
+            <option value="fit">Same as the picture</option>
+          </select>
+        </label>
+        <label class="opt">Margins
+          <select id="o-margin">
+            <option value="small">Small (0.4 in)</option>
+            <option value="normal">Normal (1 in)</option>
+            <option value="none">None</option>
+          </select>
+        </label>
+        <span class="opt-note" id="opt-note"></span>
+      </div>
+
+      <ol class="files" id="files" aria-label="Files"></ol>
+
+      <div class="out" id="out" hidden>
+        <div class="out-sum" id="out-sum" role="status" aria-live="polite"></div>
+        <div class="out-row">
+          <label class="out-name">
+            <span>Save as</span>
+            <input type="text" id="out-name" spellcheck="false" autocomplete="off" />
+            <span class="out-ext">.pdf</span>
+          </label>
+          <div class="out-btns">
+            <button type="button" class="btn" id="clear"><i class="ph ph-trash" aria-hidden="true"></i>Clear</button>
+            <button type="button" class="btn" id="dl-zip" hidden><i class="ph ph-file-zip" aria-hidden="true"></i>Download each (.zip)</button>
+            <button type="button" class="btn primary" id="dl-one"><i class="ph ph-download-simple" aria-hidden="true"></i><span>Download PDF</span></button>
+          </div>
+        </div>
+      </div>
+
+      <section class="notes" aria-label="Good to know">
+        <h2>Good to know</h2>
+        <ul>
+          <li><strong>Photos</strong> get one page each, turned the way your phone took them. Wide pictures get a sideways page.</li>
+          <li><strong>Word, Excel and PowerPoint</strong> files become a picture of each page, so the text in the PDF can't be selected, and fonts this computer doesn't have get swapped for close ones. For an exact copy, use <em>File, Save as, PDF</em> in Office or <em>File, Download, PDF</em> in Google Docs.</li>
+          <li><strong>Copy-protected PDFs</strong> go in as a picture of each page. A PDF that needs a password to open can't be used: open it, print it to a new PDF, and add that one.</li>
+          <li><strong>Pages</strong> takes things like <code>1-3, 5</code> or <code>4-</code> (page 4 to the end). Put a range backwards, like <code>5-1</code>, to flip the order.</li>
+        </ul>
+      </section>
+    </main>
+
+    <div class="drag-veil" id="veil" aria-hidden="true"><div><i class="ph ph-file-arrow-down"></i>Drop to add</div></div>
+    <footer class="footer wrap">
+      <span>Harrison Stewart · PDF tools</span>
+      <span>Runs in your browser with pdf-lib, html2canvas, SheetJS, docx-preview and pptx-preview.</span>
+    </footer>
+  </body>
+</html>
