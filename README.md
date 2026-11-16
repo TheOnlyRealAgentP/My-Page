@@ -105,4 +105,13 @@ python3 -m http.server 8000
 
 ## License
 
-[MIT](LICENSE)
+Copyright © 2026 Harrison Stewart.
+
+The code and my written teaching materials are free software under the
+[GNU Affero General Public License v3.0 or later](LICENSE): you can use, study, share and modify
+them, and if you distribute a modified version or run one as a public website, you must release
+your source under the same license.
+
+Not covered by that license, and not licensed for reuse: my headshot and other personal photos,
+the talk slides in `presentations/` (they include work by collaborators and organizations), and
+logos, figures or other material owned by others, which belong to their owners.
