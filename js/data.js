@@ -60,7 +60,7 @@ window.SITE = {
     },
     {
       icon: "cloud-lightning",
-      kicker: "Weather radar · live",
+      kicker: "Personal project · live",
       title: "Watergaw",
       desc: "Free weather radar with the features other apps charge for: storm tracks, the next hour of rain and warnings.",
       href: "https://watergawradar.com",
@@ -85,7 +85,7 @@ window.SITE = {
       icon: "flask",
       kicker: "Research",
       title: "What I'm working on",
-      desc: "The National Flood Map, Watergaw, FIMview, RIVR and a reading list on flood mapping.",
+      desc: "The National Flood Map, FIMview, RIVR and a reading list on flood mapping.",
       href: "#research",
     },
     {
@@ -270,29 +270,6 @@ window.SITE = {
               ],
             },
             {
-              icon: "cloud-lightning",
-              kicker: "Weather radar",
-              title: "Watergaw",
-              desc: "A weather radar app with the features other radar apps charge for, free for everyone. Watch storms move and where they're headed over the next hour, get warnings for the places you care about, and check the weather along a drive. It reads the National Weather Service's NEXRAD radar files right in your browser with Rust and WebAssembly, and works on a phone like an app.",
-              tags: ["NEXRAD", "Rust", "WebAssembly", "MapLibre"],
-              status: "Live",
-              featured: true,
-              span: 6,
-              image: {
-                src: "assets/watergaw/radar.webp",
-                w: 1600,
-                h: 944,
-                alt: "Watergaw showing a line of storms along the Florida Panhandle, with storm tracks",
-                href: "https://watergawradar.com",
-              },
-              actions: [
-                { label: "Open Watergaw", icon: "cloud-lightning", href: "https://watergawradar.com", primary: true },
-                { label: "Code", icon: "github-logo", href: "https://github.com/TheOnlyRealAgentP/watergaw" },
-                { label: "Wind engine", icon: "wind", href: "https://github.com/TheOnlyRealAgentP/watergaw-wind" },
-                { label: "Share", icon: "share-network", share: "https://watergawradar.com" },
-              ],
-            },
-            {
               icon: "waves",
               kicker: "Flood mapping",
               title: "FIMview",
@@ -321,6 +298,45 @@ window.SITE = {
               href: "research/fim/",
               cta: "Open the reading list",
               span: 2,
+            },
+          ],
+        },
+      ],
+    },
+
+    /* ------------------------------------------------------------------ */
+    {
+      id: "projects",
+      label: "Projects",
+      navLabel: "Projects",
+      icon: "rocket-launch",
+      blurb: "Things I build on my own time.",
+      groups: [
+        {
+          type: "cards",
+          items: [
+            {
+              icon: "cloud-lightning",
+              kicker: "Weather radar",
+              title: "Watergaw",
+              desc: "A weather radar app with the features other radar apps charge for, free for everyone. Watch storms move and where they're headed over the next hour, get warnings for the places you care about, and check the weather along a drive. It reads the National Weather Service's NEXRAD radar files right in your browser with Rust and WebAssembly, and works on a phone like an app.",
+              tags: ["NEXRAD", "Rust", "WebAssembly", "MapLibre"],
+              status: "Live",
+              featured: true,
+              span: 6,
+              image: {
+                src: "assets/watergaw/radar.webp",
+                w: 1600,
+                h: 944,
+                alt: "Watergaw showing a line of storms along the Florida Panhandle, with storm tracks",
+                href: "https://watergawradar.com",
+              },
+              actions: [
+                { label: "Open Watergaw", icon: "cloud-lightning", href: "https://watergawradar.com", primary: true },
+                { label: "Code", icon: "github-logo", href: "https://github.com/TheOnlyRealAgentP/watergaw" },
+                { label: "Wind engine", icon: "wind", href: "https://github.com/TheOnlyRealAgentP/watergaw-wind" },
+                { label: "Share", icon: "share-network", share: "https://watergawradar.com" },
+              ],
             },
           ],
         },
