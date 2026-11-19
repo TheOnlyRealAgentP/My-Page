@@ -342,7 +342,7 @@ window.SITE = {
               icon: "monitor",
               kicker: "Operating system",
               title: "Dex OS",
-              desc: "A Linux operating system to replace Windows on your PC. It's built on Fedora, with my own window manager, desktop and two dozen apps written in Rust. Updates undo themselves if the PC doesn't start right after one, and Windows programs and Android apps open with a double-click. Steam and the NVIDIA driver come set up.",
+              desc: "A free operating system you install instead of Windows. I built it on Fedora with my own desktop, window manager and about two dozen apps, all in Rust. If an update ever breaks something, it rolls itself back. Your Windows programs and Android apps still open with a double-click, and Steam comes ready to go.",
               tags: ["Linux", "Rust", "Wayland", "Fedora"],
               status: "Preview",
               featured: true,
